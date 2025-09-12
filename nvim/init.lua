@@ -291,13 +291,11 @@ mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
 vim.g.slime_target = 'neovim'
 
 wrapped_slime = function()
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-  -- vim.cmd("normal! <Esc>")
-  -- Redo the visual selection
+  vim.cmd('sleep 10m')
   vim.cmd("normal! gv")
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+  vim.cmd('sleep 10m')
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+  vim.cmd('sleep 10m')
 end
 
 mymap('n', '<A-return>', "<CMD>SlimeSend<CR><CR>")
