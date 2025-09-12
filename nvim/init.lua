@@ -231,3 +231,79 @@ mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
 
 -- }}} Base Key mappings
 
+
+-- {{{ Plugin mappings
+
+-- {{{ nvimtree
+mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
+-- }}} nvimtree
+
+-- {{{ smart split resize bindings
+
+mymap('n', '<A-S-h>', "<CMD>lua require('smart-splits').resize_left()<CR>")
+mymap('t', '<A-S-h>', "<CMD>lua require('smart-splits').resize_left()<CR>")
+
+mymap('n', '<A-S-k>', "<CMD>lua require('smart-splits').resize_up()<CR>")
+mymap('t', '<A-S-k>', "<CMD>lua require('smart-splits').resize_up()<CR>")
+mymap(
+  'n',
+  '<A-S-->',
+  "<CMD>lua require('smart-splits').resize_up()<CR><CMD>lua require('smart-splits').resize_left()<CR>"
+)
+mymap(
+  'n',
+  '<A-S-=>',
+  "<CMD>lua require('smart-splits').resize_down()<CR><CMD>lua require('smart-splits').resize_right()<CR>"
+)
+
+mymap('n', '<A-S-j>', "<CMD>lua require('smart-splits').resize_down()<CR>")
+mymap('t', '<A-S-j>', "<CMD>lua require('smart-splits').resize_down()<CR>")
+mymap('n', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
+mymap('t', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
+
+
+mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
+mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
+mymap('n', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
+mymap('t', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
+mymap('n', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
+mymap('t', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
+mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
+mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
+
+
+
+-- }}} smart split resize bindings
+
+-- {{{ Telescope mappings
+
+mymap('n', '<Space>bb', '<CMD>Telescope buffers<CR>')
+mymap('n', '<Space>hh', '<CMD>Telescope help_tags<CR>')
+mymap('n', '<A-x>hh', '<CMD>Telescope commands<CR>')
+mymap('n', '/', '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>')
+mymap('n', '<Space>pf', '<CMD>Telescope find_files<CR>')
+mymap('n', '<Space>pr', '<CMD>Telescope live_grep<CR>')
+mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
+
+-- }}} Telescope mappings
+
+-- {{{ Slime
+
+wrapped_slime = function()
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+  -- vim.cmd("normal! <Esc>")
+  -- Redo the visual selection
+  vim.cmd("normal! gv")
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+  vim.cmd("'<,'>SlimeSend") -- Send to Slime
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+end
+
+mymap('n', '<A-return>', "<CMD>SlimeSend<CR><CR>")
+-- mymap('v', '<A-return>', "<CMD>'<,'>SlimeSend<CR><CR>")
+mymap('v', '<A-return>', "<CMD>lua wrapped_slime()<CR><CR>")
+
+-- }}} Slime
+
+-- }}} Plugin mappings
+
