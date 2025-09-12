@@ -10,6 +10,14 @@ with final.pkgs.lib; let
       version = src.lastModifiedDate;
     };
 
+  neovimVersion = "v0.11.4";
+  neovimSrc = pkgs.fetchFromGithub {
+    owner = "neovim";
+    repo = "neovim";
+    rev = neovimVersion;
+    sha256 = ""; # NOTE: why is this not needed!?
+  };
+
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
@@ -17,6 +25,7 @@ with final.pkgs.lib; let
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
       inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
+      src = neovimSrc; # NOTE: why does this actually work?
     };
 
   # A plugin can either be a package or an attrset, such as

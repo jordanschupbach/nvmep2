@@ -8,6 +8,7 @@
   # Set by the overlay to ensure we use a compatible version of `wrapNeovimUnstable`
   wrapNeovimUnstable,
   neovimUtils,
+  src,
 }:
 with lib;
   {
