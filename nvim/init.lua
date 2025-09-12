@@ -3,6 +3,9 @@ vim.loader.enable()
 local cmd = vim.cmd
 local opt = vim.o
 
+-- {{{ opts
+opt.foldmethod="marker"
+
 -- <leader> key. Defaults to `\`. Some people prefer space.
 -- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
 -- vim.g.mapleader = ' '
@@ -39,7 +42,9 @@ opt.cmdheight = 0
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
 
--- Configure Neovim diagnostic messages
+-- }}} opts
+
+-- {{{ Configure Neovim diagnostic messages
 
 local function prefix_diagnostic(prefix, diagnostic)
   return string.format(prefix .. ' %s', diagnostic.message)
@@ -87,9 +92,142 @@ vim.diagnostic.config {
   },
 }
 
--- Native plugins
+-- }}} Configure Neovim diagnostic messages
+
+-- {{{ Native plugins
+
 cmd.filetype('plugin', 'indent', 'on')
 cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
 
--- let sqlite.lua (which some plugins depend on) know where to find sqlite
+-- }}} Native plugins
+
+-- {{{ let sqlite.lua (which some plugins depend on) know where to find sqlite
+
 vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
+
+-- }}} let sqlite.lua (which some plugins depend on) know where to find sqlite
+
+-- {{{ Plugin Free Key mappings
+
+local function mymap(mode, key, value)
+  vim.keymap.set(mode, key, value, { silent = true, remap = true })
+end
+
+---@diagnostic disable-next-line: unused-function, unused-local
+local function toggle_quickfix()
+  if vim.fn.empty(vim.fn.getqflist()) == 1 then
+    print('Quickfix list is empty!')
+    return
+  end
+  local quickfix_open = false
+  local windows = vim.api.nvim_list_wins()
+  for _, win in ipairs(windows) do
+    local wininfo = vim.fn.getwininfo(win)[1]
+    if wininfo.loclist == 0 and wininfo.quickfix == 1 then
+      quickfix_open = true
+      break
+    end
+  end
+  if quickfix_open then
+    vim.cmd('cclose')
+  else
+    vim.cmd('copen')
+  end
+end
+
+---@diagnostic disable-next-line: lowercase-global
+show_line_diagnostics = function()
+  local line_diagnostics = vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] })
+  if line_diagnostics then
+    vim.diagnostic.open_float(0, { severity_limit = 'Error' })
+  end
+end
+
+-- mymap('n', '<Space>cc', '<CMD>CToggle<CR>')
+-- mymap('n', '<A-S-return>', '<CMD>silent make<CR>')
+-- mymap('n', 'I', '<CMD>lua vim.diagnostic.show_line_diagnostics()<CR>')
+
+mymap('n', '<A-S-Tab>', '<CMD>bp<CR>')
+mymap('n', '<A-Tab>', '<CMD>bn<CR>')
+mymap('n', '<Space>bn', '<CMD>bn<CR>')
+mymap('n', '<Space>bp', '<CMD>bp<CR>')
+mymap('n', '<Space>cc', '<CMD>CodeCompanionChat<CR>')
+mymap('n', '<Space>co', '<CMD>CToggle<CR>')
+mymap('n', '<Space>ht', '<CMD>Tutor<CR>')
+mymap('n', '<Space>mm', '<CMD>silent make<CR>')
+mymap('n', '<Space>oc', '<CMD>OpenConfig<CR>')
+mymap('n', '<Space>tn', '<CMD>lua toggle_number()<CR>')
+mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
+mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
+mymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
+mymap('n', ']e', '<CMD>lua vim.diagnostic.goto_next()<CR>')
+mymap('n', 'g:', '<CMD>term<CR>')
+mymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
+mymap('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
+mymap('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
+
+-- Window right
+mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
+mymap('t', '<A-l>', '<CMD>wincmd l<CR>')
+mymap('n', '<Space>wl', '<CMD>wincmd l<CR>')
+mymap('t', '<Space>wl', '<CMD>wincmd l<CR>')
+
+
+-- Window left
+mymap('n', '<A-h>', '<CMD>wincmd h<CR>')
+mymap('t', '<A-h>', '<CMD>wincmd h<CR>')
+mymap('n', '<Space>wh', '<CMD>wincmd h<CR>')
+mymap('t', '<Space>wh', '<CMD>wincmd h<CR>')
+
+
+-- Window down
+mymap('n', '<A-j>', '<CMD>wincmd j<CR>')
+mymap('t', '<A-j>', '<CMD>wincmd j<CR>')
+mymap('n', '<Space>wj', '<CMD>wincmd j<CR>')
+mymap('t', '<Space>wj', '<CMD>wincmd j<CR>')
+
+
+-- Window up
+mymap('n', '<A-k>', '<CMD>wincmd k<CR>')
+mymap('t', '<A-k>', '<CMD>wincmd k<CR>')
+mymap('n', '<Space>wk', '<CMD>wincmd k<CR>')
+mymap('t', '<Space>wk', '<CMD>wincmd k<CR>')
+
+
+-- Split pane horizontal
+mymap('n', '<A-s>', '<CMD>split<CR>')
+mymap('n', '<Space>ws', '<CMD>split<CR>')
+mymap('t', '<A-s>', '<CMD>split<CR>')
+
+-- Split pane vertical
+mymap('n', '<A-v>', '<CMD>vsplit<CR>')
+mymap('n', '<Space>wv', '<CMD>vsplit<CR>')
+mymap('t', '<A-v>', '<CMD>vsplit<CR>')
+
+-- Delete pane
+mymap('n', '<A-d>', '<CMD>close<CR>')
+mymap('n', '<Space>wd', '<CMD>close<CR>')
+mymap('t', '<A-d>', '<CMD>close<CR>')
+
+-- Project Shell
+mymap('n', '<Space>ps', '<CMD>sp<CR> <CMD>wincmd j<CR> <CMD>terminal<CR> a')
+mymap('t', '<Space>ps', '<CMD>sp<CR> <CMD>wincmd j<CR> <CMD>terminal<CR> a')
+mymap('n', '<C-t>', '<CMD>tabnew<CR>')
+mymap('n', '<A-1>', ':tabn1<CR>')
+mymap('n', '<A-2>', ':tabn2<CR>')
+mymap('n', '<A-3>', ':tabn3<CR>')
+mymap('n', '<A-4>', ':tabn4<CR>')
+mymap('n', '<A-5>', ':tabn5<CR>')
+mymap('n', '<A-6>', ':tabn6<CR>')
+mymap('n', '<A-7>', ':tabn7<CR>')
+mymap('n', '<A-8>', ':tabn8<CR>')
+mymap('n', '<A-9>', ':tabn9<CR>')
+mymap('n', '<Space>qq', '<CMD>wa<CR><CMD>qa!<CR>')
+mymap('n', '<Space>rr', '<CMD>luafile $MYVIMRC<CR><CMD>ReloadFTPlugins<CR><CMD>echo "Reloaded config"<CR>')
+mymap('n', '<Space>tgc', '<CMD>Telescope git_commits<CR>')
+-- These only work in gvim.... :(
+mymap('n', '<C-tab>', '<CMD>tabnext<CR>')
+mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
+
+-- }}} Base Key mappings
+
