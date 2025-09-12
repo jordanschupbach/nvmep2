@@ -288,6 +288,8 @@ mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
 
 -- {{{ Slime
 
+vim.g.slime_target = 'neovim'
+
 wrapped_slime = function()
   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   -- vim.cmd("normal! <Esc>")
