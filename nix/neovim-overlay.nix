@@ -38,6 +38,7 @@ with final.pkgs.lib; let
   # }
   all-plugins = with pkgs.vimPlugins; [
 
+    vim-slime
     smart-splits-nvim
     nvim-tree-lua
 

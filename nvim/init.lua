@@ -231,7 +231,6 @@ mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
 
 -- }}} Base Key mappings
 
-
 -- {{{ Plugin mappings
 
 -- {{{ nvimtree
