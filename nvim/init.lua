@@ -297,6 +297,7 @@ mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 
 -- {{{ Telescope mappings
 
+mymap('n', '<Space>yy', ':Telescope luasnip<CR>')
 mymap('n', '<Space>bb', '<CMD>Telescope buffers<CR>')
 mymap('n', '<Space>hh', '<CMD>Telescope help_tags<CR>')
 mymap('n', '<A-x>hh', '<CMD>Telescope commands<CR>')

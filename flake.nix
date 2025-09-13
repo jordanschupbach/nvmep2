@@ -50,7 +50,8 @@
           jq
           clang
 
-          # python312
+          python312
+          python312Packages.numpy
           # python312Packages.pynvim
           # python312Packages.python-lsp-server
           # python312Packages.pylsp-mypy

@@ -18,6 +18,9 @@ with final.pkgs.lib; let
     sha256 = ""; # NOTE: why is this not needed!?
   };
 
+
+
+
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
@@ -36,7 +39,21 @@ with final.pkgs.lib; let
   #   optional = <true|false>; # Default: false
   #   ...
   # }
-  all-plugins = with pkgs.vimPlugins; [
+  all-plugins = let
+
+    TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
+      name = "telescope-luasnip-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "benfowler";
+        repo = "telescope-luasnip.nvim";
+        rev = "07a2a2936a7557404c782dba021ac0a03165b343";
+        hash = "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=";
+      };
+    };
+    in
+  with pkgs.vimPlugins; [
+
+    TelescopeLuasnip
 
     vim-slime
     smart-splits-nvim
