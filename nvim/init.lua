@@ -4,6 +4,8 @@ local cmd = vim.cmd
 local opt = vim.o
 
 -- {{{ opts
+
+opt.clipboard = "unnamedplus"
 opt.foldmethod="marker"
 
 -- <leader> key. Defaults to `\`. Some people prefer space.

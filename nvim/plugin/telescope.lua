@@ -69,6 +69,46 @@ local function fuzzy_grep_current_file_type()
   grep_current_file_type(fuzzy_grep)
 end
 
+
+---@diagnostic disable-next-line: unused-function
+local function file_exists(filename)
+  local file = io.open(filename, 'r')
+  if file then
+    io.close(file)
+    return true
+  else
+    return false
+  end
+end
+
+---@diagnostic disable-next-line: unused-local, unused-function
+local function on_project_selected(prompt_bufnr)
+  local entry = actions_state.get_selected_entry()
+  actions.close(prompt_bufnr)
+  if entry['value']:gsub("/+$", ""):match("([^/]+)$") == "nvim-playground" then
+    vim.cmd('edit ' .. entry['value'] .. '/init.lua')
+  else
+    if file_exists('' .. entry['value'] .. '/README.org') then
+      vim.cmd('edit ' .. entry['value'] .. '/README.org')
+    else
+      vim.cmd('edit ' .. entry['value'] .. '/README.md')
+    end
+  end
+  vim.cmd 'NvimTreeToggle'
+  vim.cmd 'wincmd l'
+  vim.cmd('cd ' .. entry["value"])
+  vim.cmd('split')
+  vim.cmd 'wincmd j'
+  vim.cmd 'term'
+  vim.api.nvim_win_set_height(0, 8)
+  vim.cmd 'wincmd k'
+end
+
+
+
+
+
+
 vim.keymap.set('n', '<leader>tp', function()
   builtin.find_files()
 end, { desc = '[t]elescope find files - ctrl[p] style' })
@@ -103,6 +143,8 @@ vim.keymap.set(
   builtin.lsp_dynamic_workspace_symbols,
   { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' }
 )
+
+local project_actions = require("telescope._extensions.project.actions")
 
 telescope.setup {
   defaults = {
@@ -152,6 +194,47 @@ telescope.setup {
       override_generic_sorter = false,
       override_file_sorter = true,
     },
+
+        project = {
+      hidden_files = true, -- default: false
+      theme = 'dropdown',
+      order_by = 'asc',
+      search_by = 'title',
+      sync_with_nvim_tree = false, -- default false
+      -- default for on_project_selected = find project files
+      on_project_selected = function(prompt_bufnr)
+        on_project_selected(prompt_bufnr)
+      end,
+
+      mappings = {
+        n = {
+          ['d'] = project_actions.delete_project,
+          ['r'] = project_actions.rename_project,
+          ['c'] = project_actions.add_project,
+          ['C'] = project_actions.add_project_cwd,
+          ['f'] = project_actions.find_project_files,
+          ['b'] = project_actions.browse_project_files,
+          ['s'] = project_actions.search_in_project_files,
+          ['R'] = project_actions.recent_project_files,
+          ['w'] = project_actions.change_working_directory,
+          ['o'] = project_actions.next_cd_scope,
+        },
+        i = {
+          ['<c-d>'] = project_actions.delete_project,
+          ['<c-v>'] = project_actions.rename_project,
+          ['<c-i>'] = project_actions.add_project,
+          ['<c-A>'] = project_actions.add_project_cwd,
+          ['<c-f>'] = project_actions.find_project_files,
+          ['<c-b>'] = project_actions.browse_project_files,
+          ['<c-s>'] = project_actions.search_in_project_files,
+          ['<c-r>'] = project_actions.recent_project_files,
+          ['<c-l>'] = project_actions.change_working_directory,
+          ['<c-o>'] = project_actions.next_cd_scope,
+        }
+      }
+    },
+
+
   },
 }
 
