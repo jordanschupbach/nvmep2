@@ -5,6 +5,7 @@ vim.g.did_load_telescope_plugin = true
 
 local telescope = require('telescope')
 local actions = require('telescope.actions')
+local actions_state = require 'telescope.actions.state'
 
 local builtin = require('telescope.builtin')
 
