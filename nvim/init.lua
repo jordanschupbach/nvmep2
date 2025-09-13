@@ -8,6 +8,25 @@ local opt = vim.o
 opt.clipboard = "unnamedplus"
 opt.foldmethod="marker"
 
+vim.opt.fillchars = {
+  stl = '━',
+  stlnc = '━',
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
+
+-- vim.opt.statusline = ''
+-- vim.opt.statusline = ' %= %l/%3L' -- Example status line
+vim.opt.statusline = '%=' -- Example status line
+
+
+
+
 -- <leader> key. Defaults to `\`. Some people prefer space.
 -- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
 -- vim.g.mapleader = ' '
