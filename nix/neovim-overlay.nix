@@ -106,11 +106,25 @@ with final.pkgs.lib; let
     lua-language-server
     nil # nix LSP
 
+      # cpp
       gcc
       gdb
       libclang
       llvm # ??? rudundant?
       cppcheck
+
+
+      # python
+      mypy
+      pylint
+      isort
+      black
+      python312
+      (python312.withPackages (python-pkgs: [
+        python-pkgs.numpy
+        python-pkgs.python-lsp-server
+        python-pkgs.debugpy
+      ]))
 
 
   ];
