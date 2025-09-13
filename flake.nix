@@ -49,6 +49,12 @@
           cmake
           jq
           clang
+
+          # python312
+          # python312Packages.pynvim
+          # python312Packages.python-lsp-server
+          # python312Packages.pylsp-mypy
+
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay

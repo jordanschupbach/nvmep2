@@ -22,7 +22,21 @@ with lib;
     # Regexes for config files to ignore, relative to the nvim directory.
     # e.g. [ "^plugin/neogit.lua" "^ftplugin/.*.lua" ]
     ignoreConfigRegexes ? [],
-    extraPackages ? [], # Extra runtime dependencies (e.g. ripgrep, ...)
+    extraPackages ? [
+
+      # python
+      mypy
+      pylint
+      isort
+      black
+      python312
+      (python312.withPackages (python-pkgs: [
+        python-pkgs.numpy
+        python-pkgs.python-lsp-server
+        python-pkgs.debugpy
+      ]))
+
+    ], # Extra runtime dependencies (e.g. ripgrep, ...)
     # The below arguments can typically be left as their defaults
     # Additional lua packages (not plugins), e.g. from luarocks.org.
     # e.g. p: [p.jsregexp]
