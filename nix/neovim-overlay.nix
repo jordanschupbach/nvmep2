@@ -105,6 +105,14 @@ with final.pkgs.lib; let
     # language servers, etc.
     lua-language-server
     nil # nix LSP
+
+      gcc
+      gdb
+      libclang
+      llvm # ??? rudundant?
+      cppcheck
+
+
   ];
 in {
   # This is the neovim derivation

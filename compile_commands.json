@@ -1,0 +1,8 @@
+[
+  {
+    "directory": "/home/jordan/projects/nvmep2/build",
+    "command": "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/g++    -o CMakeFiles/hello.dir/hello.cpp.o -c /home/jordan/projects/nvmep2/playground/cpp/hello.cpp",
+    "file": "/home/jordan/projects/nvmep2/playground/cpp/hello.cpp",
+    "output": "CMakeFiles/hello.dir/hello.cpp.o"
+  }
+]
