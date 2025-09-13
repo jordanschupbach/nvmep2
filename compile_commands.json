@@ -1,7 +1,7 @@
 [
   {
     "directory": "/home/jordan/projects/nvmep2/build",
-    "command": "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/g++    -o CMakeFiles/hello.dir/hello.cpp.o -c /home/jordan/projects/nvmep2/playground/cpp/hello.cpp",
+    "command": "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/g++  -isystem /nix/store/1gspwvbz68wgb09ni4qaqzvi63izxplw-luajit-2.1.1713773202/include -isystem /nix/store/4krab2h0hd4wvxxmscxrw21pl77j4i7j-gcc-13.3.0/include/c++/13.3.0 -isystem /nix/store/4krab2h0hd4wvxxmscxrw21pl77j4i7j-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu -isystem /nix/store/4krab2h0hd4wvxxmscxrw21pl77j4i7j-gcc-13.3.0/include/c++/13.3.0/backward -isystem /nix/store/4krab2h0hd4wvxxmscxrw21pl77j4i7j-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/include -isystem /nix/store/4krab2h0hd4wvxxmscxrw21pl77j4i7j-gcc-13.3.0/include -isystem /nix/store/4krab2h0hd4wvxxmscxrw21pl77j4i7j-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/include-fixed -isystem /nix/store/lw21wr626v5sdcaxxkv2k4zf1121hfc9-glibc-2.40-36-dev/include  -o CMakeFiles/hello.dir/hello.cpp.o -c /home/jordan/projects/nvmep2/playground/cpp/hello.cpp",
     "file": "/home/jordan/projects/nvmep2/playground/cpp/hello.cpp",
     "output": "CMakeFiles/hello.dir/hello.cpp.o"
   }
