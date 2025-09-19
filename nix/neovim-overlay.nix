@@ -55,6 +55,8 @@ with final.pkgs.lib; let
 
     TelescopeLuasnip
 
+    aerial-nvim # https://github.com/stevearc/aerial.nvim
+
     vim-slime
     smart-splits-nvim
     nvim-tree-lua
