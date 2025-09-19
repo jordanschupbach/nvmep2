@@ -7,4 +7,4 @@ end
 
 require('aerial').setup { }
 
-mymap('n', '<Space>aa', 'AerialToggle')
+mymap('n', '<Space>aa', '<CMD>AerialToggle<CR>')
