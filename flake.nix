@@ -27,6 +27,7 @@
   in
     flake-utils.lib.eachSystem systems (system: let
       pkgs = import nixpkgs {
+        config.allowUnfree = true;
         inherit system;
         overlays = [
           # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
