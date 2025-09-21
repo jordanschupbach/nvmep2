@@ -5,6 +5,12 @@ vim.g.did_load_neogit_plugin = true
 
 local neogit = require('neogit')
 
+local function mymap(mode, key, value)
+  vim.keymap.set(mode, key, value, { silent = true, remap = true })
+end
+
+mymap('n', '<leader>gs', '<cmd>Neogit kind=vsplit<cr>')
+
 neogit.setup {
   disable_builtin_notifications = true,
   disable_insert_on_commit = 'auto',

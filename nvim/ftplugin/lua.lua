@@ -1,11 +1,18 @@
 vim.bo.comments = ':---,:--'
 
+local function mymap(mode, key, value)
+  vim.keymap.set(mode, key, value, { silent = true, remap = true })
+end
+
 local lua_ls_cmd = 'lua-language-server'
 
 -- Check if lua-language-server is available
 if vim.fn.executable(lua_ls_cmd) ~= 1 then
   return
 end
+
+mymap('n', '<A-S-return>', '<cmd>source %<cr>')
+
 
 local root_files = {
   '.luarc.json',
