@@ -9,7 +9,9 @@ local function mymap(mode, key, value)
   vim.keymap.set(mode, key, value, { silent = true, remap = true })
 end
 
-mymap('n', '<leader>gs', '<cmd>Neogit kind=vsplit<cr>')
+
+
+mymap('n', '<Space>gg', '<cmd>Neogit kind=vsplit<cr>')
 
 neogit.setup {
   disable_builtin_notifications = true,

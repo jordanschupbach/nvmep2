@@ -1,3 +1,8 @@
 
+local M = {}
 
-print("Hello, World!")
+M.setup = function()
+  print("Hello from present.lua!")
+end
+
+return M
