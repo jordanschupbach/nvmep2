@@ -55,6 +55,7 @@ with final.pkgs.lib; let
 
     TelescopeLuasnip
 
+    heirline-nvim # https://github.com/rebelot/heirline.nvim/
     aerial-nvim # https://github.com/stevearc/aerial.nvim
 
     vim-slime
