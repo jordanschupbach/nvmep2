@@ -55,6 +55,7 @@ with final.pkgs.lib; let
 
     TelescopeLuasnip
 
+    lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
     heirline-nvim # https://github.com/rebelot/heirline.nvim/
     aerial-nvim # https://github.com/stevearc/aerial.nvim
 
