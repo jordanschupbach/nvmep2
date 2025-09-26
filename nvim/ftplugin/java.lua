@@ -37,8 +37,10 @@ local java_path = get_java_path()
 local install_path = vim.fn.fnamemodify(jdtls_path, ":h:h") -- Two directories back
 
 local jar_path = "/home/jordan/Downloads/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar"
+local jar_path = "/nix/store/l05jjpqa7wam5xyi93fxw0l1rwn3ix5n-jdt-language-server-1.40.0/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
 -- local jar_path = install_path .. "/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
-local configuration_path = "/home/jordan/Downloads/config_linux/"
+-- local configuration_path = "/home/jordan/Downloads/config_linux/"
+local configuration_path = "/nix/store/l05jjpqa7wam5xyi93fxw0l1rwn3ix5n-jdt-language-server-1.40.0/share/java/jdtls/config_linux/"
 -- local configuration_path = install_path .. "/share/java/jdtls/config_linux"
 -- Calculate workspace dir
 --                  home/jordan/.local/share/nvim
