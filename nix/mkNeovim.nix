@@ -30,7 +30,6 @@ with lib;
       isort
       black
       python312
-
       jdk
       jdt-language-server
       (python312.withPackages (python-pkgs: [
