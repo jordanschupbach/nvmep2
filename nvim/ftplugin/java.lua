@@ -14,7 +14,12 @@ end
 
 local function get_java_path()
   vim.print("Getting Java path...")
-  local handle = io.popen("which java")
+  local handle
+  if os.execute("command -v nix") then
+    handle = io.popen("find /nix/store/ -maxdepth 1 -type d -name '*openjdk*' -print -quit")
+  else
+    handle = io.popen("which java")
+  end
   local path = handle:read("*a")
   handle:close()
   vim.print("Obtained path: " .. path:gsub("\n", ""))
