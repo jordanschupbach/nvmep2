@@ -64,6 +64,8 @@ with final.pkgs.lib; let
     nvim-tree-lua
     nvim-navic
 
+    codecompanion-nvim
+
     copilot-vim # https://github.com/github/copilot.vim/
 
     # plugins from nixpkgs go in here.
