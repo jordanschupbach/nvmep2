@@ -50,6 +50,7 @@
           cmake
           jq
           clang
+          # jdk
 
           python312
           python312Packages.numpy

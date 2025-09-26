@@ -31,6 +31,7 @@ with lib;
       black
       python312
 
+      jdk
       jdt-language-server
       (python312.withPackages (python-pkgs: [
         python-pkgs.numpy
