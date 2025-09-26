@@ -30,6 +30,8 @@ with lib;
       isort
       black
       python312
+
+      jdt-language-server
       (python312.withPackages (python-pkgs: [
         python-pkgs.numpy
         python-pkgs.python-lsp-server
