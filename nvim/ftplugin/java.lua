@@ -1,29 +1,31 @@
 
 local function get_jdtls_path()
-  local handle
-  -- Detect if the system is running Nix
-  if os.execute("command -v nix") then
-    handle = io.popen("nix eval --raw nixpkgs.jdt-language-server")
-  else
-    handle = io.popen("which jdtls")
-  end
-  local path = handle:read("*a")
-  handle:close()
-  return path:gsub("\n", "") -- Remove trailing newline
+  -- local handle
+  -- -- Detect if the system is running Nix
+  -- if os.execute("command -v nix") then
+  --   handle = io.popen("nix eval --raw nixpkgs.jdt-language-server")
+  -- else
+  --   handle = io.popen("which jdtls")
+  -- end
+  -- local path = handle:read("*a")
+  -- handle:close()
+  -- return path:gsub("\n", "") -- Remove trailing newline
+  return "/nix/store/vdqlz8dqd3n8iq24j4vbypi8fbjrggcc-jdt-language-server-1.47.0/bin/jdtls"
 end
 
 local function get_java_path()
-  vim.print("Getting Java path...")
-  local handle
-  if os.execute("command -v nix") then
-    handle = io.popen("find /nix/store/ -maxdepth 1 -type d -name '*openjdk*' -print -quit")
-  else
-    handle = io.popen("which java")
-  end
-  local path = handle:read("*a")
-  handle:close()
-  vim.print("Obtained path: " .. path:gsub("\n", ""))
-  return path:gsub("\n", "") -- Remove trailing newline
+  -- vim.print("Getting Java path...")
+  -- local handle
+  -- if os.execute("command -v nix") then
+  --   handle = io.popen("find /nix/store/ -maxdepth 1 -type d -name '*openjdk*' -print -quit")
+  -- else
+  --   handle = io.popen("which java")
+  -- end
+  -- local path = handle:read("*a")
+  -- handle:close()
+  -- vim.print("Obtained path: " .. path:gsub("\n", ""))
+  -- return path:gsub("\n", "") -- Remove trailing newline
+  return "/nix/store/bgskkrbv4gi5fz3w7sh031xxmi39ipc2-openjdk-21.0.7+6/bin/java"
 end
 
 local jdtls_path = get_jdtls_path()
@@ -37,11 +39,11 @@ local java_path = get_java_path()
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 -- Get the jdtls path and calculate the install path
-local jdtls_path = get_jdtls_path()
-local java_path = get_java_path()
+-- local jdtls_path = get_jdtls_path()
+-- local java_path = get_java_path()
 local install_path = vim.fn.fnamemodify(jdtls_path, ":h:h") -- Two directories back
 
-local jar_path = "/home/jordan/Downloads/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar"
+-- local jar_path = "/home/jordan/Downloads/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar"
 local jar_path = "/nix/store/l05jjpqa7wam5xyi93fxw0l1rwn3ix5n-jdt-language-server-1.40.0/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
 -- local jar_path = install_path .. "/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
 -- local configuration_path = "/home/jordan/Downloads/config_linux/"
