@@ -1,3 +1,1 @@
-# NvMEP
-
 A neovim distribution
