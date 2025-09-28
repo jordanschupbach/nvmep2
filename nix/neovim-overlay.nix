@@ -182,6 +182,8 @@ with final.pkgs.lib; let
       llvm # ??? rudundant?
       cppcheck
 
+      # markdown
+      markdownlint-cli2
 
       # python
       mypy
