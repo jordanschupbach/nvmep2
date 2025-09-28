@@ -175,28 +175,69 @@ with final.pkgs.lib; let
     lua-language-server
     nil # nix LSP
 
-      # cpp
-      gcc
-      gdb
-      libclang
-      llvm # ??? rudundant?
-      cppcheck
+    # cpp
+    gcc
+    gdb
+    libclang
+    llvm # ??? rudundant?
+    cppcheck
 
-      # markdown
-      markdownlint-cli2
+    # markdown
+    markdownlint-cli2
 
-      # python
-      mypy
-      pylint
-      isort
-      black
-      python312
-      (python312.withPackages (python-pkgs: [
-        python-pkgs.numpy
-        python-pkgs.python-lsp-server
-        python-pkgs.debugpy
-      ]))
+    # python
+    mypy
+    pylint
+    isort
+    black
+    python312
+    (python312.withPackages (python-pkgs: [
+      python-pkgs.numpy
+      python-pkgs.python-lsp-server
+      python-pkgs.debugpy
+    ]))
 
+    # cmake
+    cmake
+    cmake-lint
+
+    # HTML
+    html-tidy
+
+    # javascript
+    nodejs_23
+    prettierd
+
+    # css
+    stylelint
+    stylelint-lsp
+
+    # lua
+    selene
+    lua-language-server
+
+    # fortran
+    gfortran
+
+    # nix
+    nil # nix LSP
+    alejandra
+    statix
+
+    # shell
+    bash-language-server
+    beautysh
+
+    # Java
+    jdk
+    jdt-language-server
+
+    # latex
+    texliveFull
+    # textidote
+
+    # typescript
+    typescript-language-server
 
   ];
 in {
