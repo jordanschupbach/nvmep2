@@ -50,83 +50,121 @@ with final.pkgs.lib; let
         hash = "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=";
       };
     };
+
+    EasyGrep = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-easygrep";
+      src = pkgs.fetchFromGitHub {
+        owner = "dkprice";
+        repo = "vim-easygrep";
+        rev = "d0c36a77cc63c22648e792796b1815b44164653a";
+        hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
+      };
+    };
+
+    JustNvim = pkgs.vimUtils.buildVimPlugin {
+      name = "just-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "al1-ce";
+        repo = "just.nvim";
+        rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
+        hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
+      };
+    };
+
+    JsFunc = pkgs.vimUtils.buildVimPlugin {
+      name = "jsfunc-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "al1-ce";
+        repo = "jsfunc.nvim";
+        rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
+        hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
+      };
+    };
+
     in
   with pkgs.vimPlugins; [
 
-    TelescopeLuasnip
-
-
-    nvim-jdtls
-
-    lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
-    heirline-nvim # https://github.com/rebelot/heirline.nvim/
-    aerial-nvim # https://github.com/stevearc/aerial.nvim
-
-    vim-slime
-    smart-splits-nvim
-    nvim-tree-lua
-    nvim-navic
-
-    codecompanion-nvim
-
-    copilot-vim # https://github.com/github/copilot.vim/
-
     # plugins from nixpkgs go in here.
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
-    nvim-treesitter.withAllGrammars
-    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
-    # nvim-cmp (autocompletion) and extensions
-    nvim-cmp # https://github.com/hrsh7th/nvim-cmp
-    cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
-    lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
-    cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
+
+    TelescopeLuasnip
+
+    # dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
+    # nvim-luadev
+    # telescope-ultisnips-nvim
+    # orgmode
+    # jupytext-nvim
+
+    friendly-snippets
+    asyncrun-vim
+    blink-cmp
+    refactoring-nvim
+    nvim-treesitter-refactor
+    flash-nvim
+    focus-nvim # https://github.com/nvim-focus/focus.nvim
+    kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
+    markdown-preview-nvim
+    melange-nvim # https://github.com/savq/melange-nvim
+    nerdtree
+    nvim-bqf
+    nvim-dap
+    nvim-dap-ui
+    nvim-highlight-colors
+    oil-nvim # https://github.com/stevearc/oil.nvim
+    other-nvim
+    overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
+    render-markdown-nvim
+    todo-comments-nvim
+    tokyonight-nvim
+    ultisnips
+    url-open # https://github.com/sontungexpt/url-open
+    none-ls-nvim
+    conform-nvim
+    zen-mode-nvim
+
+    aerial-nvim # https://github.com/stevearc/aerial.nvim
+    cmp-buffer # https://github.com/hrsh7th/cmp-buffer/
+    cmp-cmdline #
+    cmp-cmdline-history #
+    cmp-nvim-lsp # https://github.com/hrsh7th/cmp-nvim-lsp/
     cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
-    cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
-    cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
-    cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
-    cmp-cmdline # cmp command line suggestions
-    cmp-cmdline-history # cmp command line history suggestions
-    # ^ nvim-cmp extensions
-    # git integration plugins
+    cmp-nvim-lua #https://github.com/hrsh7th/cmp-nvim-lua/
+    cmp-path # https://github.com/hrsh7th/cmp-path/
+    cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip/
+    codecompanion-nvim
+    copilot-vim # https://github.com/github/copilot.vim/
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
-    neogit # https://github.com/TimUntersberger/neogit/
+    eyeliner-nvim # https://github.com/jinh0/eyeliner.nvim
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
-    vim-fugitive # https://github.com/tpope/vim-fugitive/
-    # ^ git integration plugins
-
-    # telescope and extensions
-    telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
-    telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
-    telescope-project-nvim
-
-    # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
-    # ^ telescope and extensions
-    # UI
-    statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
-    nvim-treesitter-context # nvim-treesitter-context
-    # ^ UI
-    # language support
-    # ^ language support
-    # navigation/editing enhancement plugins
-    vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
-    eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
+    heirline-nvim # https://github.com/rebelot/heirline.nvim/
+    lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
+    lspkind-nvim # https://github.com/onsails/lspkind.nvim/
+    luasnip # https://github.com/l3mon4d3/luasnip/
+    neogit # https://github.com/TimUntersberger/neogit/
+    nvim-cmp # https://github.com/hrsh7th/nvim-cmp
+    nvim-jdtls
+    nvim-navic
     nvim-surround # https://github.com/kylechui/nvim-surround/
+    nvim-tree-lua
+    nvim-treesitter-context # nvim-treesitter-context
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
+    nvim-treesitter.withAllGrammars
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
-    # ^ navigation/editing enhancement plugins
-    # Useful utilities
-    nvim-unception # Prevent nested neovim sessions | nvim-unception
-    # ^ Useful utilities
-    # libraries that other plugins depend on
-    sqlite-lua
-    plenary-nvim
+    nvim-unception # nvim-unception
     nvim-web-devicons
+    plenary-nvim
+    smart-splits-nvim
+    sqlite-lua
+    statuscol-nvim # https://github.com/luukvbaal/statuscol.nvim/
+    telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
+    telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
+    telescope-project-nvim
+    vim-fugitive # https://github.com/tpope/vim-fugitive/
     vim-repeat
-    # ^ libraries that other plugins depend on
-    # bleeding-edge plugins from flake inputs
-    # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
-    # ^ bleeding-edge plugins from flake inputs
+    vim-slime
+    vim-unimpaired # https://github.com/tpope/vim-unimpaired/
     which-key-nvim
+
   ];
 
   extraPackages = with pkgs; [
