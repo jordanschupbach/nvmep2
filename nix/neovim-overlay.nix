@@ -89,7 +89,8 @@ with final.pkgs.lib; let
 
     TelescopeLuasnip
     JustNvim
-
+    JsFunc
+    EasyGrep
     # dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
     # nvim-luadev
     # telescope-ultisnips-nvim
