@@ -88,6 +88,7 @@ with final.pkgs.lib; let
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
 
     TelescopeLuasnip
+    JustNvim
 
     # dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
     # nvim-luadev
@@ -95,43 +96,43 @@ with final.pkgs.lib; let
     # orgmode
     # jupytext-nvim
 
-    friendly-snippets
-    asyncrun-vim
-    blink-cmp
-    refactoring-nvim
-    nvim-treesitter-refactor
-    flash-nvim
+    friendly-snippets # https://github.com/rafamadriz/friendly-snippets
+    asyncrun-vim # https://github.com/skywind3000/asyncrun.vim
+    blink-cmp # https://github.com/Saghen/blink.cmp
+    refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
+    nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
+    flash-nvim # https://github.com/folke/flash.nvim
     focus-nvim # https://github.com/nvim-focus/focus.nvim
     kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
-    markdown-preview-nvim
+    markdown-preview-nvim # https://github.com/iamcco/markdown-preview.nvim
     melange-nvim # https://github.com/savq/melange-nvim
-    nerdtree
-    nvim-bqf
-    nvim-dap
-    nvim-dap-ui
-    nvim-highlight-colors
+    nerdtree # https://github.com/preservim/nerdtree
+    nvim-bqf # https://github.com/kevinhwang91/nvim-bqf
+    nvim-dap # https://github.com/mfussenegger/nvim-dap
+    nvim-dap-ui # https://github.com/rcarriga/nvim-dap-ui
+    nvim-highlight-colors # https://github.com/brenoprata10/nvim-highlight-colors
     oil-nvim # https://github.com/stevearc/oil.nvim
-    other-nvim
+    other-nvim # https://github.com/rgroli/other.nvim
     overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
-    render-markdown-nvim
-    todo-comments-nvim
-    tokyonight-nvim
-    ultisnips
+    render-markdown-nvim # https://github.com/MeanderingProgrammer/render-markdown.nvim
+    todo-comments-nvim # https://github.com/folke/todo-comments.nvim
+    tokyonight-nvim # https://github.com/folke/tokyonight.nvim
+    ultisnips # https://github.com/SirVer/ultisnips
     url-open # https://github.com/sontungexpt/url-open
-    none-ls-nvim
-    conform-nvim
-    zen-mode-nvim
+    none-ls-nvim # https://github.com/nvimtools/none-ls.nvim
+    conform-nvim # https://github.com/stevearc/conform.nvim
+    zen-mode-nvim # https://github.com/folke/zen-mode.nvim
 
     aerial-nvim # https://github.com/stevearc/aerial.nvim
     cmp-buffer # https://github.com/hrsh7th/cmp-buffer/
-    cmp-cmdline #
+    cmp-cmdline # https://github.com/hrsh7th/cmp-cmdline
     cmp-cmdline-history #
     cmp-nvim-lsp # https://github.com/hrsh7th/cmp-nvim-lsp/
     cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
     cmp-nvim-lua #https://github.com/hrsh7th/cmp-nvim-lua/
     cmp-path # https://github.com/hrsh7th/cmp-path/
     cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip/
-    codecompanion-nvim
+    codecompanion-nvim # https://github.com/olimorris/codecompanion.nvim
     copilot-vim # https://github.com/github/copilot.vim/
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
     eyeliner-nvim # https://github.com/jinh0/eyeliner.nvim
@@ -142,28 +143,28 @@ with final.pkgs.lib; let
     luasnip # https://github.com/l3mon4d3/luasnip/
     neogit # https://github.com/TimUntersberger/neogit/
     nvim-cmp # https://github.com/hrsh7th/nvim-cmp
-    nvim-jdtls
-    nvim-navic
+    nvim-jdtls # https://github.com/mfussenegger/nvim-jdtls
+    nvim-navic # https://github.com/SmiteshP/nvim-navic
     nvim-surround # https://github.com/kylechui/nvim-surround/
-    nvim-tree-lua
+    nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
     nvim-treesitter-context # nvim-treesitter-context
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-treesitter.withAllGrammars
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
     nvim-unception # nvim-unception
-    nvim-web-devicons
-    plenary-nvim
-    smart-splits-nvim
-    sqlite-lua
+    nvim-web-devicons # https://github.com/nvim-tree/nvim-web-devicons
+    plenary-nvim # https://github.com/nvim-lua/plenary.nvim
+    smart-splits-nvim # https://github.com/mrjones2014/smart-splits.nvim
+    sqlite-lua # https://github.com/kkharji/sqlite.lua
     statuscol-nvim # https://github.com/luukvbaal/statuscol.nvim/
     telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
     telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
-    telescope-project-nvim
+    telescope-project-nvim # https://github.com/nvim-telescope/telescope-project.nvim
     vim-fugitive # https://github.com/tpope/vim-fugitive/
-    vim-repeat
-    vim-slime
+    vim-repeat # https://github.com/tpope/vim-repeat
+    vim-slime # https://github.com/jpalardy/vim-slime
     vim-unimpaired # https://github.com/tpope/vim-unimpaired/
-    which-key-nvim
+    which-key-nvim # https://github.com/folke/which-key.nvim
 
   ];
 
