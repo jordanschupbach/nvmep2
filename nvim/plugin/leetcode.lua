@@ -20,7 +20,7 @@ require('leetcode').setup {
 
   ---@type table<string, boolean>
   plugins = {
-    non_standalone = false,
+    non_standalone = true,
   },
 
   ---@type boolean
