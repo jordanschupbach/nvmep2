@@ -18,18 +18,15 @@ with final.pkgs.lib; let
     sha256 = ""; # NOTE: why is this not needed!?
   };
 
-
-
-
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
-      inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
-      src = neovimSrc; # NOTE: why does this actually work?
-    };
+    inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
+    src = neovimSrc; # NOTE: why does this actually work?
+  };
 
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
@@ -40,7 +37,6 @@ with final.pkgs.lib; let
   #   ...
   # }
   all-plugins = let
-
     TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
       name = "telescope-luasnip-nvim";
       src = pkgs.fetchFromGitHub {
@@ -80,95 +76,94 @@ with final.pkgs.lib; let
         hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
       };
     };
+  in
+    with pkgs.vimPlugins; [
+      # plugins from nixpkgs go in here.
+      # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
 
-    in
-  with pkgs.vimPlugins; [
+      TelescopeLuasnip
+      JustNvim
+      JsFunc
+      EasyGrep
+      # dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
+      # nvim-luadev
+      # telescope-ultisnips-nvim
+      # orgmode
+      # jupytext-nvim
 
-    # plugins from nixpkgs go in here.
-    # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
+      text-case-nvim # https://github.com/johmsalas/text-case.nvim
+      friendly-snippets # https://github.com/rafamadriz/friendly-snippets
+      asyncrun-vim # https://github.com/skywind3000/asyncrun.vim
+      blink-cmp # https://github.com/Saghen/blink.cmp
+      refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
+      nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
+      flash-nvim # https://github.com/folke/flash.nvim
+      focus-nvim # https://github.com/nvim-focus/focus.nvim
+      kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
+      markdown-preview-nvim # https://github.com/iamcco/markdown-preview.nvim
+      melange-nvim # https://github.com/savq/melange-nvim
+      nerdtree # https://github.com/preservim/nerdtree
+      nvim-bqf # https://github.com/kevinhwang91/nvim-bqf
+      nvim-dap # https://github.com/mfussenegger/nvim-dap
+      nvim-dap-ui # https://github.com/rcarriga/nvim-dap-ui
+      nvim-highlight-colors # https://github.com/brenoprata10/nvim-highlight-colors
+      oil-nvim # https://github.com/stevearc/oil.nvim
+      other-nvim # https://github.com/rgroli/other.nvim
+      overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
+      render-markdown-nvim # https://github.com/MeanderingProgrammer/render-markdown.nvim
+      todo-comments-nvim # https://github.com/folke/todo-comments.nvim
+      tokyonight-nvim # https://github.com/folke/tokyonight.nvim
+      ultisnips # https://github.com/SirVer/ultisnips
+      url-open # https://github.com/sontungexpt/url-open
+      none-ls-nvim # https://github.com/nvimtools/none-ls.nvim
+      conform-nvim # https://github.com/stevearc/conform.nvim
+      zen-mode-nvim # https://github.com/folke/zen-mode.nvim
 
-    TelescopeLuasnip
-    JustNvim
-    JsFunc
-    EasyGrep
-    # dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
-    # nvim-luadev
-    # telescope-ultisnips-nvim
-    # orgmode
-    # jupytext-nvim
+      leetcode-nvim # https://github.com/kawre/leetcode.nvim
 
-    text-case-nvim # https://github.com/johmsalas/text-case.nvim
-    friendly-snippets # https://github.com/rafamadriz/friendly-snippets
-    asyncrun-vim # https://github.com/skywind3000/asyncrun.vim
-    blink-cmp # https://github.com/Saghen/blink.cmp
-    refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
-    nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
-    flash-nvim # https://github.com/folke/flash.nvim
-    focus-nvim # https://github.com/nvim-focus/focus.nvim
-    kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
-    markdown-preview-nvim # https://github.com/iamcco/markdown-preview.nvim
-    melange-nvim # https://github.com/savq/melange-nvim
-    nerdtree # https://github.com/preservim/nerdtree
-    nvim-bqf # https://github.com/kevinhwang91/nvim-bqf
-    nvim-dap # https://github.com/mfussenegger/nvim-dap
-    nvim-dap-ui # https://github.com/rcarriga/nvim-dap-ui
-    nvim-highlight-colors # https://github.com/brenoprata10/nvim-highlight-colors
-    oil-nvim # https://github.com/stevearc/oil.nvim
-    other-nvim # https://github.com/rgroli/other.nvim
-    overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
-    render-markdown-nvim # https://github.com/MeanderingProgrammer/render-markdown.nvim
-    todo-comments-nvim # https://github.com/folke/todo-comments.nvim
-    tokyonight-nvim # https://github.com/folke/tokyonight.nvim
-    ultisnips # https://github.com/SirVer/ultisnips
-    url-open # https://github.com/sontungexpt/url-open
-    none-ls-nvim # https://github.com/nvimtools/none-ls.nvim
-    conform-nvim # https://github.com/stevearc/conform.nvim
-    zen-mode-nvim # https://github.com/folke/zen-mode.nvim
-
-    aerial-nvim # https://github.com/stevearc/aerial.nvim
-    cmp-buffer # https://github.com/hrsh7th/cmp-buffer/
-    cmp-cmdline # https://github.com/hrsh7th/cmp-cmdline
-    cmp-cmdline-history #
-    cmp-nvim-lsp # https://github.com/hrsh7th/cmp-nvim-lsp/
-    cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
-    cmp-nvim-lua #https://github.com/hrsh7th/cmp-nvim-lua/
-    cmp-path # https://github.com/hrsh7th/cmp-path/
-    cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip/
-    codecompanion-nvim # https://github.com/olimorris/codecompanion.nvim
-    copilot-vim # https://github.com/github/copilot.vim/
-    diffview-nvim # https://github.com/sindrets/diffview.nvim/
-    eyeliner-nvim # https://github.com/jinh0/eyeliner.nvim
-    gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
-    heirline-nvim # https://github.com/rebelot/heirline.nvim/
-    lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
-    lspkind-nvim # https://github.com/onsails/lspkind.nvim/
-    luasnip # https://github.com/l3mon4d3/luasnip/
-    neogit # https://github.com/TimUntersberger/neogit/
-    nvim-cmp # https://github.com/hrsh7th/nvim-cmp
-    nvim-jdtls # https://github.com/mfussenegger/nvim-jdtls
-    nvim-navic # https://github.com/SmiteshP/nvim-navic
-    nvim-surround # https://github.com/kylechui/nvim-surround/
-    nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
-    nvim-treesitter-context # nvim-treesitter-context
-    nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
-    nvim-treesitter.withAllGrammars
-    nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
-    nvim-unception # nvim-unception
-    nvim-web-devicons # https://github.com/nvim-tree/nvim-web-devicons
-    plenary-nvim # https://github.com/nvim-lua/plenary.nvim
-    smart-splits-nvim # https://github.com/mrjones2014/smart-splits.nvim
-    sqlite-lua # https://github.com/kkharji/sqlite.lua
-    statuscol-nvim # https://github.com/luukvbaal/statuscol.nvim/
-    telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
-    telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
-    telescope-project-nvim # https://github.com/nvim-telescope/telescope-project.nvim
-    vim-fugitive # https://github.com/tpope/vim-fugitive/
-    vim-repeat # https://github.com/tpope/vim-repeat
-    vim-slime # https://github.com/jpalardy/vim-slime
-    vim-unimpaired # https://github.com/tpope/vim-unimpaired/
-    which-key-nvim # https://github.com/folke/which-key.nvim
-
-  ];
+      aerial-nvim # https://github.com/stevearc/aerial.nvim
+      cmp-buffer # https://github.com/hrsh7th/cmp-buffer/
+      cmp-cmdline # https://github.com/hrsh7th/cmp-cmdline
+      cmp-cmdline-history #
+      cmp-nvim-lsp # https://github.com/hrsh7th/cmp-nvim-lsp/
+      cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
+      cmp-nvim-lua #https://github.com/hrsh7th/cmp-nvim-lua/
+      cmp-path # https://github.com/hrsh7th/cmp-path/
+      cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip/
+      codecompanion-nvim # https://github.com/olimorris/codecompanion.nvim
+      copilot-vim # https://github.com/github/copilot.vim/
+      diffview-nvim # https://github.com/sindrets/diffview.nvim/
+      eyeliner-nvim # https://github.com/jinh0/eyeliner.nvim
+      gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
+      heirline-nvim # https://github.com/rebelot/heirline.nvim/
+      lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
+      lspkind-nvim # https://github.com/onsails/lspkind.nvim/
+      luasnip # https://github.com/l3mon4d3/luasnip/
+      neogit # https://github.com/TimUntersberger/neogit/
+      nvim-cmp # https://github.com/hrsh7th/nvim-cmp
+      nvim-jdtls # https://github.com/mfussenegger/nvim-jdtls
+      nvim-navic # https://github.com/SmiteshP/nvim-navic
+      nvim-surround # https://github.com/kylechui/nvim-surround/
+      nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
+      nvim-treesitter-context # nvim-treesitter-context
+      nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
+      nvim-treesitter.withAllGrammars
+      nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+      nvim-unception # nvim-unception
+      nvim-web-devicons # https://github.com/nvim-tree/nvim-web-devicons
+      plenary-nvim # https://github.com/nvim-lua/plenary.nvim
+      smart-splits-nvim # https://github.com/mrjones2014/smart-splits.nvim
+      sqlite-lua # https://github.com/kkharji/sqlite.lua
+      statuscol-nvim # https://github.com/luukvbaal/statuscol.nvim/
+      telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
+      telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
+      telescope-project-nvim # https://github.com/nvim-telescope/telescope-project.nvim
+      vim-fugitive # https://github.com/tpope/vim-fugitive/
+      vim-repeat # https://github.com/tpope/vim-repeat
+      vim-slime # https://github.com/jpalardy/vim-slime
+      vim-unimpaired # https://github.com/tpope/vim-unimpaired/
+      which-key-nvim # https://github.com/folke/which-key.nvim
+    ];
 
   extraPackages = with pkgs; [
     # language servers, etc.
@@ -238,7 +233,6 @@ with final.pkgs.lib; let
 
     # typescript
     typescript-language-server
-
   ];
 in {
   # This is the neovim derivation
