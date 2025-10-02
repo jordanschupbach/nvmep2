@@ -1,4 +1,5 @@
 local bannertext = {
+  '                                                                              ',
   '                                  NVIM v0.10.2                                ',
   '                                                                              ',
   '                  Nvim is open source and freely distributable                ',
@@ -13,6 +14,11 @@ local bannertext = {
   '                                                                              ',
   '                         Help poor children in Uganda!                        ',
   '                 type  :help iccf<Enter>       for information                ',
+  '                                                                              ',
+  '                                                                              ',
+  '                 type <Space> to see all space bindings!                      ',
+  '                                                                              ',
+  '                                                                              ',
 }
 
 require('dashboard').setup {
