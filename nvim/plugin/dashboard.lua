@@ -7,14 +7,14 @@ require('dashboard').setup {
   config = {
     header = bannertext,
     center = {
-      {
-        icon = ' ',
-        desc = 'Projects',
-        key = 'p',
-        -- keymap = 'SPC f d',
-        key_format = ' %s',
-        action = 'Telescope project',
-      },
+      -- {
+      --   icon = ' ',
+      --   desc = 'Projects',
+      --   key = 'p',
+      --   -- keymap = 'SPC f d',
+      --   key_format = ' %s',
+      --   action = 'Telescope project',
+      -- },
     },
     footer = {}, --your footer
   },
