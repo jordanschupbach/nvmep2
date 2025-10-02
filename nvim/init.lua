@@ -5,8 +5,8 @@ local opt = vim.o
 
 -- {{{ opts
 
-opt.clipboard = "unnamedplus"
-opt.foldmethod="marker"
+opt.clipboard = 'unnamedplus'
+opt.foldmethod = 'marker'
 
 vim.opt.fillchars = {
   stl = '━',
@@ -24,8 +24,7 @@ vim.opt.fillchars = {
 -- vim.opt.statusline = ' %= %l/%3L' -- Example status line
 vim.opt.statusline = '%=' -- Example status line
 
-
-
+vim.opt.showtabline = 2
 
 -- <leader> key. Defaults to `\`. Some people prefer space.
 -- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
@@ -193,13 +192,11 @@ mymap('t', '<A-l>', '<CMD>wincmd l<CR>')
 mymap('n', '<Space>wl', '<CMD>wincmd l<CR>')
 --mymap('t', '<Space>wl', '<CMD>wincmd l<CR>')
 
-
 -- Window left
 mymap('n', '<A-h>', '<CMD>wincmd h<CR>')
 mymap('t', '<A-h>', '<CMD>wincmd h<CR>')
 mymap('n', '<Space>wh', '<CMD>wincmd h<CR>')
 -- mymap('t', '<Space>wh', '<CMD>wincmd h<CR>')
-
 
 -- Window down
 mymap('n', '<A-j>', '<CMD>wincmd j<CR>')
@@ -207,13 +204,11 @@ mymap('t', '<A-j>', '<CMD>wincmd j<CR>')
 mymap('n', '<Space>wj', '<CMD>wincmd j<CR>')
 -- mymap('t', '<Space>wj', '<CMD>wincmd j<CR>')
 
-
 -- Window up
 mymap('n', '<A-k>', '<CMD>wincmd k<CR>')
 mymap('t', '<A-k>', '<CMD>wincmd k<CR>')
 mymap('n', '<Space>wk', '<CMD>wincmd k<CR>')
 -- mymap('t', '<Space>wk', '<CMD>wincmd k<CR>')
-
 
 -- Split pane horizontal
 mymap('n', '<A-s>', '<CMD>split<CR>')
@@ -281,7 +276,6 @@ mymap('t', '<A-S-j>', "<CMD>lua require('smart-splits').resize_down()<CR>")
 mymap('n', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
 mymap('t', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
 
-
 mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
 mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
 mymap('n', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
@@ -290,8 +284,6 @@ mymap('n', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
 mymap('t', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
 mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
-
-
 
 -- }}} smart split resize bindings
 
@@ -314,15 +306,15 @@ vim.g.slime_target = 'neovim'
 
 wrapped_slime = function()
   vim.cmd('sleep 10m')
-  vim.cmd("normal! gv")
+  vim.cmd('normal! gv')
   vim.cmd('sleep 10m')
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
   vim.cmd('sleep 10m')
 end
 
-mymap('n', '<A-return>', "<CMD>SlimeSend<CR><CR>")
+mymap('n', '<A-return>', '<CMD>SlimeSend<CR><CR>')
 -- mymap('v', '<A-return>', "<CMD>'<,'>SlimeSend<CR><CR>")
-mymap('v', '<A-return>', "<CMD>lua wrapped_slime()<CR><CR>")
+mymap('v', '<A-return>', '<CMD>lua wrapped_slime()<CR><CR>')
 
 -- }}} Slime
 
@@ -374,4 +366,3 @@ UpdateAll()
 vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 
 -- }}} Statusline active/not_active behavior
-
