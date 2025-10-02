@@ -90,7 +90,7 @@ with final.pkgs.lib; let
       # orgmode
       # jupytext-nvim
 
-      dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
+      # dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
       text-case-nvim # https://github.com/johmsalas/text-case.nvim
       friendly-snippets # https://github.com/rafamadriz/friendly-snippets
       asyncrun-vim # https://github.com/skywind3000/asyncrun.vim
