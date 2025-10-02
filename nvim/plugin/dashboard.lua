@@ -1,6 +1,7 @@
 local bannertext = {
   '                                                                              ',
   '                                  NVIM v0.10.2                                ',
+  '                                   MEP v0.0.1                                 ',
   '                                                                              ',
   '                  Nvim is open source and freely distributable                ',
   '                            https://neovim.io/#chat                           ',
