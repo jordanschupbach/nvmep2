@@ -146,8 +146,8 @@ require('nvim-tree').setup {
     vim.keymap.set('n', 'P', preview.watch, opts 'Preview (Watch)')
     vim.keymap.set('n', '<Esc>', preview.unwatch, opts 'Close Preview/Unwatch')
     -- NOTE: consider these bindings?
-    -- vim.keymap.set('n', '<C-f>', function() return preview.scroll(4) end, opts 'Scroll Down')
-    -- vim.keymap.set('n', '<C-b>', function() return preview.scroll(-4) end, opts 'Scroll Up')
+    vim.keymap.set('n', '<C-f>', function() return preview.scroll(4) end, opts 'Scroll Down')
+    vim.keymap.set('n', '<C-b>', function() return preview.scroll(-4) end, opts 'Scroll Up')
 
     -- Option A: Smart tab behavior: Only preview files, expand/collapse directories (recommended)
     vim.keymap.set('n', '<Tab>', function()
