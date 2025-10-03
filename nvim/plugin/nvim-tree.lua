@@ -113,8 +113,8 @@ require('nvim-tree-preview').setup {
       '.*%.webp$',
       '.*%.avif$',
       -- Additional patterns:
-      -- '.*%.svg$',
-      -- '.*%.bmp$',
+      '.*%.svg$',
+      '.*%.bmp$',
       '.*%.pdf$', -- (known to have issues)
     },
   },
