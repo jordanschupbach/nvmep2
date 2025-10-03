@@ -115,7 +115,7 @@ require('nvim-tree-preview').setup {
       -- Additional patterns:
       -- '.*%.svg$',
       -- '.*%.bmp$',
-      -- '.*%.pdf$', (known to have issues)
+      '.*%.pdf$', -- (known to have issues)
     },
   },
   on_open = nil,          -- fun(win: number, buf: number) called when the preview window is opened
