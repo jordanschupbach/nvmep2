@@ -76,6 +76,16 @@ with final.pkgs.lib; let
         hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
       };
     };
+
+    nvim-tree-preview = pkgs.vimUtils.buildVimPlugin {
+      name = "nvim-tree-preview";
+      src = pkgs.fetchFromGitHub {
+        owner = "b0o";
+        repo = "nvim-tree-preview.lua";
+        rev = "e763de51dca15d65ce4a0b9eca716136ac51b55c";
+        hash = "sha256-7XPYnset01YEtwPUEcS+cXZQwf8h9cARKlgwwCUT3YY=";
+      };
+    };
   in
     with pkgs.vimPlugins; [
       # plugins from nixpkgs go in here.
@@ -85,6 +95,7 @@ with final.pkgs.lib; let
       JustNvim
       JsFunc
       EasyGrep
+      nvim-tree-preview
       # nvim-luadev
       # telescope-ultisnips-nvim
       # orgmode

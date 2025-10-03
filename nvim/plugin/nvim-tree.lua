@@ -23,6 +23,20 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
   sync_root_with_cwd = true,
+
+  actions = {
+    open_file = {
+      window_picker = {
+        enable = true,
+        picker = function()
+          return require('window-picker').pick_window {
+            filter_rules = {
+              file_path_contains = { 'nvim-tree-preview://' },
+            },
+          }
+        end,
+      },
+    },
+  },
+
 })
-
-
