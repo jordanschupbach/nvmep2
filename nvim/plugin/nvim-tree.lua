@@ -104,8 +104,8 @@ require('nvim-tree-preview').setup {
   --   },
   win_position = {},
   image_preview = {
-    enable = false, -- Whether to preview images (for more info see Previewing Images section in README)
-    patterns = {    -- List of Lua patterns matching image file names
+    enable = true, -- Whether to preview images (for more info see Previewing Images section in README)
+    patterns = {   -- List of Lua patterns matching image file names
       '.*%.png$',
       '.*%.jpg$',
       '.*%.jpeg$',
