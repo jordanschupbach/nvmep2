@@ -160,9 +160,11 @@ with final.pkgs.lib; let
       nvim-navic # https://github.com/SmiteshP/nvim-navic
       nvim-surround # https://github.com/kylechui/nvim-surround/
       nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
+      nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
       nvim-treesitter-context # nvim-treesitter-context
       nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-parsers.r
       nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
       nvim-unception # nvim-unception
       nvim-web-devicons # https://github.com/nvim-tree/nvim-web-devicons
@@ -254,6 +256,8 @@ with final.pkgs.lib; let
     # R
     R
     rPackages.testthat
+    rPackages.languageserver
+    rPackages.languageserversetup
   ];
 in {
   # This is the neovim derivation
