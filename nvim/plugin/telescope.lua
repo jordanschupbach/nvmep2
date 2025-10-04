@@ -161,6 +161,8 @@ telescope.setup {
         -- ['<esc>'] = actions.close,
         ['<C-s>'] = actions.cycle_previewers_next,
         ['<C-a>'] = actions.cycle_previewers_prev,
+
+        ["<C-h>"] = "which_key"
       },
       n = {
         q = actions.close,
@@ -196,7 +198,7 @@ telescope.setup {
       override_file_sorter = true,
     },
 
-        project = {
+    project = {
       hidden_files = true, -- default: false
       theme = 'dropdown',
       order_by = 'asc',
