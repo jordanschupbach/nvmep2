@@ -254,10 +254,10 @@ with final.pkgs.lib; let
     typescript-language-server
 
     # R
-    R
-    rPackages.testthat
-    rPackages.languageserver
-    rPackages.languageserversetup
+    # R
+    # rPackages.testthat
+    # rPackages.languageserver
+    # rPackages.languageserversetup
   ];
 in {
   # This is the neovim derivation
