@@ -105,6 +105,11 @@ with final.pkgs.lib; let
       neotest-testthat
       neotest-jest
 
+      neotest-java
+      neotest-python
+      neotest-gtest
+      neotest-bash
+
       dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
       text-case-nvim # https://github.com/johmsalas/text-case.nvim
       friendly-snippets # https://github.com/rafamadriz/friendly-snippets
