@@ -28,7 +28,7 @@ require('neotest').setup {
       -- If not provided, the path will be inferred by checking for
       -- virtual envs in the local directory and for Pipenev/Poetry configs
       python = function()
-        return vim.fn.system("nix-shell --run 'which python'"):gsub('%s+', '')
+        return vim.fn.system("nix develop . --command bash -c 'which python'"):gsub('%s+', '')
       end,
       -- Returns if a given file path is a test file.
       -- NB: This function is called a lot so don't perform any heavy tasks within it.
