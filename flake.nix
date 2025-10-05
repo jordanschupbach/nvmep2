@@ -55,9 +55,14 @@
           # jdk
 
           # TODO: maybe add these as a def
-          python312
-          python312Packages.pytest
-          python312Packages.numpy
+          # python312
+          # python312Packages.pytest
+          # python312Packages.numpy
+          (python3.withPackages (python-pkgs:
+            with python-pkgs; [
+              pytest
+              numpy
+            ]))
 
           # python312Packages.pynvim
           # python312Packages.python-lsp-server
