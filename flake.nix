@@ -42,6 +42,7 @@
         name = "nvim-devShell";
         buildInputs = with pkgs; [
           # Tools for Lua and Nix development, useful for editing files in this repo
+
           lua-language-server
           nil
           stylua
@@ -50,14 +51,15 @@
           cmake
           jq
           clang
+
           # jdk
 
           python312
           python312Packages.numpy
+
           # python312Packages.pynvim
           # python312Packages.python-lsp-server
           # python312Packages.pylsp-mypy
-
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
