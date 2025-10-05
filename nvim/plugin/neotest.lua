@@ -30,7 +30,7 @@ require('neotest').setup {
       python = function()
         -- return vim.fn.system("nix develop . --command bash -c 'which python'"):gsub('%s+', '')
         -- return vim.fn.system("nix develop . --command bash -c 'which python'")
-        return vim.fn.system('/nix/store/v110k9yl0jh83ggq695ji88yx06lxwwl-python3-3.13.6-env/bin/python')
+        return '/nix/store/v110k9yl0jh83ggq695ji88yx06lxwwl-python3-3.13.6-env/bin/python'
         -- return vim.fn.system('which python'):gsub('%s+', '')
       end,
       -- Returns if a given file path is a test file.
