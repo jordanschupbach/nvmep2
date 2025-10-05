@@ -54,8 +54,8 @@
 
           # jdk
 
+          # TODO: maybe add these as a def
           python312
-
           python312Packages.pytest
           python312Packages.numpy
 
