@@ -55,6 +55,8 @@
           # jdk
 
           python312
+
+          python312Packages.pytest
           python312Packages.numpy
 
           # python312Packages.pynvim
