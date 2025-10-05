@@ -31,6 +31,7 @@ pythonPath = function()
 end
 
 local python_executable = pythonPath()
+vim.print('Using Python executable: ' .. python_executable)
 
 require('lspconfig').pylsp.setup {
   settings = {
