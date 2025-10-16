@@ -368,6 +368,8 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 -- }}} Statusline active/not_active behavior
 
 -- {{{ inbox
+
+mymap('n', '<Space><Space>', ':JustSelect<CR>')
 vim.api.nvim_create_user_command('RunJust', function()
   local file = vim.fn.expand('%:p')
   local filename = vim.fn.fnamemodify(file, ':t')
