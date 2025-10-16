@@ -323,21 +323,21 @@ mymap('v', '<A-return>', '<CMD>lua wrapped_slime()<CR><CR>')
 -- {{{ Statusline active/not_active behavior
 
 -- vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#DFDFF1')     --  guibg=#000000'Inactive buffer colors
-vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
-vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
+vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
+vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
 vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
-vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
-vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
+vim.cmd('highlight WinSeparatorActive guifg=#FF33FF')             -- Color for active window separator
+vim.cmd('highlight WinSeparatorNC guifg=#444444')                 -- Color for inactive window separators
 
 -- Function to update all status lines and separators
 function UpdateAll()
   local current_win = vim.api.nvim_get_current_win()
 
-  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
-  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
+  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
+  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
   vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
-  vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
-  vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
+  vim.cmd('highlight WinSeparatorActive guifg=#FF33FF')             -- Color for active window separator
+  vim.cmd('highlight WinSeparatorNC guifg=#444444')                 -- Color for inactive window separators
 
   -- Update status line colors
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -366,3 +366,25 @@ UpdateAll()
 vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 
 -- }}} Statusline active/not_active behavior
+
+-- {{{ inbox
+vim.api.nvim_create_user_command('RunJust', function()
+  local file = vim.fn.expand('%:p')
+  local filename = vim.fn.fnamemodify(file, ':t')
+  local example_name = filename:gsub('^prefix_cpp_', ''):gsub('%.cpp$', '')
+  local args = string.format('run example %s_cpp', example_name)
+
+  -- Run the command asynchronously
+  vim.cmd('AsyncRun just ' .. args)
+
+  -- Check if copen is already open
+  if vim.fn.getqflist({ winid = 0 }).winid == 0 then
+    -- Store the current window id
+    local current_window = vim.fn.win_getid()
+    vim.cmd('copen') -- Open quickfix window
+
+    -- Function to go back to original window after entering quickfix
+    vim.cmd('autocmd! BufLeave quickfix lua vim.fn.win_gotoid(' .. current_window .. ')')
+  end
+end, {})
+-- }}} inbox
