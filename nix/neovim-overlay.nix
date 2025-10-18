@@ -70,15 +70,15 @@ with final.pkgs.lib; let
     };
 
 
-    JustNvim = pkgs.vimUtils.buildVimPlugin {
-      name = "just-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "al1-ce";
-        repo = "just.nvim";
-        rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
-        hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
-      };
-    };
+    # JustNvim = pkgs.vimUtils.buildVimPlugin {
+    #   name = "just-nvim";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "al1-ce";
+    #     repo = "just.nvim";
+    #     rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
+    #     hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
+    #   };
+    # };
 
     JsFunc = pkgs.vimUtils.buildVimPlugin {
       name = "jsfunc-nvim";
@@ -121,10 +121,10 @@ with final.pkgs.lib; let
       R-nvim
       DirenvNvim
       TelescopeLuasnip
-      JustNvim
+      # JustNvim
       JsFunc
       EasyGrep
-      nvim-tree-preview
+      # nvim-tree-preview
       # nvim-luadev
       # telescope-ultisnips-nvim
       # orgmode
@@ -144,7 +144,7 @@ with final.pkgs.lib; let
       friendly-snippets # https://github.com/rafamadriz/friendly-snippets
       asyncrun-vim # https://github.com/skywind3000/asyncrun.vim
       blink-cmp # https://github.com/Saghen/blink.cmp
-      refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
+      # refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
       nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
       flash-nvim # https://github.com/folke/flash.nvim
       focus-nvim # https://github.com/nvim-focus/focus.nvim
