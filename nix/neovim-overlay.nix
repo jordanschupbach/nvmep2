@@ -99,11 +99,26 @@ with final.pkgs.lib; let
         hash = "sha256-7XPYnset01YEtwPUEcS+cXZQwf8h9cARKlgwwCUT3YY=";
       };
     };
+
+    # https://github.com/R-nvim/R.nvim
+    R-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "direnv";
+      src = pkgs.fetchFromGitHub {
+        owner = "R-nvim";
+        repo = "R.nvim";
+        rev = "fef990378e4b5157f23314dca4136bc0079cc2c4";
+        hash = "";
+      };
+    };
+
+
+
   in
     with pkgs.vimPlugins; [
       # plugins from nixpkgs go in here.
       # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
 
+      R-nvim
       DirenvNvim
       TelescopeLuasnip
       JustNvim
