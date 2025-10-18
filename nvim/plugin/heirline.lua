@@ -2674,8 +2674,12 @@ local TabLine = {
   { Separator },
 
   { Align },
-
+  { LSPActive },
+  { Space },
+  { Separator },
+  { Space },
   { DirenvStatus },
+  { Space },
   { Separator },
   { HomeButton },
   { Space },
