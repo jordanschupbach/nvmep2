@@ -47,5 +47,6 @@ local function is_markdownlint_installed()
 end
 
 if is_markdownlint_installed() then
+  vim.print('Registering markdownlint with null-ls')
   null_ls.register(markdownlint)
 end
