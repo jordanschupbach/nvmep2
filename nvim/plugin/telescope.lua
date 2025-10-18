@@ -85,6 +85,8 @@ end
 local function on_project_selected(prompt_bufnr)
   local entry = actions_state.get_selected_entry()
   vim.cmd('cd ' .. entry['value']) -- change to project directory
+  -- wait for direnv to load
+  vim.defer_fn(function() end, 2000)
   -- vim.cmd('Direnv allow') -- change to project directory
   -- vim.cmd('Direnv reload') -- change to project directory
   actions.close(prompt_bufnr)
