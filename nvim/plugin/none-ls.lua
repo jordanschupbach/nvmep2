@@ -11,32 +11,32 @@ null_ls.setup {
 
     -- {{{ css
 
-    null_ls.builtins.formatting.stylelint,
+    -- null_ls.builtins.formatting.stylelint,
 
     -- }}} css
 
     -- {{{ cmake
 
-    null_ls.builtins.diagnostics.cmake_lint,
+    -- null_ls.builtins.diagnostics.cmake_lint,
 
     -- }}} cmake
 
     -- {{{ cpp
 
-    null_ls.builtins.diagnostics.cppcheck,
-    null_ls.builtins.formatting.clang_format,
+    -- null_ls.builtins.diagnostics.cppcheck,
+    -- null_ls.builtins.formatting.clang_format,
 
     -- }}} cpp
 
     -- {{{ html/xml
 
-    null_ls.builtins.formatting.tidy,
+    -- null_ls.builtins.formatting.tidy,
 
     -- }}} html/xml
 
     -- {{{ javascript
 
-    null_ls.builtins.formatting.prettierd,
+    -- null_ls.builtins.formatting.prettierd,
     -- null_ls.builtins.formatting.prettierd.with({
     --     filetypes = { "javascript", "typescript", "html", "css", "json" },
     -- }),
@@ -45,20 +45,20 @@ null_ls.setup {
 
     -- {{{ just
 
-    null_ls.builtins.formatting.just,
+    -- null_ls.builtins.formatting.just,
 
     -- }}} just
 
     -- {{{ lua
 
-    null_ls.builtins.formatting.stylua,
+    -- null_ls.builtins.formatting.stylua,
     -- null_ls.builtins.diagnostics.selene, -- needs configuration w/ vim (workspaces?)
 
     -- }}} lua
 
     -- {{{ nix
 
-    null_ls.builtins.diagnostics.statix,
+    -- null_ls.builtins.diagnostics.statix,
 
     -- }}} nix
 
@@ -70,20 +70,20 @@ null_ls.setup {
 
     -- {{{ markdown
 
-    null_ls.builtins.diagnostics.markdownlint_cli2,
+    -- null_ls.builtins.diagnostics.markdownlint_cli2,
 
     -- }}} markdown
 
     -- {{{ python
 
-    null_ls.builtins.diagnostics.pylint.with {
-      diagnostics_postprocess = function(diagnostic)
-        diagnostic.code = diagnostic.message_id
-      end,
-    },
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.diagnostics.mypy,
+    -- null_ls.builtins.diagnostics.pylint.with {
+    --   diagnostics_postprocess = function(diagnostic)
+    --     diagnostic.code = diagnostic.message_id
+    --   end,
+    -- },
+    -- null_ls.builtins.formatting.isort,
+    -- null_ls.builtins.formatting.black,
+    -- null_ls.builtins.diagnostics.mypy,
 
     -- }}} python
   },
