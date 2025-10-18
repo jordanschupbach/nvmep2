@@ -52,6 +52,8 @@
           jq
           clang
 
+          markdownlint-cli2
+
           # jdk
 
           # TODO: maybe add these as a def
