@@ -102,7 +102,7 @@ with final.pkgs.lib; let
 
     # https://github.com/R-nvim/R.nvim
     R-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "direnv";
+      name = "r";
       src = pkgs.fetchFromGitHub {
         owner = "R-nvim";
         repo = "R.nvim";
