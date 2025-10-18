@@ -59,7 +59,7 @@ vim.defer_fn(function()
     filetypes = { 'python' },
     capabilities = require('user.lsp').make_client_capabilities(),
   }
-end, 2000)
+end, 1000)
 
 -- local dap = require('dap')
 -- dap.adapters.python = function(cb, config)
