@@ -1,7 +1,7 @@
 require('direnv').setup {
   autoload_direnv = true,
   statusline = {
-    enabled = false,
+    enabled = true,
     icon = '󱚟',
   },
 }
