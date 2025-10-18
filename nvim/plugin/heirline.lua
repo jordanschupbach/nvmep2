@@ -1049,7 +1049,7 @@ local LSPActive = {
     end
     return ' [' .. table.concat(names, ' ') .. ']'
   end,
-  hl = { fg = '#909090', bold = true },
+  hl = { fg = '#404040', bold = true },
 }
 
 -- }}} LspActive
