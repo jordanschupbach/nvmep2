@@ -215,7 +215,7 @@ with final.pkgs.lib; let
       vim-unimpaired # https://github.com/tpope/vim-unimpaired/
       which-key-nvim # https://github.com/folke/which-key.nvim
 
-      image-nvim # https://github.com/3rd/image.nvim
+      # image-nvim # https://github.com/3rd/image.nvim
     ];
 
   extraPackages = with pkgs; [
