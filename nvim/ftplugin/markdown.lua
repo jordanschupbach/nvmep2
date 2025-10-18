@@ -1,6 +1,8 @@
 local utils = require('user.utils')
+local null_ls = require('null-ls')
+local helpers = require('null-ls.helpers')
 
-find_markdownlint_path = function()
+local find_markdownlint_path = function()
   if utils.has_flake(utils.detect_project_root(vim.fn.expand('%:p'))) then
     return vim.fn.system { 'nix', 'develop', '.', '--command', 'bash', '-c', 'which markdownlint-cli2' }
   else
@@ -48,4 +50,4 @@ local markdownlint = {
   },
 }
 
-require('null-ls').register(markdownlint)
+null_ls.register(markdownlint)
