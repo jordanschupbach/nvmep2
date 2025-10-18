@@ -51,4 +51,4 @@ local markdownlint = {
     }),
 }
 
-null_ls.register(markdownlint)
+require'null_ls'.register(markdownlint)
