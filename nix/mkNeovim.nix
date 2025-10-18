@@ -23,21 +23,21 @@ with lib;
     # e.g. [ "^plugin/neogit.lua" "^ftplugin/.*.lua" ]
     ignoreConfigRegexes ? [],
     extraPackages ? [
+      # TODO: figure out the scope of these...
 
-      # python
-      mypy
-      pylint
-      isort
-      black
-      python312
-      jdk
-      jdt-language-server
-      (python312.withPackages (python-pkgs: [
-        python-pkgs.numpy
-        python-pkgs.python-lsp-server
-        python-pkgs.debugpy
-      ]))
-
+      # # python
+      # mypy
+      # pylint
+      # isort
+      # black
+      # python312
+      # jdk
+      # jdt-language-server
+      # (python312.withPackages (python-pkgs: [
+      #   python-pkgs.numpy
+      #   python-pkgs.python-lsp-server
+      #   python-pkgs.debugpy
+      # ]))
     ], # Extra runtime dependencies (e.g. ripgrep, ...)
     # The below arguments can typically be left as their defaults
     # Additional lua packages (not plugins), e.g. from luarocks.org.
@@ -176,20 +176,21 @@ with lib;
     extraMakeWrapperArgs = let
       sqliteLibExt = stdenv.hostPlatform.extensions.sharedLibrary;
       sqliteLibPath = "${sqlite.out}/lib/libsqlite3${sqliteLibExt}";
-    in builtins.concatStringsSep " " (
-      # Set the NVIM_APPNAME environment variable
-      (optional (appName != "nvim" && appName != null && appName != "")
-        ''--set NVIM_APPNAME "${appName}"'')
-      # Add external packages to the PATH
-      ++ (optional (externalPackages != [])
-        ''--prefix PATH : "${makeBinPath externalPackages}"'')
-      # Set the LIBSQLITE_CLIB_PATH if sqlite is enabled
-      ++ (optional withSqlite
-        ''--set LIBSQLITE_CLIB_PATH "${sqliteLibPath}"'')
-      # Set the LIBSQLITE environment variable if sqlite is enabled
-      ++ (optional withSqlite
-        ''--set LIBSQLITE "${sqliteLibPath}"'')
-    );
+    in
+      builtins.concatStringsSep " " (
+        # Set the NVIM_APPNAME environment variable
+        (optional (appName != "nvim" && appName != null && appName != "")
+          ''--set NVIM_APPNAME "${appName}"'')
+        # Add external packages to the PATH
+        ++ (optional (externalPackages != [])
+          ''--prefix PATH : "${makeBinPath externalPackages}"'')
+        # Set the LIBSQLITE_CLIB_PATH if sqlite is enabled
+        ++ (optional withSqlite
+          ''--set LIBSQLITE_CLIB_PATH "${sqliteLibPath}"'')
+        # Set the LIBSQLITE environment variable if sqlite is enabled
+        ++ (optional withSqlite
+          ''--set LIBSQLITE "${sqliteLibPath}"'')
+      );
 
     luaPackages = neovim-unwrapped.lua.pkgs;
     resolvedExtraLuaPackages = extraLuaPackages luaPackages;
@@ -228,8 +229,8 @@ with lib;
         + lib.optionalString isCustomAppName ''
           mv $out/bin/nvim $out/bin/${lib.escapeShellArg appName}
         '';
-      meta.mainProgram 
-        = if isCustomAppName 
-            then appName 
-            else oa.meta.mainProgram;
+      meta.mainProgram =
+        if isCustomAppName
+        then appName
+        else oa.meta.mainProgram;
     })

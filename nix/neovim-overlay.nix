@@ -190,79 +190,79 @@ with final.pkgs.lib; let
     ];
 
   extraPackages = with pkgs; [
-    # language servers, etc.
-    lua-language-server
-    nil # nix LSP
+    # # language servers, etc.
+    # lua-language-server
+    # nil # nix LSP
 
-    # cpp
-    gcc
-    gdb
-    libclang
-    llvm # ??? rudundant?
-    cppcheck
+    # # cpp
+    # gcc
+    # gdb
+    # libclang
+    # llvm # ??? rudundant?
+    # cppcheck
 
-    # markdown
-    markdownlint-cli2
+    # # markdown
+    # markdownlint-cli2
 
-    # python
-    mypy
-    pylint
-    isort
-    black
-    python312
-    (python312.withPackages (python-pkgs: [
-      python-pkgs.numpy
-      python-pkgs.python-lsp-server
-      python-pkgs.debugpy
-    ]))
+    # # python
+    # mypy
+    # pylint
+    # isort
+    # black
+    # python312
+    # (python312.withPackages (python-pkgs: [
+    #   python-pkgs.numpy
+    #   python-pkgs.python-lsp-server
+    #   python-pkgs.debugpy
+    # ]))
 
+    # # cmake
     # cmake
-    cmake
-    cmake-lint
+    # cmake-lint
 
-    # HTML
-    html-tidy
+    # # HTML
+    # html-tidy
 
-    # javascript
-    nodejs_23
-    prettierd
+    # # javascript
+    # nodejs_23
+    # prettierd
 
-    # css
-    stylelint
-    stylelint-lsp
+    # # css
+    # stylelint
+    # stylelint-lsp
 
-    # lua
-    selene
-    lua-language-server
+    # # lua
+    # selene
+    # lua-language-server
 
-    # fortran
-    gfortran
+    # # fortran
+    # gfortran
 
-    # nix
-    nil # nix LSP
-    alejandra
-    statix
+    # # nix
+    # nil # nix LSP
+    # alejandra
+    # statix
 
-    # shell
-    bash-language-server
-    beautysh
+    # # shell
+    # bash-language-server
+    # beautysh
 
-    # Java
-    jdk
-    jdt-language-server
+    # # Java
+    # jdk
+    # jdt-language-server
 
-    # latex
-    texliveFull
-    # textidote
+    # # latex
+    # texliveFull
+    # # textidote
 
-    # typescript
-    typescript-language-server
+    # # typescript
+    # typescript-language-server
 
-    # R
-    # R
-    # rPackages.testthat
-    # rPackages.languageserver
-    # rPackages.languageserversetup
+    # # R
+    # # R
+    # # rPackages.testthat
+    # # rPackages.languageserver
+    # # rPackages.languageserversetup
   ];
 in {
   # This is the neovim derivation
