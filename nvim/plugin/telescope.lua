@@ -5,7 +5,7 @@ vim.g.did_load_telescope_plugin = true
 
 local telescope = require('telescope')
 local actions = require('telescope.actions')
-local actions_state = require 'telescope.actions.state'
+local actions_state = require('telescope.actions.state')
 
 local builtin = require('telescope.builtin')
 
@@ -70,7 +70,6 @@ local function fuzzy_grep_current_file_type()
   grep_current_file_type(fuzzy_grep)
 end
 
-
 ---@diagnostic disable-next-line: unused-function
 local function file_exists(filename)
   local file = io.open(filename, 'r')
@@ -84,10 +83,10 @@ end
 
 ---@diagnostic disable-next-line: unused-local, unused-function
 local function on_project_selected(prompt_bufnr)
-  vim.cmd('cd ' .. entry["value"]) -- change to project directory
   local entry = actions_state.get_selected_entry()
+  vim.cmd('cd ' .. entry['value']) -- change to project directory
   actions.close(prompt_bufnr)
-  if entry['value']:gsub("/+$", ""):match("([^/]+)$") == "nvim-playground" then
+  if entry['value']:gsub('/+$', ''):match('([^/]+)$') == 'nvim-playground' then
     vim.cmd('edit ' .. entry['value'] .. '/init.lua')
   else
     if file_exists('' .. entry['value'] .. '/README.org') then
@@ -96,19 +95,14 @@ local function on_project_selected(prompt_bufnr)
       vim.cmd('edit ' .. entry['value'] .. '/README.md')
     end
   end
-  vim.cmd 'NvimTreeToggle'
-  vim.cmd 'wincmd l'
+  vim.cmd('NvimTreeToggle')
+  vim.cmd('wincmd l')
   vim.cmd('split')
-  vim.cmd 'wincmd j'
-  vim.cmd 'term'
+  vim.cmd('wincmd j')
+  vim.cmd('term')
   vim.api.nvim_win_set_height(0, 8)
-  vim.cmd 'wincmd k'
+  vim.cmd('wincmd k')
 end
-
-
-
-
-
 
 vim.keymap.set('n', '<leader>tp', function()
   builtin.find_files()
@@ -145,7 +139,7 @@ vim.keymap.set(
   { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' }
 )
 
-local project_actions = require("telescope._extensions.project.actions")
+local project_actions = require('telescope._extensions.project.actions')
 
 telescope.setup {
   defaults = {
@@ -162,7 +156,7 @@ telescope.setup {
         ['<C-s>'] = actions.cycle_previewers_next,
         ['<C-a>'] = actions.cycle_previewers_prev,
 
-        ["<C-h>"] = "which_key"
+        ['<C-h>'] = 'which_key',
       },
       n = {
         q = actions.close,
@@ -233,11 +227,9 @@ telescope.setup {
           ['<c-r>'] = project_actions.recent_project_files,
           ['<c-l>'] = project_actions.change_working_directory,
           ['<c-o>'] = project_actions.next_cd_scope,
-        }
-      }
+        },
+      },
     },
-
-
   },
 }
 
