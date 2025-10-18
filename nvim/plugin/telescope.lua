@@ -84,6 +84,7 @@ end
 
 ---@diagnostic disable-next-line: unused-local, unused-function
 local function on_project_selected(prompt_bufnr)
+  vim.cmd('cd ' .. entry["value"]) -- change to project directory
   local entry = actions_state.get_selected_entry()
   actions.close(prompt_bufnr)
   if entry['value']:gsub("/+$", ""):match("([^/]+)$") == "nvim-playground" then
@@ -97,7 +98,6 @@ local function on_project_selected(prompt_bufnr)
   end
   vim.cmd 'NvimTreeToggle'
   vim.cmd 'wincmd l'
-  vim.cmd('cd ' .. entry["value"])
   vim.cmd('split')
   vim.cmd 'wincmd j'
   vim.cmd 'term'
