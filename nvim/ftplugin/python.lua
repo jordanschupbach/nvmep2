@@ -33,31 +33,34 @@ local root_files = {
 -- local python_executable = pythonPath()
 -- vim.print('Using Python executable: ' .. python_executable)
 
-require('lspconfig').pylsp.setup {
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = { 'W391' },
-          maxLineLength = 100,
+vim.defer_fn(function()
+  require('user.lsp').setup_server('pylsp')
+  require('lspconfig').pylsp.setup {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            ignore = { 'W391' },
+            maxLineLength = 100,
+          },
         },
       },
     },
-  },
-}
+  }
 
-vim.lsp.start {
-  name = 'pylsp',
-  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
-  cmd = {
-    'pylsp',
-    -- Set the PYTHONPATH environment variable for the LSP
-    -- env = { PYTHONPATH = python_executable },
-  },
-  root_markers = { '.git' },
-  filetypes = { 'python' },
-  capabilities = require('user.lsp').make_client_capabilities(),
-}
+  vim.lsp.start {
+    name = 'pylsp',
+    root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
+    cmd = {
+      'pylsp',
+      -- Set the PYTHONPATH environment variable for the LSP
+      -- env = { PYTHONPATH = python_executable },
+    },
+    root_markers = { '.git' },
+    filetypes = { 'python' },
+    capabilities = require('user.lsp').make_client_capabilities(),
+  }
+end, 2000)
 
 -- local dap = require('dap')
 -- dap.adapters.python = function(cb, config)
