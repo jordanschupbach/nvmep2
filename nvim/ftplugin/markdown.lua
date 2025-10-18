@@ -46,9 +46,12 @@ local function is_markdownlint_installed()
   return os.execute('command -v markdownlint-cli2 > /dev/null 2>&1') == 0
 end
 
-if is_markdownlint_installed() then
-  vim.print('Registering markdownlint with null-ls')
-  null_ls.register(markdownlint)
-else
-  vim.print('markdownlint-cli2 is not installed. Please install it to enable markdown linting.')
-end
+vim.defer_fn(function()
+  print('This runs after a 2-second delay!')
+  if is_markdownlint_installed() then
+    -- vim.print('Registering markdownlint with null-ls')
+    null_ls.register(markdownlint)
+  else
+    -- vim.print('markdownlint-cli2 is not installed. Please install it to enable markdown linting.')
+  end
+end, 2000)
