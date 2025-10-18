@@ -6,32 +6,32 @@ local root_files = {
   '.git',
 }
 
-pythonPath = function()
-  local handle = io.popen("nix develop . --command bash -c 'which python' 2>/dev/null")
-  local result = handle:read('*a')
-  handle:close()
+-- local pythonPath = function()
+--   local handle = io.popen("nix develop . --command bash -c 'which python' 2>/dev/null")
+--   local result = handle:read('*a')
+--   handle:close()
+--
+--   -- local handle = io.popen("which python")
+--   -- local result = handle:read("*a")
+--   -- handle:close()
+--
+--   if result and result ~= '' then
+--     return result:gsub('%s+', '') -- Trim any whitespace
+--   end
+--
+--   -- Fallback to virtual environments
+--   local cwd = vim.fn.getcwd()
+--   if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+--     return cwd .. '/venv/bin/python'
+--   elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+--     return cwd .. '/.venv/bin/python'
+--   else
+--     return '/usr/bin/python'
+--   end
+-- end
 
-  -- local handle = io.popen("which python")
-  -- local result = handle:read("*a")
-  -- handle:close()
-
-  if result and result ~= '' then
-    return result:gsub('%s+', '') -- Trim any whitespace
-  end
-
-  -- Fallback to virtual environments
-  local cwd = vim.fn.getcwd()
-  if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-    return cwd .. '/venv/bin/python'
-  elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-    return cwd .. '/.venv/bin/python'
-  else
-    return '/usr/bin/python'
-  end
-end
-
-local python_executable = pythonPath()
-vim.print('Using Python executable: ' .. python_executable)
+-- local python_executable = pythonPath()
+-- vim.print('Using Python executable: ' .. python_executable)
 
 require('lspconfig').pylsp.setup {
   settings = {
@@ -52,7 +52,7 @@ vim.lsp.start {
   cmd = {
     'pylsp',
     -- Set the PYTHONPATH environment variable for the LSP
-    env = { PYTHONPATH = python_executable },
+    -- env = { PYTHONPATH = python_executable },
   },
   root_markers = { '.git' },
   filetypes = { 'python' },
