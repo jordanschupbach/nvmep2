@@ -85,7 +85,16 @@ end
 local function on_project_selected(prompt_bufnr)
   local entry = actions_state.get_selected_entry()
   vim.cmd('cd ' .. entry['value']) -- change to project directory
-  vim.cmd('silent !direnv find ' .. entry['value']) -- activate direnv
+  -- Activate direnv and read the environment variables
+  local output = vim.fn.system("direnv export bash") -- or "direnv export zsh" based on your shell
+  if output then
+    for line in output:gmatch("[^\r\n]+") do
+      local key, value = line:match("^(%S+)%s*=%s*(%S+)$")
+      if key and value then
+        vim.env[key] = value -- Set the environment variable in Neovim
+      end
+    end
+  end
   actions.close(prompt_bufnr)
   if entry['value']:gsub('/+$', ''):match('([^/]+)$') == 'nvim-playground' then
     vim.cmd('edit ' .. entry['value'] .. '/init.lua')
