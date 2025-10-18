@@ -20,8 +20,8 @@ local markdownlint = {
   -- null_ls.generator creates an async source
   -- that spawns the command with the given arguments and options
   generator = null_ls.generator {
-    -- command = markdownlint_path,
-    command = "markdownlint-cli2",
+    command = markdownlint_path,
+    -- command = "markdownlint-cli2",
     args = { '--stdin' },
     to_stdin = true,
     from_stderr = true,
