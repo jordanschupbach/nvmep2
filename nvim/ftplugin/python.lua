@@ -34,6 +34,7 @@ local root_files = {
 -- vim.print('Using Python executable: ' .. python_executable)
 
 vim.defer_fn(function()
+  print('Setting up pylsp LSP server after 2-second delay!')
   require('user.lsp').setup_server('pylsp')
   require('lspconfig').pylsp.setup {
     settings = {
