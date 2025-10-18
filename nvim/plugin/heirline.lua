@@ -2094,6 +2094,20 @@ local GoButton = {
 }
 -- }}} CPPButton 
 
+local DirenvStatus = {
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color = require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return require('direnv').statusline()
+  end,
+  hl = function()
+    return { fg = mycolors.crashPink, underline = true }
+  end,
+}
+
 -- {{{ HomeButton 
 local HomeButton = {
   -- require('nvim-web-devicons').get_icon()
@@ -2656,6 +2670,13 @@ local TabLine = {
   -- { Align },
 
   { Separator },
+  { TabPages },
+  { Separator },
+
+  { Align },
+
+  { DirenvStatus },
+  { Separator },
   { HomeButton },
   { Space },
   { Separator },
@@ -2670,18 +2691,12 @@ local TabLine = {
   { Separator },
   { TestsButton },
   { Space },
-  { Separator },
-  { TodoButton },
-  { Space },
-  { Separator },
-  { TabPages },
-  { Separator },
-
-  { Align },
-
   -- { Separator },
   -- { DebugButton },
   -- { Space },
+  { Separator },
+  { TodoButton },
+  { Space },
 
   -- { ViMode },
 
