@@ -85,6 +85,7 @@ end
 local function on_project_selected(prompt_bufnr)
   local entry = actions_state.get_selected_entry()
   vim.cmd('cd ' .. entry['value']) -- change to project directory
+  vim.cmd('silent !direnv find ' .. entry['value']) -- activate direnv
   actions.close(prompt_bufnr)
   if entry['value']:gsub('/+$', ''):match('([^/]+)$') == 'nvim-playground' then
     vim.cmd('edit ' .. entry['value'] .. '/init.lua')
