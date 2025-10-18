@@ -6,62 +6,58 @@ local root_files = {
   '.git',
 }
 
--- local pythonPath = function()
---   local handle = io.popen("nix develop . --command bash -c 'which python' 2>/dev/null")
---   local result = handle:read('*a')
---   handle:close()
---
---   -- local handle = io.popen("which python")
---   -- local result = handle:read("*a")
---   -- handle:close()
---
---   if result and result ~= '' then
---     return result:gsub('%s+', '') -- Trim any whitespace
---   end
---
---   -- Fallback to virtual environments
---   local cwd = vim.fn.getcwd()
---   if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
---     return cwd .. '/venv/bin/python'
---   elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
---     return cwd .. '/.venv/bin/python'
---   else
---     return '/usr/bin/python'
---   end
--- end
+pythonPath = function()
+  local handle = io.popen("nix develop . --command bash -c 'which python' 2>/dev/null")
+  local result = handle:read('*a')
+  handle:close()
 
--- local python_executable = pythonPath()
--- vim.print('Using Python executable: ' .. python_executable)
+  -- local handle = io.popen("which python")
+  -- local result = handle:read("*a")
+  -- handle:close()
 
-require('user.lsp').setup_server('pylsp')
-vim.defer_fn(function()
-  print('Setting up pylsp LSP server after 2-second delay!')
-  require('lspconfig').pylsp.setup {
-    settings = {
-      pylsp = {
-        plugins = {
-          pycodestyle = {
-            ignore = { 'W391' },
-            maxLineLength = 100,
-          },
+  if result and result ~= '' then
+    return result:gsub('%s+', '') -- Trim any whitespace
+  end
+
+  -- Fallback to virtual environments
+  local cwd = vim.fn.getcwd()
+  if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+    return cwd .. '/venv/bin/python'
+  elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+    return cwd .. '/.venv/bin/python'
+  else
+    return '/usr/bin/python'
+  end
+end
+
+local python_executable = pythonPath()
+vim.print('Using Python executable: ' .. python_executable)
+
+require('lspconfig').pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { 'W391' },
+          maxLineLength = 100,
         },
       },
     },
-  }
+  },
+}
 
-  vim.lsp.start {
-    name = 'pylsp',
-    root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
-    cmd = {
-      'pylsp',
-      -- Set the PYTHONPATH environment variable for the LSP
-      -- env = { PYTHONPATH = python_executable },
-    },
-    root_markers = { '.git' },
-    filetypes = { 'python' },
-    capabilities = require('user.lsp').make_client_capabilities(),
-  }
-end, 2000)
+vim.lsp.start {
+  name = 'pylsp',
+  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
+  cmd = {
+    'pylsp',
+    -- Set the PYTHONPATH environment variable for the LSP
+    env = { PYTHONPATH = python_executable },
+  },
+  root_markers = { '.git' },
+  filetypes = { 'python' },
+  capabilities = require('user.lsp').make_client_capabilities(),
+}
 
 -- local dap = require('dap')
 -- dap.adapters.python = function(cb, config)
