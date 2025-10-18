@@ -2,18 +2,6 @@ local utils = require('user.utils')
 local null_ls = require('null-ls')
 local helpers = require('null-ls.helpers')
 
--- local find_markdownlint_path = function()
---   if utils.has_flake(utils.detect_project_root(vim.fn.expand('%:p'))) then
---     return vim.fn.system { 'nix', 'develop', '.', '--command', 'bash', '-c', 'which markdownlint-cli2' }
---   else
---     return
---   end
--- end
-
--- local markdownlint_path = find_markdownlint_path()
-
--- print('markdownlint path:', markdownlint_path)
-
 local markdownlint = {
   method = null_ls.methods.DIAGNOSTICS,
   filetypes = { 'markdown' },
@@ -21,7 +9,7 @@ local markdownlint = {
   -- that spawns the command with the given arguments and options
   generator = null_ls.generator {
     -- command = markdownlint_path,
-    command = "markdownlint-cli2",
+    command = 'markdownlint-cli2',
     args = { '--stdin' },
     to_stdin = true,
     from_stderr = true,
@@ -53,4 +41,11 @@ local markdownlint = {
   },
 }
 
-null_ls.register(markdownlint)
+-- Check if markdownlint-cli2 is available
+local function is_markdownlint_installed()
+  return os.execute('command -v markdownlint-cli2 > /dev/null 2>&1') == 0
+end
+
+if is_markdownlint_installed() then
+  null_ls.register(markdownlint)
+end
