@@ -57,6 +57,18 @@ with final.pkgs.lib; let
       };
     };
 
+    # https://github.com/NotAShelf/direnv.nvim
+    DirenvNvim = pkgs.vimUtils.buildVimPlugin {
+      name = "direnv";
+      src = pkgs.fetchFromGitHub {
+        owner = "NotAShelf";
+        repo = "direnv.nvim";
+        rev = "4dfc8758a1deab45e37b7f3661e0fd3759d85788";
+        hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
+      };
+    };
+
+
     JustNvim = pkgs.vimUtils.buildVimPlugin {
       name = "just-nvim";
       src = pkgs.fetchFromGitHub {
@@ -91,6 +103,7 @@ with final.pkgs.lib; let
       # plugins from nixpkgs go in here.
       # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
 
+      DirenvNvim
       TelescopeLuasnip
       JustNvim
       JsFunc
