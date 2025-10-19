@@ -208,7 +208,7 @@ local function toggle_hover()
       style = 'minimal',
       relative = 'cursor',
       height = 30,
-      width = 80,
+      width = 120,
     }
     vim.lsp.buf.hover(opts)
     hover_active = true
