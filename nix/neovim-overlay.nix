@@ -72,16 +72,16 @@ let
         };
       };
 
-      # https://github.com/chrisgrieser/nvim-justice
-      Justice = pkgs.vimUtils.buildVimPlugin {
-        name = "jsfunc-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "chrisgrieser";
-          repo = "nvim-justice";
-          rev = "1335a7eacc7766fc933e5e3ea2f37d324d478431";
-          hash = "sha256-bfHZl0n8ig0PL4TW9AcAur4BH/iO6h8nELZRztNVxLU=";
-        };
-      };
+      # # https://github.com/chrisgrieser/nvim-justice
+      # Justice = pkgs.vimUtils.buildVimPlugin {
+      #   name = "jsfunc-nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "chrisgrieser";
+      #     repo = "nvim-justice";
+      #     rev = "1335a7eacc7766fc933e5e3ea2f37d324d478431";
+      #     hash = "sha256-bfHZl0n8ig0PL4TW9AcAur4BH/iO6h8nELZRztNVxLU=";
+      #   };
+      # };
 
       # JsFunc = pkgs.vimUtils.buildVimPlugin {
       #   name = "jsfunc-nvim";
@@ -92,6 +92,19 @@ let
       #     hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
       #   };
       # };
+
+      Telescope = pkgs.vimUtils.buildVimPlugin {
+        name = "telescope";
+        src = pkgs.fetchFromGitHub {
+          owner = "nvim-telescope";
+          repo = "telescope.nvim";
+          rev = "b4da76be54691e854d3e0e02c36b0245f945c2c7";
+          hash = "sha256-JpW0ehsX81yVbKNzrYOe1hdgVMs6oaaxMLH6lECnOJg=";
+        };
+        dependencies = [
+          pkgs.vimPlugins.plenary-nvim
+        ];
+      };
 
       # JustNvim = pkgs.vimUtils.buildVimPlugin {
       #   name = "just-nvim";
@@ -141,8 +154,10 @@ let
 
       R-nvim
       DirenvNvim
+      Telescope
       TelescopeLuasnip
-      Justice
+
+      # Justice
       # JsFunc
       # JustNvim
       EasyGrep
@@ -230,7 +245,7 @@ let
       sqlite-lua # https://github.com/kkharji/sqlite.lua
       statuscol-nvim # https://github.com/luukvbaal/statuscol.nvim/
       telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
-      telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
+      # telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
       telescope-project-nvim # https://github.com/nvim-telescope/telescope-project.nvim
       vim-fugitive # https://github.com/tpope/vim-fugitive/
       vim-repeat # https://github.com/tpope/vim-repeat
