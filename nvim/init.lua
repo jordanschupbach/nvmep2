@@ -211,7 +211,8 @@ mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 -- mymap('n', 'K', toggle_hover)
 
 local hover_active = false -- State to track if hover is active
-local hover_win_id = nil -- Window ID for the hover window
+local float_win_id = nil -- Window ID for the hover window
+local original_win_id = nil -- Store original window ID for context switch
 
 -- Custom border for LSP hover
 local border = {
@@ -227,12 +228,19 @@ local border = {
 
 -- Function to show/hide hover information with a custom border
 local function toggle_hover()
-  if hover_active and hover_win_id then
+  if hover_active and float_win_id then
     -- If hover is active, close it and reset the state
-    pcall(vim.api.nvim_win_close, hover_win_id, true) -- Close the hover window safely
+    pcall(vim.api.nvim_win_close, float_win_id, true) -- Close the hover window safely
     hover_active = false
-    hover_win_id = nil
+    float_win_id = nil
+    -- Return focus to the original window
+    if original_win_id then
+      vim.api.nvim_set_current_win(original_win_id)
+    end
   else
+    -- Store the original window ID
+    original_win_id = vim.api.nvim_get_current_win()
+
     -- If hover is not active, get hover information
     vim.lsp.buf_request(0, 'textDocument/hover', vim.lsp.util.make_position_params(), function(err, result)
       if err or not result or not result.contents then
@@ -255,20 +263,18 @@ local function toggle_hover()
       end
 
       -- Open the hover window with the formatted content
-      hover_win_id = vim.lsp.util.open_floating_preview(contents, 'markdown', {
+      float_win_id = vim.lsp.util.open_floating_preview(contents, 'markdown', {
         border = border,
         focusable = true,
         style = 'minimal',
         relative = 'cursor',
-        height = 40,
-        width = 120,
+        height = 10,
+        width = 30,
       })
       hover_active = true
 
-      -- Set the cursor to the hover window if it exists
-      if hover_win_id then
-        vim.api.nvim_set_current_win(hover_win_id) -- Focus on the hover window
-      end
+      -- Focus on the hover window
+      vim.api.nvim_set_current_win(float_win_id)
     end)
   end
 end
