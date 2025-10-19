@@ -260,10 +260,15 @@ local function toggle_hover()
         focusable = true,
         style = 'minimal',
         relative = 'cursor',
-        height = 30,
+        height = 40,
         width = 120,
       })
       hover_active = true
+
+      -- Set the cursor to the hover window if it exists
+      if hover_win_id then
+        vim.api.nvim_set_current_win(hover_win_id) -- Focus on the hover window
+      end
     end)
   end
 end
