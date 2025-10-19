@@ -181,10 +181,6 @@ mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
 mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 -- mymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
 
-local hover_active = false -- State to track if hover is active
-local hover_win_id = nil -- Window ID for the hover window
-
--- Custom border for LSP hover
 local border = {
   { '╭', 'FloatBorder' },
   { '─', 'FloatBorder' },
@@ -196,34 +192,27 @@ local border = {
   { '│', 'FloatBorder' },
 }
 
+local hover_active = false -- State to track if hover is active
+
 -- Function to show/hide hover information with a custom border
 local function toggle_hover()
-  if hover_active and hover_win_id then
-    -- If hover is active, close it and reset the state
-    pcall(vim.api.nvim_win_close, hover_win_id, true) -- Close the hover window safely
+  if hover_active then
+    -- If hover is currently active, close it and reset the state
+    vim.lsp.buf.clear_references() -- This clears the hover window
     hover_active = false
-    hover_win_id = nil
   else
-    -- If hover is not active, get hover information
-    vim.lsp.buf_request(0, 'textDocument/hover', vim.lsp.util.make_position_params(), function(err, result)
-      if err or not result then
-        return
-      end
-
-      -- Customize this to format your hover content
-      local contents = result.contents
-
-      -- Open the hover window with the content
-      hover_win_id = vim.lsp.util.open_floating_preview(contents, 'markdown', {
-        border = border,
-        focusable = true,
-        style = 'minimal',
-        relative = 'cursor',
-        height = 10,
-        width = 30,
-      })
-      hover_active = true
-    end)
+    -- If hover is not active, show it and set the state
+    local opts = {
+      border = border,
+      focusable = true,
+      style = 'minimal',
+      relative = 'cursor',
+      height = 30,
+      width = 80,
+    }
+    vim.lsp.buf.hover(opts)
+    hover_active = true
+    -- Optionally: You can use a timer to close it after some time
   end
 end
 
