@@ -180,6 +180,7 @@ mymap('n', '<Space>tn', '<CMD>lua toggle_number()<CR>')
 mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
 mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 
+vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#5E81AC', bg = '#3B4252' })
 local border = {
   { '╭', 'FloatBorder' },
   { '─', 'FloatBorder' },
