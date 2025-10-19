@@ -170,12 +170,10 @@ let
       neotest # https://github.com/nvim-neotest/neotest
       neotest-testthat
       neotest-jest
-
       neotest-java
       neotest-python
       neotest-gtest
       neotest-bash
-
       otter-nvim # https://github.com/jmbuhr/otter.nvim
       dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
       text-case-nvim # https://github.com/johmsalas/text-case.nvim

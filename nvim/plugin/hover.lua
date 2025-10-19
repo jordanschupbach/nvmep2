@@ -28,13 +28,13 @@ require('hover').config {
 }
 
 -- Setup keymaps
-vim.keymap.set('n', 'K', function()
-  require('hover').open()
-end, { desc = 'hover.nvim (open)' })
+-- vim.keymap.set('n', 'K', function()
+--   require('hover').open()
+-- end, { desc = 'hover.nvim (open)' })
 
-vim.keymap.set('n', 'gK', function()
-  require('hover').enter()
-end, { desc = 'hover.nvim (enter)' })
+-- vim.keymap.set('n', 'gK', function()
+--   require('hover').enter()
+-- end, { desc = 'hover.nvim (enter)' })
 
 -- vim.keymap.set('n', '<C-p>', function()
 --   require('hover').switch('previous')

@@ -213,6 +213,8 @@ local function toggle_hover()
 end
 -- mymap('n', 'K', toggle_hover)
 
+mymap('n', 'K', vim.lsp.buf.hover)
+
 -- local hover_active = false -- State to track if hover is active
 -- local float_win_id = nil -- Window ID for the hover window
 -- local original_win_id = nil -- Store original window ID for context switch
