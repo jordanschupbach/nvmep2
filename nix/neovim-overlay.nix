@@ -72,24 +72,30 @@ let
         };
       };
 
-      # JustNvim = pkgs.vimUtils.buildVimPlugin {
-      #   name = "just-nvim";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "al1-ce";
-      #     repo = "just.nvim";
-      #     rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
-      #     hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
-      #   };
-      # };
-
       JsFunc = pkgs.vimUtils.buildVimPlugin {
         name = "jsfunc-nvim";
         src = pkgs.fetchFromGitHub {
-          owner = "al1-ce";
+          owner = "nxuv";
           repo = "jsfunc.nvim";
           rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
           hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
         };
+      };
+
+      JustNvim = pkgs.vimUtils.buildVimPlugin {
+        name = "just-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "nxuv";
+          repo = "just.nvim";
+          rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
+          hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
+        };
+        dontBuild = true;
+        dontCheck = true;
+        dependencies = [
+          JsFunc
+          pkgs.vimPlugins.plenary-nvim
+        ];
       };
 
       nvim-tree-preview = pkgs.vimUtils.buildVimPlugin {
@@ -122,8 +128,8 @@ let
       R-nvim
       DirenvNvim
       TelescopeLuasnip
-      # JustNvim
       JsFunc
+      JustNvim
       EasyGrep
       # nvim-tree-preview
       # nvim-luadev
@@ -221,6 +227,7 @@ let
     ];
 
   extraPackages = with pkgs; [
+    luajit
     # # language servers, etc.
     # lua-language-server
     # nil # nix LSP
