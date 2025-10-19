@@ -182,7 +182,7 @@ mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 -- mymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
 
 local hover_active = false -- State to track if hover is active
-local hover_bufnr = nil -- Buffer number for the hover window
+local hover_win_id = nil -- Window ID for the hover window
 
 -- Custom border for LSP hover
 local border = {
@@ -198,24 +198,32 @@ local border = {
 
 -- Function to show/hide hover information with a custom border
 local function toggle_hover()
-  if hover_active and hover_bufnr then
+  if hover_active and hover_win_id then
     -- If hover is active, close it and reset the state
-    vim.api.nvim_win_close(hover_bufnr, true) -- Close the hover window
+    pcall(vim.api.nvim_win_close, hover_win_id, true) -- Close the hover window safely
     hover_active = false
+    hover_win_id = nil
   else
-    -- If hover is not active, show it and set the state
-    local opts = {
-      border = border,
-      focusable = true,
-      style = 'minimal',
-      relative = 'cursor',
-      height = 10,
-      width = 30,
-    }
+    -- If hover is not active, get hover information
+    vim.lsp.buf_request(0, 'textDocument/hover', vim.lsp.util.make_position_params(), function(err, result)
+      if err or not result then
+        return
+      end
 
-    -- Open the hover window and get the buffer number
-    hover_bufnr = vim.lsp.util.open_floating_preview(vim.lsp.buf.hover(), 'markdown', opts)
-    hover_active = true
+      -- Customize this to format your hover content
+      local contents = result.contents
+
+      -- Open the hover window with the content
+      hover_win_id = vim.lsp.util.open_floating_preview(contents, 'markdown', {
+        border = border,
+        focusable = true,
+        style = 'minimal',
+        relative = 'cursor',
+        height = 10,
+        width = 30,
+      })
+      hover_active = true
+    end)
   end
 end
 
