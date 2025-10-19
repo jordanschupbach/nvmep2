@@ -5,7 +5,9 @@ vim.g.did_load_telescope_plugin = true
 
 local telescope = require('telescope')
 local pickers = require('telescope.pickers')
+local finders = require('telescope.finders')
 local actions = require('telescope.actions')
+local sorters = require('telescope.sorters')
 local actions_state = require('telescope.actions.state')
 
 local builtin = require('telescope.builtin')
@@ -270,7 +272,7 @@ local function select_justfile_task()
   pickers
     .new({}, {
       prompt_title = 'Select a Justfile Task',
-      finder = telescope.finders.new_table {
+      finder = finders.new_table {
         results = tasks,
         entry_maker = function(entry)
           return {
@@ -280,7 +282,7 @@ local function select_justfile_task()
           }
         end,
       },
-      sorter = telescope.sorters.get_fuzzy_file(),
+      sorter = sorters.get_fuzzy_file(),
       attach_mappings = function(_, map)
         map('i', '<CR>', function(prompt_bufnr)
           local selection = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
