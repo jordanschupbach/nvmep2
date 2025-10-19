@@ -260,8 +260,8 @@ local function toggle_hover()
         focusable = true,
         style = 'minimal',
         relative = 'cursor',
-        height = 10,
-        width = 30,
+        height = 30,
+        width = 120,
       })
       hover_active = true
     end)
