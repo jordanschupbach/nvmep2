@@ -82,13 +82,13 @@ require('nvim-tree-preview').setup {
   min_height = 5,
   max_width = 85,
   max_height = 25,
-  wrap = false,           -- Whether to wrap lines in the preview window
-  border = 'rounded',     -- Border style for the preview window
-  zindex = 100,           -- Stacking order. Increase if the preview window is shown below other windows.
-  show_title = true,      -- Whether to show the file name as the title of the preview window
+  wrap = false, -- Whether to wrap lines in the preview window
+  border = 'rounded', -- Border style for the preview window
+  zindex = 100, -- Stacking order. Increase if the preview window is shown below other windows.
+  show_title = true, -- Whether to show the file name as the title of the preview window
   title_pos = 'top-left', -- top-left|top-center|top-right|bottom-left|bottom-center|bottom-right
   title_format = ' %s ',
-  follow_links = true,    -- Whether to follow symlinks when previewing files
+  follow_links = true, -- Whether to follow symlinks when previewing files
   -- win_position: { row?: number|function, col?: number|function }
   -- Position of the preview window relative to the tree window.
   -- If not specified, the position is automatically calculated.
@@ -105,7 +105,7 @@ require('nvim-tree-preview').setup {
   win_position = {},
   image_preview = {
     enable = true, -- Whether to preview images (for more info see Previewing Images section in README)
-    patterns = {   -- List of Lua patterns matching image file names
+    patterns = { -- List of Lua patterns matching image file names
       '.*%.png$',
       '.*%.jpg$',
       '.*%.jpeg$',
@@ -118,14 +118,12 @@ require('nvim-tree-preview').setup {
       '.*%.pdf$', -- (known to have issues)
     },
   },
-  on_open = nil,          -- fun(win: number, buf: number) called when the preview window is opened
-  on_close = nil,         -- fun() called when the preview window is closed
+  on_open = nil, -- fun(win: number, buf: number) called when the preview window is opened
+  on_close = nil, -- fun() called when the preview window is closed
   watch = {
-    event = 'CursorMoved' -- 'CursorMoved'|'CursorHold'. Event to use to update the preview in watch mode
+    event = 'CursorMoved', -- 'CursorMoved'|'CursorHold'. Event to use to update the preview in watch mode
   },
 }
-
-
 
 require('nvim-tree').setup {
   sync_root_with_cwd = true,
@@ -141,25 +139,25 @@ require('nvim-tree').setup {
       return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
-    local preview = require('nvim-tree-preview')
+    -- local preview = require('nvim-tree-preview')
 
-    vim.keymap.set('n', 'P', preview.watch, opts 'Preview (Watch)')
-    vim.keymap.set('n', '<Esc>', preview.unwatch, opts 'Close Preview/Unwatch')
-    -- NOTE: consider these bindings?
-    vim.keymap.set('n', '<C-f>', function() return preview.scroll(4) end, opts 'Scroll Down')
-    vim.keymap.set('n', '<C-b>', function() return preview.scroll(-4) end, opts 'Scroll Up')
+    -- vim.keymap.set('n', 'P', preview.watch, opts 'Preview (Watch)')
+    -- vim.keymap.set('n', '<Esc>', preview.unwatch, opts 'Close Preview/Unwatch')
+    -- -- NOTE: consider these bindings?
+    -- vim.keymap.set('n', '<C-f>', function() return preview.scroll(4) end, opts 'Scroll Down')
+    -- vim.keymap.set('n', '<C-b>', function() return preview.scroll(-4) end, opts 'Scroll Up')
 
-    -- Option A: Smart tab behavior: Only preview files, expand/collapse directories (recommended)
-    vim.keymap.set('n', '<Tab>', function()
-      local ok, node = pcall(api.tree.get_node_under_cursor)
-      if ok and node then
-        if node.type == 'directory' then
-          api.node.open.edit()
-        else
-          preview.node(node, { toggle_focus = true })
-        end
-      end
-    end, opts 'Preview')
+    -- -- Option A: Smart tab behavior: Only preview files, expand/collapse directories (recommended)
+    -- vim.keymap.set('n', '<Tab>', function()
+    --   local ok, node = pcall(api.tree.get_node_under_cursor)
+    --   if ok and node then
+    --     if node.type == 'directory' then
+    --       api.node.open.edit()
+    --     else
+    --       preview.node(node, { toggle_focus = true })
+    --     end
+    --   end
+    -- end, opts 'Preview')
 
     -- Option B: Simple tab behavior: Always preview
     -- vim.keymap.set('n', '<Tab>', preview.node_under_cursor, opts 'Preview')
