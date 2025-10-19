@@ -1,3 +1,4 @@
+
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 { inputs }:
 final: prev:
@@ -87,14 +88,17 @@ let
         src = pkgs.fetchFromGitHub {
           owner = "nxuv";
           repo = "just.nvim";
-          rev = "07988f07453e0e5984c2586eb69a815fca7876d0";
-          hash = "sha256-I5av3Hp+zrW0XNJn4B0Fjg0l0aQfcEJcAQhUubYYb+w=";
+          rev = "daf68f3babfef658d7adb18b41efbfec63927feb";
+          hash = "sha256-o7mZnHS03qyclkR2/wy2mTz5P+1R995ja6D1gBpdWjM=";
         };
         dontBuild = true;
         dontCheck = true;
         dependencies = [
           JsFunc
           pkgs.vimPlugins.plenary-nvim
+          pkgs.vimPlugins.telescope-nvim
+          pkgs.vimPlugins.fidget-nvim
+          pkgs.vimPlugins.nvim-notify
         ];
       };
 
