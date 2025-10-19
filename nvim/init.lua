@@ -180,35 +180,36 @@ mymap('n', '<Space>tn', '<CMD>lua toggle_number()<CR>')
 mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
 mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 
--- local border = {
---   { '╭', 'FloatBorder' },
---   { '─', 'FloatBorder' },
---   { '╮', 'FloatBorder' },
---   { '│', 'FloatBorder' },
---   { '╯', 'FloatBorder' },
---   { '─', 'FloatBorder' },
---   { '╰', 'FloatBorder' },
---   { '│', 'FloatBorder' },
--- }
--- local hover_active = false -- State to track if hover is active
--- local function toggle_hover()
---   if hover_active then
---     vim.lsp.buf.clear_references() -- This clears the hover window
---     hover_active = false
---   else
---     local opts = {
---       border = border,
---       focusable = true,
---       style = 'minimal',
---       relative = 'cursor',
---       height = 30,
---       width = 120,
---     }
---     vim.lsp.buf.hover(opts)
---     hover_active = true
---   end
--- end
--- mymap('n', 'K', toggle_hover)
+local border = {
+  { '╭', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╮', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+  { '╯', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╰', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+}
+local hover_active = false -- State to track if hover is active
+local function toggle_hover()
+  if hover_active then
+    vim.lsp.buf.clear_references() -- This clears the hover window
+    hover_active = false
+  else
+    local opts = {
+      border = border,
+      focusable = true,
+      focus = true,
+      style = 'minimal',
+      relative = 'cursor',
+      height = 30,
+      width = 120,
+    }
+    vim.lsp.buf.hover(opts)
+    hover_active = true
+  end
+end
+mymap('n', 'K', toggle_hover)
 
 -- local hover_active = false -- State to track if hover is active
 -- local float_win_id = nil -- Window ID for the hover window
