@@ -243,11 +243,6 @@ telescope.setup {
 telescope.load_extension('fzy_native')
 -- telescope.load_extension('smart_history')
 
-local telescope = require('telescope')
-local pickers = require('telescope.pickers')
-local finders = require('telescope.finders')
-local sorters = require('telescope.sorters')
-
 local function parse_justfile_tasks()
   local tasks = {}
   local handle = io.popen('just --list 2>/dev/null') -- Run just command
@@ -271,6 +266,7 @@ end
 local terminal_bufnr = nil
 
 local function open_terminal(command)
+  local current_bufnr = vim.api.nvim_get_current_buf() -- Save the current buffer number
   -- vim.print('terminal_bufnr:', terminal_bufnr)
   -- vim.print('is valid:', terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr))
   if terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr) then
@@ -287,6 +283,7 @@ local function open_terminal(command)
 
   -- Register the new terminal buffer number
   terminal_bufnr = vim.api.nvim_get_current_buf()
+  vim.api.nvim_set_current_buf(current_bufnr)
 end
 
 local function select_justfile_task()
