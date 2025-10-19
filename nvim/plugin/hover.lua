@@ -36,14 +36,14 @@ vim.keymap.set('n', 'gK', function()
   require('hover').enter()
 end, { desc = 'hover.nvim (enter)' })
 
-vim.keymap.set('n', '<C-p>', function()
-  require('hover').switch('previous')
-end, { desc = 'hover.nvim (previous source)' })
-
-vim.keymap.set('n', '<C-n>', function()
-  require('hover').switch('next')
-end, { desc = 'hover.nvim (next source)' })
-
+-- vim.keymap.set('n', '<C-p>', function()
+--   require('hover').switch('previous')
+-- end, { desc = 'hover.nvim (previous source)' })
+--
+-- vim.keymap.set('n', '<C-n>', function()
+--   require('hover').switch('next')
+-- end, { desc = 'hover.nvim (next source)' })
+--
 -- Mouse support
 vim.keymap.set('n', '<MouseMove>', function()
   require('hover').mouse()
