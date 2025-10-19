@@ -87,8 +87,8 @@ let
         src = pkgs.fetchFromGitHub {
           owner = "nxuv";
           repo = "just.nvim";
-          rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
-          hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
+          rev = "07988f07453e0e5984c2586eb69a815fca7876d0";
+          hash = "sha256-I5av3Hp+zrW0XNJn4B0Fjg0l0aQfcEJcAQhUubYYb+w=";
         };
         dontBuild = true;
         dontCheck = true;
