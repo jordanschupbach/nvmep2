@@ -243,6 +243,11 @@ telescope.setup {
 telescope.load_extension('fzy_native')
 -- telescope.load_extension('smart_history')
 
+local telescope = require('telescope')
+local pickers = require('telescope.pickers')
+local finders = require('telescope.finders')
+local sorters = require('telescope.sorters')
+
 local function parse_justfile_tasks()
   local tasks = {}
   local handle = io.popen('just --list 2>/dev/null') -- Run just command
@@ -261,6 +266,27 @@ local function parse_justfile_tasks()
     handle:close()
   end
   return tasks
+end
+
+local terminal_bufnr = nil
+
+local function open_terminal(command)
+  vim.print('terminal_bufnr:', terminal_bufnr)
+  vim.print('is valid:', terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr))
+  if terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr) then
+    vim.cmd('bdelete ' .. terminal_bufnr) -- Close the existing terminal buffer
+  end
+
+  vim.cmd('j')
+  vim.cmd('j')
+  vim.cmd('j')
+  vim.cmd('j')
+  vim.cmd('j')
+  vim.cmd('belowright split')
+  vim.cmd('terminal ' .. command) -- Run the command in the terminal
+
+  -- Register the new terminal buffer number
+  terminal_bufnr = vim.api.nvim_get_current_buf()
 end
 
 local function select_justfile_task()
@@ -286,13 +312,15 @@ local function select_justfile_task()
       attach_mappings = function(_, map)
         map('i', '<CR>', function(prompt_bufnr)
           local selection = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
-          print('Selected task: ' .. selection.value)
-          require('telescope.actions').close(prompt_bufnr) -- Close Telescope
+          require('telescope.actions').close(prompt_bufnr)
+          open_terminal('just ' .. selection.value) -- Open the terminal with the command
         end)
         return true
       end,
     })
     :find()
 end
+
+-- select_justfile_task()
 
 vim.api.nvim_create_user_command('JustSelect', select_justfile_task, {})
