@@ -201,9 +201,11 @@ local function toggle_hover()
       focusable = true,
       focus = true,
       style = 'minimal',
-      relative = 'cursor',
       height = 30,
       width = 120,
+      title_pos = 'left',
+      relative = 'cursor',
+      anchor_bias = 'above',
     }
     vim.lsp.buf.hover(opts)
     hover_active = true
