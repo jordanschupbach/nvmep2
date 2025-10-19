@@ -210,77 +210,77 @@ mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 -- end
 -- mymap('n', 'K', toggle_hover)
 
-local hover_active = false -- State to track if hover is active
-local float_win_id = nil -- Window ID for the hover window
-local original_win_id = nil -- Store original window ID for context switch
-
--- Custom border for LSP hover
-local border = {
-  { '╭', 'FloatBorder' },
-  { '─', 'FloatBorder' },
-  { '╮', 'FloatBorder' },
-  { '│', 'FloatBorder' },
-  { '╯', 'FloatBorder' },
-  { '─', 'FloatBorder' },
-  { '╰', 'FloatBorder' },
-  { '│', 'FloatBorder' },
-}
-
--- Function to show/hide hover information with a custom border
-local function toggle_hover()
-  if hover_active and float_win_id then
-    -- If hover is active, close it and reset the state
-    pcall(vim.api.nvim_win_close, float_win_id, true) -- Close the hover window safely
-    hover_active = false
-    float_win_id = nil
-    -- Return focus to the original window
-    if original_win_id then
-      vim.api.nvim_set_current_win(original_win_id)
-    end
-  else
-    -- Store the original window ID
-    original_win_id = vim.api.nvim_get_current_win()
-
-    -- If hover is not active, get hover information
-    vim.lsp.buf_request(0, 'textDocument/hover', vim.lsp.util.make_position_params(), function(err, result)
-      if err or not result or not result.contents then
-        return
-      end
-
-      -- Format the contents for open_floating_preview
-      local contents = {}
-
-      if type(result.contents) == 'table' then
-        for _, item in ipairs(result.contents) do
-          if type(item) == 'string' then
-            table.insert(contents, item)
-          elseif item.value then
-            table.insert(contents, item.value) -- Use the value field if available
-          end
-        end
-      elseif type(result.contents) == 'string' then
-        table.insert(contents, result.contents)
-      end
-
-      -- Open the hover window with the formatted content
-      float_win_id = vim.lsp.util.open_floating_preview(contents, 'markdown', {
-        border = border,
-        focusable = true,
-        style = 'minimal',
-        relative = 'cursor',
-        height = 10,
-        width = 30,
-      })
-      hover_active = true
-
-      -- Focus on the hover window
-      vim.api.nvim_set_current_win(float_win_id)
-    end)
-  end
-end
-
--- Map the key to the toggle hover function
-mymap('n', 'K', toggle_hover)
+-- local hover_active = false -- State to track if hover is active
+-- local float_win_id = nil -- Window ID for the hover window
+-- local original_win_id = nil -- Store original window ID for context switch
+--
+-- -- Custom border for LSP hover
+-- local border = {
+--   { '╭', 'FloatBorder' },
+--   { '─', 'FloatBorder' },
+--   { '╮', 'FloatBorder' },
+--   { '│', 'FloatBorder' },
+--   { '╯', 'FloatBorder' },
+--   { '─', 'FloatBorder' },
+--   { '╰', 'FloatBorder' },
+--   { '│', 'FloatBorder' },
+-- }
+--
+-- -- Function to show/hide hover information with a custom border
+-- local function toggle_hover()
+--   if hover_active and float_win_id then
+--     -- If hover is active, close it and reset the state
+--     pcall(vim.api.nvim_win_close, float_win_id, true) -- Close the hover window safely
+--     hover_active = false
+--     float_win_id = nil
+--     -- Return focus to the original window
+--     if original_win_id then
+--       vim.api.nvim_set_current_win(original_win_id)
+--     end
+--   else
+--     -- Store the original window ID
+--     original_win_id = vim.api.nvim_get_current_win()
+--
+--     -- If hover is not active, get hover information
+--     vim.lsp.buf_request(0, 'textDocument/hover', vim.lsp.util.make_position_params(), function(err, result)
+--       if err or not result or not result.contents then
+--         return
+--       end
+--
+--       -- Format the contents for open_floating_preview
+--       local contents = {}
+--
+--       if type(result.contents) == 'table' then
+--         for _, item in ipairs(result.contents) do
+--           if type(item) == 'string' then
+--             table.insert(contents, item)
+--           elseif item.value then
+--             table.insert(contents, item.value) -- Use the value field if available
+--           end
+--         end
+--       elseif type(result.contents) == 'string' then
+--         table.insert(contents, result.contents)
+--       end
+--
+--       -- Open the hover window with the formatted content
+--       float_win_id = vim.lsp.util.open_floating_preview(contents, 'markdown', {
+--         border = border,
+--         focusable = true,
+--         style = 'minimal',
+--         relative = 'cursor',
+--         height = 10,
+--         width = 30,
+--       })
+--       hover_active = true
+--
+--       -- Focus on the hover window
+--       vim.api.nvim_set_current_win(float_win_id)
+--     end)
+--   end
+-- end
+--
+-- -- Map the key to the toggle hover function
+-- mymap('n', 'K', toggle_hover)
 
 mymap('n', ']e', '<CMD>lua vim.diagnostic.goto_next()<CR>')
 mymap('n', 'g:', '<CMD>term<CR>')
