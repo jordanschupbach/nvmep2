@@ -4,6 +4,7 @@ end
 vim.g.did_load_telescope_plugin = true
 
 local telescope = require('telescope')
+local pickers = require('telescope.pickers')
 local actions = require('telescope.actions')
 local actions_state = require('telescope.actions.state')
 
@@ -266,7 +267,7 @@ local function select_justfile_task()
     print('No tasks found.')
     return
   end
-  telescope.pickers
+  pickers
     .new({}, {
       prompt_title = 'Select a Justfile Task',
       finder = telescope.finders.new_table {
