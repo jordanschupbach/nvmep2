@@ -266,7 +266,8 @@ end
 local terminal_bufnr = nil
 
 local function open_terminal(command)
-  local current_bufnr = vim.api.nvim_get_current_buf() -- Save the current buffer number
+  -- local current_bufnr = vim.api.nvim_get_current_buf() -- Save the current buffer number
+  local current_winid = vim.api.nvim_get_current_win() -- Save the current window ID
   -- vim.print('terminal_bufnr:', terminal_bufnr)
   -- vim.print('is valid:', terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr))
   if terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr) then
@@ -283,7 +284,7 @@ local function open_terminal(command)
 
   -- Register the new terminal buffer number
   terminal_bufnr = vim.api.nvim_get_current_buf()
-  vim.api.nvim_set_current_buf(current_bufnr)
+  vim.api.nvim_set_current_win(current_winid)
 end
 
 local function select_justfile_task()
