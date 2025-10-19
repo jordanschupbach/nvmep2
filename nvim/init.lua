@@ -180,7 +180,6 @@ mymap('n', '<Space>tn', '<CMD>lua toggle_number()<CR>')
 mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
 mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 
-vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#5E81AC', bg = '#3B4252' })
 local border = {
   { '╭', 'FloatBorder' },
   { '─', 'FloatBorder' },
@@ -212,7 +211,7 @@ local function toggle_hover()
     hover_active = true
   end
 end
-mymap('n', 'K', toggle_hover)
+-- mymap('n', 'K', toggle_hover)
 
 -- local hover_active = false -- State to track if hover is active
 -- local float_win_id = nil -- Window ID for the hover window

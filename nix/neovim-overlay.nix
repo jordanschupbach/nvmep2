@@ -1,11 +1,13 @@
-
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{inputs}: final: prev:
-with final.pkgs.lib; let
+{ inputs }:
+final: prev:
+with final.pkgs.lib;
+let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
-  mkNvimPlugin = src: pname:
+  mkNvimPlugin =
+    src: pname:
     pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
@@ -37,84 +39,83 @@ with final.pkgs.lib; let
   #   optional = <true|false>; # Default: false
   #   ...
   # }
-  all-plugins = let
-    TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
-      name = "telescope-luasnip-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "benfowler";
-        repo = "telescope-luasnip.nvim";
-        rev = "07a2a2936a7557404c782dba021ac0a03165b343";
-        hash = "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=";
+  all-plugins =
+    let
+      TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
+        name = "telescope-luasnip-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "benfowler";
+          repo = "telescope-luasnip.nvim";
+          rev = "07a2a2936a7557404c782dba021ac0a03165b343";
+          hash = "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=";
+        };
       };
-    };
 
-    EasyGrep = pkgs.vimUtils.buildVimPlugin {
-      name = "vim-easygrep";
-      src = pkgs.fetchFromGitHub {
-        owner = "dkprice";
-        repo = "vim-easygrep";
-        rev = "d0c36a77cc63c22648e792796b1815b44164653a";
-        hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
+      EasyGrep = pkgs.vimUtils.buildVimPlugin {
+        name = "vim-easygrep";
+        src = pkgs.fetchFromGitHub {
+          owner = "dkprice";
+          repo = "vim-easygrep";
+          rev = "d0c36a77cc63c22648e792796b1815b44164653a";
+          hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
+        };
       };
-    };
 
-    # https://github.com/NotAShelf/direnv.nvim
-    DirenvNvim = pkgs.vimUtils.buildVimPlugin {
-      name = "direnv";
-      src = pkgs.fetchFromGitHub {
-        owner = "NotAShelf";
-        repo = "direnv.nvim";
-        rev = "4dfc8758a1deab45e37b7f3661e0fd3759d85788";
-        hash = "sha256-KqO8uDbVy4sVVZ6mHikuO+SWCzWr97ZuFRC8npOPJIE=";
+      # https://github.com/NotAShelf/direnv.nvim
+      DirenvNvim = pkgs.vimUtils.buildVimPlugin {
+        name = "direnv";
+        src = pkgs.fetchFromGitHub {
+          owner = "NotAShelf";
+          repo = "direnv.nvim";
+          rev = "4dfc8758a1deab45e37b7f3661e0fd3759d85788";
+          hash = "sha256-KqO8uDbVy4sVVZ6mHikuO+SWCzWr97ZuFRC8npOPJIE=";
+        };
       };
-    };
 
+      # JustNvim = pkgs.vimUtils.buildVimPlugin {
+      #   name = "just-nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "al1-ce";
+      #     repo = "just.nvim";
+      #     rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
+      #     hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
+      #   };
+      # };
 
-    # JustNvim = pkgs.vimUtils.buildVimPlugin {
-    #   name = "just-nvim";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "al1-ce";
-    #     repo = "just.nvim";
-    #     rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
-    #     hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
-    #   };
-    # };
-
-    JsFunc = pkgs.vimUtils.buildVimPlugin {
-      name = "jsfunc-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "al1-ce";
-        repo = "jsfunc.nvim";
-        rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
-        hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
+      JsFunc = pkgs.vimUtils.buildVimPlugin {
+        name = "jsfunc-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "al1-ce";
+          repo = "jsfunc.nvim";
+          rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
+          hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
+        };
       };
-    };
 
-    nvim-tree-preview = pkgs.vimUtils.buildVimPlugin {
-      name = "nvim-tree-preview";
-      src = pkgs.fetchFromGitHub {
-        owner = "b0o";
-        repo = "nvim-tree-preview.lua";
-        rev = "e763de51dca15d65ce4a0b9eca716136ac51b55c";
-        hash = "sha256-7XPYnset01YEtwPUEcS+cXZQwf8h9cARKlgwwCUT3YY=";
+      nvim-tree-preview = pkgs.vimUtils.buildVimPlugin {
+        name = "nvim-tree-preview";
+        src = pkgs.fetchFromGitHub {
+          owner = "b0o";
+          repo = "nvim-tree-preview.lua";
+          rev = "e763de51dca15d65ce4a0b9eca716136ac51b55c";
+          hash = "sha256-7XPYnset01YEtwPUEcS+cXZQwf8h9cARKlgwwCUT3YY=";
+        };
       };
-    };
 
-    # https://github.com/R-nvim/R.nvim
-    R-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "r";
-      src = pkgs.fetchFromGitHub {
-        owner = "R-nvim";
-        repo = "R.nvim";
-        rev = "fef990378e4b5157f23314dca4136bc0079cc2c4";
-        hash = "sha256-KgvK2tR6C97Z1WEUbVNHzAe6QKUg0T5FLB9HwO3eay4=";
+      # https://github.com/R-nvim/R.nvim
+      R-nvim = pkgs.vimUtils.buildVimPlugin {
+        name = "r";
+        src = pkgs.fetchFromGitHub {
+          owner = "R-nvim";
+          repo = "R.nvim";
+          rev = "fef990378e4b5157f23314dca4136bc0079cc2c4";
+          hash = "sha256-KgvK2tR6C97Z1WEUbVNHzAe6QKUg0T5FLB9HwO3eay4=";
+        };
       };
-    };
 
-
-
-  in
-    with pkgs.vimPlugins; [
+    in
+    with pkgs.vimPlugins;
+    [
       # plugins from nixpkgs go in here.
       # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
 
@@ -173,10 +174,11 @@ with final.pkgs.lib; let
       aerial-nvim # https://github.com/stevearc/aerial.nvim
       cmp-buffer # https://github.com/hrsh7th/cmp-buffer/
       cmp-cmdline # https://github.com/hrsh7th/cmp-cmdline
-      cmp-cmdline-history #
+      cmp-cmdline-history
       cmp-nvim-lsp # https://github.com/hrsh7th/cmp-nvim-lsp/
       cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
-      cmp-nvim-lua #https://github.com/hrsh7th/cmp-nvim-lua/
+      cmp-nvim-lua # https://github.com/hrsh7th/cmp-nvim-lua/
+      hover-nvim # https://github.com/lewis6991/hover.nvim
       cmp-path # https://github.com/hrsh7th/cmp-path/
       cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip/
       codecompanion-nvim # https://github.com/olimorris/codecompanion.nvim
@@ -293,7 +295,8 @@ with final.pkgs.lib; let
     # # rPackages.languageserver
     # # rPackages.languageserversetup
   ];
-in {
+in
+{
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {
