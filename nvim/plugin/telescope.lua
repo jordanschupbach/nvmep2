@@ -271,17 +271,17 @@ end
 local terminal_bufnr = nil
 
 local function open_terminal(command)
-  vim.print('terminal_bufnr:', terminal_bufnr)
-  vim.print('is valid:', terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr))
+  -- vim.print('terminal_bufnr:', terminal_bufnr)
+  -- vim.print('is valid:', terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr))
   if terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr) then
     vim.cmd('bdelete ' .. terminal_bufnr) -- Close the existing terminal buffer
   end
 
-  vim.cmd('j')
-  vim.cmd('j')
-  vim.cmd('j')
-  vim.cmd('j')
-  vim.cmd('j')
+  vim.cmd('wincmd j')
+  vim.cmd('wincmd j')
+  vim.cmd('wincmd j')
+  vim.cmd('wincmd j')
+  vim.cmd('wincmd j')
   vim.cmd('belowright split')
   vim.cmd('terminal ' .. command) -- Run the command in the terminal
 

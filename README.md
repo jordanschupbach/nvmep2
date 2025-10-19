@@ -1,3 +1,1 @@
-# NVMep2
-
-A neovim distribution
+# NVMep2 A neovim distribution
