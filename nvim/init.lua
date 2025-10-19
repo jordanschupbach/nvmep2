@@ -181,6 +181,10 @@ mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
 mymap('n', 'I', '<CMD>lua show_line_diagnostics()<CR>')
 -- mymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
 
+local hover_active = false -- State to track if hover is active
+local hover_bufnr = nil -- Buffer number for the hover window
+
+-- Custom border for LSP hover
 local border = {
   { '╭', 'FloatBorder' },
   { '─', 'FloatBorder' },
@@ -192,27 +196,26 @@ local border = {
   { '│', 'FloatBorder' },
 }
 
-local hover_active = false -- State to track if hover is active
-
 -- Function to show/hide hover information with a custom border
 local function toggle_hover()
-  if hover_active then
-    -- If hover is currently active, close it and reset the state
-    vim.lsp.buf.clear_references() -- This clears the hover window
+  if hover_active and hover_bufnr then
+    -- If hover is active, close it and reset the state
+    vim.api.nvim_win_close(hover_bufnr, true) -- Close the hover window
     hover_active = false
   else
     -- If hover is not active, show it and set the state
     local opts = {
       border = border,
-      focusable = false,
+      focusable = true,
       style = 'minimal',
       relative = 'cursor',
-      height = 30,
-      width = 80,
+      height = 10,
+      width = 30,
     }
-    vim.lsp.buf.hover(opts)
+
+    -- Open the hover window and get the buffer number
+    hover_bufnr = vim.lsp.util.open_floating_preview(vim.lsp.buf.hover(), 'markdown', opts)
     hover_active = true
-    -- Optionally: You can use a timer to close it after some time
   end
 end
 
