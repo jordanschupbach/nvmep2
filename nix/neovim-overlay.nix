@@ -1,4 +1,3 @@
-
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 { inputs }:
 final: prev:
@@ -73,34 +72,45 @@ let
         };
       };
 
-      JsFunc = pkgs.vimUtils.buildVimPlugin {
+      # https://github.com/chrisgrieser/nvim-justice
+      Justice = pkgs.vimUtils.buildVimPlugin {
         name = "jsfunc-nvim";
         src = pkgs.fetchFromGitHub {
-          owner = "nxuv";
-          repo = "jsfunc.nvim";
-          rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
-          hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
+          owner = "chrisgrieser";
+          repo = "nvim-justice";
+          rev = "1335a7eacc7766fc933e5e3ea2f37d324d478431";
+          hash = "sha256-bfHZl0n8ig0PL4TW9AcAur4BH/iO6h8nELZRztNVxLU=";
         };
       };
 
-      JustNvim = pkgs.vimUtils.buildVimPlugin {
-        name = "just-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "nxuv";
-          repo = "just.nvim";
-          rev = "daf68f3babfef658d7adb18b41efbfec63927feb";
-          hash = "sha256-o7mZnHS03qyclkR2/wy2mTz5P+1R995ja6D1gBpdWjM=";
-        };
-        dontBuild = true;
-        dontCheck = true;
-        dependencies = [
-          JsFunc
-          pkgs.vimPlugins.plenary-nvim
-          pkgs.vimPlugins.telescope-nvim
-          pkgs.vimPlugins.fidget-nvim
-          pkgs.vimPlugins.nvim-notify
-        ];
-      };
+      # JsFunc = pkgs.vimUtils.buildVimPlugin {
+      #   name = "jsfunc-nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "nxuv";
+      #     repo = "jsfunc.nvim";
+      #     rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
+      #     hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
+      #   };
+      # };
+
+      # JustNvim = pkgs.vimUtils.buildVimPlugin {
+      #   name = "just-nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "nxuv";
+      #     repo = "just.nvim";
+      #     rev = "daf68f3babfef658d7adb18b41efbfec63927feb";
+      #     hash = "sha256-o7mZnHS03qyclkR2/wy2mTz5P+1R995ja6D1gBpdWjM=";
+      #   };
+      #   dontBuild = true;
+      #   dontCheck = true;
+      #   dependencies = [
+      #     JsFunc
+      #     pkgs.vimPlugins.plenary-nvim
+      #     pkgs.vimPlugins.telescope-nvim
+      #     pkgs.vimPlugins.fidget-nvim
+      #     pkgs.vimPlugins.nvim-notify
+      #   ];
+      # };
 
       nvim-tree-preview = pkgs.vimUtils.buildVimPlugin {
         name = "nvim-tree-preview";
@@ -132,8 +142,9 @@ let
       R-nvim
       DirenvNvim
       TelescopeLuasnip
-      JsFunc
-      JustNvim
+      Justice
+      # JsFunc
+      # JustNvim
       EasyGrep
       # nvim-tree-preview
       # nvim-luadev
