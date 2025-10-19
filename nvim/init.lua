@@ -192,21 +192,32 @@ local border = {
   { '│', 'FloatBorder' },
 }
 
--- Function to show hover information with a custom border
-local function show_hover()
-  local opts = {
-    border = border,
-    focusable = false,
-    style = 'minimal',
-    relative = 'cursor',
-    height = 10,
-    width = 30,
-  }
-  vim.lsp.buf.hover(opts)
+local hover_active = false -- State to track if hover is active
+
+-- Function to show/hide hover information with a custom border
+local function toggle_hover()
+  if hover_active then
+    -- If hover is currently active, close it and reset the state
+    vim.lsp.buf.clear_references() -- This clears the hover window
+    hover_active = false
+  else
+    -- If hover is not active, show it and set the state
+    local opts = {
+      border = border,
+      focusable = false,
+      style = 'minimal',
+      relative = 'cursor',
+      height = 30,
+      width = 80,
+    }
+    vim.lsp.buf.hover(opts)
+    hover_active = true
+    -- Optionally: You can use a timer to close it after some time
+  end
 end
 
--- Map the key to the new hover function
-mymap('n', 'K', show_hover)
+-- Map the key to the toggle hover function
+mymap('n', 'K', toggle_hover)
 
 mymap('n', ']e', '<CMD>lua vim.diagnostic.goto_next()<CR>')
 mymap('n', 'g:', '<CMD>term<CR>')
