@@ -352,7 +352,7 @@ mymap('n', '<Space>tgc', '<CMD>Telescope git_commits<CR>')
 mymap('n', '<C-tab>', '<CMD>tabnext<CR>')
 mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
 
-mymap('n', '<Space>uo', vim.ui.open(vim.fn.expand('%')))
+mymap('n', '<Space>uo', '<CMD>lua vim.ui.open(vim.fn.expand("%"))<CR>')
 
 -- }}} Base Key mappings
 
