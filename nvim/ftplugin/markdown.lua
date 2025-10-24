@@ -55,3 +55,6 @@ vim.defer_fn(function()
     -- vim.print('markdownlint-cli2 is not installed. Please install it to enable markdown linting.')
   end
 end, 1000)
+
+require('otter').activate { 'r' }
+-- require('otter').activate { 'r', 'python', 'bash' }
