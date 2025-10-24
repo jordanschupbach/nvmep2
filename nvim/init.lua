@@ -498,4 +498,13 @@ vim.api.nvim_create_user_command('RunJust', function()
     vim.cmd('autocmd! BufLeave quickfix lua vim.fn.win_gotoid(' .. current_window .. ')')
   end
 end, {})
+
+-- Associate .Rmd files with markdown filetype
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.Rmd', '*.rmd' },
+  callback = function()
+    vim.opt.filetype = 'markdown'
+  end,
+})
+
 -- }}} inbox
