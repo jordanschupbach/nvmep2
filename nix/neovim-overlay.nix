@@ -71,6 +71,16 @@ let
           hash = "sha256-KqO8uDbVy4sVVZ6mHikuO+SWCzWr97ZuFRC8npOPJIE=";
         };
       };
+      LivePreviewNvim = pkgs.vimUtils.buildVimPlugin {
+        name = "live-preview-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "brianhuster";
+          repo = "live-preview.nvim";
+          rev = "598672eaf91b38946626677f8e80426e6e7ceccc";
+          hash = "sha256-wtEG5GoXWEIVXOtC7Jp/euDQR7NmttbdI8MbmgIc74Q=";
+        };
+        doCheck = false;
+      };
 
       # # https://github.com/chrisgrieser/nvim-justice
       # Justice = pkgs.vimUtils.buildVimPlugin {
@@ -156,6 +166,7 @@ let
       DirenvNvim
       Telescope
       TelescopeLuasnip
+      LivePreviewNvim
 
       # Justice
       # JsFunc
