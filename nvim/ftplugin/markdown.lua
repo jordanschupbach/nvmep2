@@ -56,5 +56,17 @@ vim.defer_fn(function()
   end
 end, 1000)
 
-require('otter').activate { 'r' }
+local function is_executable(cmd)
+  local handle = io.popen('command -v ' .. cmd .. ' 2>/dev/null')
+  if not handle then
+    return false
+  end
+  local result = handle:read('*a')
+  handle:close()
+  return result ~= ''
+end
+
+if is_executable('R') then
+  require('otter').activate { 'r' }
+end
 -- require('otter').activate { 'r', 'python', 'bash' }
