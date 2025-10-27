@@ -1,6 +1,8 @@
 -- Ensure you have `nvim-lspconfig` installed
 local lspconfig = require('lspconfig')
 
+-- TODO: only config if  bash-language-server is installed...
+
 -- Configure Bash Language Server
 lspconfig.bashls.setup {
   cmd = { 'bash-language-server', 'start' }, -- Command to start the server
