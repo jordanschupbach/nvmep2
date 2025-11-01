@@ -1,12 +1,11 @@
--- Ensure you have `nvim-lspconfig` installed
-local lspconfig = require('lspconfig')
+local root_files = {
+  '.git',
+}
 
--- TODO: only config if  bash-language-server is installed...
-
--- Configure Bash Language Server
-lspconfig.bashls.setup {
-  cmd = { 'bash-language-server', 'start' }, -- Command to start the server
-  filetypes = { 'sh', 'bash' }, -- Specify the file types
-  root_dir = lspconfig.util.root_pattern('.git', vim.fn.getcwd()), -- Define root directory
+vim.lsp.start {
+  name = 'sh',
+  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh', 'bash' },
   settings = {}, -- Add any specific settings if needed
 }
