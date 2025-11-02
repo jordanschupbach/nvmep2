@@ -76,4 +76,4 @@ end
 --   require('otter').activate { 'bash' }
 -- end
 
-require('otter').activate { 'r', 'python', 'bash' }
+-- require('otter').activate { 'r', 'python', 'bash' }
