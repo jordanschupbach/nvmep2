@@ -10,7 +10,7 @@
 --   -- settings = {}, -- Add any specific settings if needed
 --   workspace_required = true,
 -- })
---
--- vim.lsp.enable {
---   'phpactor',
--- }
+
+vim.lsp.enable {
+  'phpactor',
+}
