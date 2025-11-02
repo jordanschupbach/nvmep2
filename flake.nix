@@ -47,6 +47,7 @@
           buildInputs = with pkgs; [
             # Tools for Lua and Nix development, useful for editing files in this repo
 
+            bash-language-server
             lua-language-server
             nil
             stylua

@@ -1,4 +1,6 @@
 
-echo $HOME
+echo "$HOME"
+
+
 
 

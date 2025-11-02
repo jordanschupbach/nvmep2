@@ -66,14 +66,14 @@ local function is_executable(cmd)
   return result ~= ''
 end
 
-if is_executable('R') then
-  require('otter').activate { 'r' }
-end
-if is_executable('python3') or is_executable('python') then
-  require('otter').activate { 'python' }
-end
-if is_executable('bash') then
-  require('otter').activate { 'bash' }
-end
+-- if is_executable('R') then
+--   require('otter').activate { 'r' }
+-- end
+-- if is_executable('python3') or is_executable('python') then
+--   require('otter').activate { 'python' }
+-- end
+-- if is_executable('bash') then
+--   require('otter').activate { 'bash' }
+-- end
 
--- require('otter').activate { 'r', 'python', 'bash' }
+require('otter').activate { 'r', 'python', 'bash' }
