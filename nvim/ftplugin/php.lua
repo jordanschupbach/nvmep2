@@ -16,6 +16,4 @@
 vim.lsp.start {
   name = 'phpactor',
   cmd = { 'phpactor', 'language-server' },
-  filetypes = { 'php' },
-  root_pattern = { '.git' },
 }
