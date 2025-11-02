@@ -1,6 +1,13 @@
 vim.lsp.start {
   name = 'fortls',
-  cmd = { 'fortls' },
+  cmd = {
+    'fortls',
+    '--notify_init',
+    '--hover_signature',
+    '--hover_language=fortran',
+    '--use_signature_help',
+  },
   filetypes = { 'fortran' },
-  root_dir = vim.fs.dirname(vim.fs.find({ '.git' }, { upward = true })[1]),
+  root_markers = { '.fortls', '.git' },
+  settings = {},
 }
