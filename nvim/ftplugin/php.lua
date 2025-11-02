@@ -1,7 +1,12 @@
+local root_files = {
+  '.git',
+}
 
 vim.lsp.start {
   cmd = { 'phpactor', 'language-server' },
   filetypes = { 'php' },
-  root_markers = { '.git', 'composer.json', '.phpactor.json', '.phpactor.yml' },
+  root_markers = { '.git', },
+  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
+  settings = {}, -- Add any specific settings if needed
   -- workspace_required = true,
 }
