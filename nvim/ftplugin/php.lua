@@ -2,7 +2,7 @@ local root_files = {
   '.git',
 }
 
-vim.lsp.start {
+vim.lsp.enable {
   cmd = { 'phpactor', 'language-server' },
   filetypes = { 'php' },
   root_markers = { '.git', },
