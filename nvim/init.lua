@@ -427,6 +427,10 @@ mymap('v', '<A-return>', '<CMD>lua wrapped_slime()<CR><CR>')
 
 -- }}} Slime
 
+-- {{{ Other.nvim
+mymap('n', '<Space>oo', '<CMD>Other<CR>')
+-- }}} Other.nvim
+
 -- }}} Plugin mappings
 
 -- {{{ Statusline active/not_active behavior
