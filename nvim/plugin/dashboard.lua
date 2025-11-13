@@ -20,8 +20,9 @@ local bannertext = {
   '     does, and as a result your code IS GARBAGE.                              ',
   '                                                                              ',
   '     AGAIN.                                                                   ',
-  '                                                                              ',
   '                                               - Linus Torvalds, 2025         ',
+  '                                                                              ',
+  '                                                                              ',
 }
 
 require('dashboard').setup {
