@@ -10,17 +10,18 @@ local bannertext = {
   '                 type  :checkhealth<Enter>     to optimize Nvim               ',
   '                 type  :q<Enter>               to exit                        ',
   '                 type  :help<Enter>            for help                       ',
-  '                                                                              ',
   '                 type  :help news<Enter> to see changes in v0.10              ',
-  '                                                                              ',
   '                         Help poor children in Uganda!                        ',
   '                 type  :help iccf<Enter>       for information                ',
-  '                                                                              ',
-  '                                                                              ',
   '                 type <Space> to see all space bindings                       ',
   '                 type p to open project finder                                ',
   '                                                                              ',
+  '     You copied that function without understanding why it does what it       ',
+  '     does, and as a result your code IS GARBAGE.                              ',
   '                                                                              ',
+  '     AGAIN.                                                                   ',
+  '                                                                              ',
+  '                                               - Linus Torvalds, 2025         ',
 }
 
 require('dashboard').setup {
