@@ -61,5 +61,15 @@ dap.configurations.cpp = {
   },
 }
 
+mymap('n', '<Space>du', '<CMD>lua require"dapui".open()<CR>')
+mymap('n', '<Space>db', '<CMD>DapToggleBreakpoint<CR>')
+mymap('n', '<Space>dd', '<CMD>DapContinue<CR>')
+mymap('n', '<Space>dO', '<CMD>DapStepOut<CR>')
+mymap('n', '<Space>di', '<CMD>DapStepInto<CR>')
+mymap('n', '<Space>do', '<CMD>DapStepOver<CR>')
+mymap('n', '<Space>dC', '<CMD>DapClearBreakpoints<CR>')
+mymap('n', '<Space>dR', '<CMD>DapRestartFrame<CR>')
+mymap('n', '<Space>dP', '<CMD>DapPause<CR>')
+
 -- -- dap.configurations.cpp = dap.configurations.c
 -- -- dap.configurations.rust = dap.configurations.c
