@@ -268,6 +268,8 @@ let
 
   extraPackages = with pkgs; [
     luajit
+    direnv
+    
     # # language servers, etc.
     # lua-language-server
     # nil # nix LSP
