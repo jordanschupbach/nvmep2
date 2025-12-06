@@ -356,7 +356,7 @@ mymap('n', '6', ':tabn6<CR>')
 mymap('n', '7', ':tabn7<CR>')
 mymap('n', '8', ':tabn8<CR>')
 mymap('n', '9', ':tabn9<CR>')
-mymap('n', '<Space>qq', '<CMD>wa<CR><CMD>qa!<CR>')
+-- mymap('n', '<Space>qq', '<CMD>wa<CR><CMD>qa!<CR>')
 mymap('n', '<Space>rr', '<CMD>luafile $MYVIMRC<CR><CMD>ReloadFTPlugins<CR><CMD>echo "Reloaded config"<CR>')
 mymap('n', '<Space>tgc', '<CMD>Telescope git_commits<CR>')
 -- These only work in gvim.... :(
