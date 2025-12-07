@@ -81,7 +81,7 @@ require('leetcode').setup {
   },
 
   keys = {
-    toggle = { 'q' }, ---@type string|string[]
+    -- toggle = { 'q' }, ---@type string|string[]
     confirm = { '<CR>' }, ---@type string|string[]
 
     reset_testcases = 'r', ---@type string
