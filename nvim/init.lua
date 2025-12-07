@@ -77,7 +77,7 @@ opt.colorcolumn = '100'
 -- plugin opts
 
 -- TODO: move to plugin config file
-vim.g.nuake_position = 'top'
+vim.g.nuake_position = 'bottom'
 vim.g.nuake_per_tab = 1
 
 -- {{{ Configure Neovim diagnostic messages
