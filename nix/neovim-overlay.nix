@@ -41,6 +41,17 @@ let
   # }
   all-plugins =
     let
+
+      Nuake = pkgs.vimUtils.buildVimPlugin {
+        name = "nuake";
+        src = pkgs.fetchFromGitHub {
+          owner = "lenowski";
+          repo = "nuake";
+          rev = "9cfa226";
+          hash = "sha256-cmVTjs552eXPMDh95Tgx9wDxwKL+dV+Z9lGlKfG5Osw=";
+        };
+      };
+
       TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
         name = "telescope-luasnip-nvim";
         src = pkgs.fetchFromGitHub {
@@ -162,6 +173,7 @@ let
       # plugins from nixpkgs go in here.
       # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
 
+      Nuake
       R-nvim
       DirenvNvim
       Telescope
@@ -269,7 +281,7 @@ let
   extraPackages = with pkgs; [
     luajit
     direnv
-    
+
     # # language servers, etc.
     # lua-language-server
     # nil # nix LSP
