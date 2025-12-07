@@ -74,6 +74,12 @@ opt.colorcolumn = '100'
 
 -- }}} opts
 
+-- plugin opts
+
+-- TODO: move to plugin config file
+vim.g.nuake_position = 'top'
+vim.g.nuake_per_tab = 1
+
 -- {{{ Configure Neovim diagnostic messages
 
 local function prefix_diagnostic(prefix, diagnostic)
