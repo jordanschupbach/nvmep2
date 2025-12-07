@@ -185,6 +185,7 @@ end
 
 mymap('n', '<A-S-Tab>', '<CMD>bp<CR>')
 mymap('n', '<A-Tab>', '<CMD>bn<CR>')
+mymap('n', '<Space><return>', '<CMD>Nuake<CR>')
 mymap('n', '<Space>bn', '<CMD>bn<CR>')
 mymap('n', '<Space>bp', '<CMD>bp<CR>')
 mymap('n', '<Space>cc', '<CMD>CodeCompanionChat<CR>')
