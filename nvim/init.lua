@@ -57,17 +57,17 @@ opt.nrformats = 'bin,hex' -- 'octal'
 opt.undofile = true
 opt.splitright = true
 opt.splitbelow = true
-opt.cmdheight = 0
-vim.api.nvim_create_autocmd('RecordingEnter', {
-  callback = function()
-    vim.opt.cmdheight = 1
-  end,
-})
-vim.api.nvim_create_autocmd('RecordingLeave', {
-  allback = function()
-    vim.opt.cmdheight = 0
-  end,
-})
+-- opt.cmdheight = 0
+-- vim.api.nvim_create_autocmd('RecordingEnter', {
+--   callback = function()
+--     vim.opt.cmdheight = 1
+--   end,
+-- })
+-- vim.api.nvim_create_autocmd('RecordingLeave', {
+--   allback = function()
+--     vim.opt.cmdheight = 0
+--   end,
+-- })
 
 -- opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
