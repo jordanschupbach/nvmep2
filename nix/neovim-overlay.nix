@@ -253,6 +253,7 @@ let
       nvim-cmp # https://github.com/hrsh7th/nvim-cmp
       nvim-jdtls # https://github.com/mfussenegger/nvim-jdtls
       nvim-navic # https://github.com/SmiteshP/nvim-navic
+      nvim-colorizer-lua # https://github.com/norcalli/nvim-colorizer.lua
       nvim-surround # https://github.com/kylechui/nvim-surround/
       nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
       nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
