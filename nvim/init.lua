@@ -552,6 +552,9 @@ function RunLastCommand()
   end
 end
 
+-- Create a Neovim command called `RunLastCommand`
+vim.api.nvim_create_user_command('RunLastCommand', RunLast, {})
+
 mymap('n', '<Space><Space>', ':RunLastCommand<CR>')
 mymap('n', '<Space>j', ':JustSelect<CR>')
 
