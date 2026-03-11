@@ -544,13 +544,13 @@ vim.api.nvim_create_user_command('RunJust', function()
   end
 end, {})
 
-function JustRun()
+function JustRunF()
   vim.cmd('AsyncRun --silent ' .. 'just run')
 end
 
 -- Create a Neovim command called `RunLastCommand`
-vim.api.nvim_create_user_command('RunLastCommand', function()
-  RunLast()
+vim.api.nvim_create_user_command('JustRun', function()
+  JustRunF()
 end, {})
 
 mymap('n', '<Space><Space>', ':JustRun<CR>')
