@@ -522,6 +522,7 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 -- {{{ inbox
 
 mymap('n', '<Space><Space>', ':JustSelect<CR>')
+
 vim.api.nvim_create_user_command('RunJust', function()
   local file = vim.fn.expand('%:p')
   local filename = vim.fn.fnamemodify(file, ':t')
@@ -541,6 +542,17 @@ vim.api.nvim_create_user_command('RunJust', function()
     vim.cmd('autocmd! BufLeave quickfix lua vim.fn.win_gotoid(' .. current_window .. ')')
   end
 end, {})
+
+function RunLastCommand()
+  local last_command = vim.v.previous_command
+  if last_command ~= '' then
+    vim.api.nvim_exec(last_command, false)
+  else
+    print('No last command found.')
+  end
+end
+
+mymap('n', '<Space><Space>', ':RunLastCommand<CR>')
 
 -- Associate .Rmd files with markdown filetype
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
