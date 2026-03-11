@@ -545,7 +545,7 @@ vim.api.nvim_create_user_command('RunJust', function()
 end, {})
 
 function JustRunF()
-  vim.cmd('AsyncRun --silent ' .. 'just run')
+  vim.cmd('AsyncRun ' .. 'just run')
 end
 
 -- Create a Neovim command called `RunLastCommand`
