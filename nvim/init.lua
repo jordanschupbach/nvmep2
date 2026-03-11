@@ -522,6 +522,7 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 -- {{{ inbox
 
 mymap('n', '<Space><Space>', ':JustSelect<CR>')
+mymap('n', '<Space>z', ':ZenMode<CR>')
 
 vim.api.nvim_create_user_command('RunJust', function()
   local file = vim.fn.expand('%:p')
