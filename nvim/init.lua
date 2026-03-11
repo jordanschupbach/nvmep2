@@ -547,6 +547,7 @@ end, {})
 function RunLast()
   local last_command = vim.v.previous_command
   if last_command ~= '' then
+    vim.print('Running last command: ' .. last_command)
     vim.api.nvim_exec(last_command, false)
   else
     print('No last command found.')
