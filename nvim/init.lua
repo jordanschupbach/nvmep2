@@ -544,13 +544,8 @@ vim.api.nvim_create_user_command('RunJust', function()
   end
 end, {})
 
-function RunLast()
-  local last_command = vim.fn.getreg(':')
-  if last_command ~= '' then
-    vim.api.nvim_exec(last_command, false)
-  else
-    print('No last command found.')
-  end
+function JustRun()
+  vim.cmd('AsyncRun --silent ' .. 'just run')
 end
 
 -- Create a Neovim command called `RunLastCommand`
@@ -558,7 +553,7 @@ vim.api.nvim_create_user_command('RunLastCommand', function()
   RunLast()
 end, {})
 
-mymap('n', '<Space><Space>', ':RunLastCommand<CR>')
+mymap('n', '<Space><Space>', ':JustRun<CR>')
 mymap('n', '<Space>j', ':JustSelect<CR>')
 
 -- Associate .Rmd files with markdown filetype
