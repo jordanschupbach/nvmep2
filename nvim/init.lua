@@ -543,7 +543,7 @@ vim.api.nvim_create_user_command('RunJust', function()
   end
 end, {})
 
-function RunLastCommand()
+function RunLast()
   local last_command = vim.v.previous_command
   if last_command ~= '' then
     vim.api.nvim_exec(last_command, false)
