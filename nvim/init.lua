@@ -553,6 +553,7 @@ function RunLastCommand()
 end
 
 mymap('n', '<Space><Space>', ':RunLastCommand<CR>')
+mymap('n', '<Space>j', ':JustSelect<CR>')
 
 -- Associate .Rmd files with markdown filetype
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
