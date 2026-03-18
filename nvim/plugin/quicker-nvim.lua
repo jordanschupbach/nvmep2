@@ -1,9 +1,9 @@
-vim.keymap.set('n', '<leader>q', function()
+vim.keymap.set('n', '<localleader>q', function()
   require('quicker').toggle()
 end, {
   desc = 'Toggle quickfix',
 })
-vim.keymap.set('n', '<leader>l', function()
+vim.keymap.set('n', '<localleader>l', function()
   require('quicker').toggle { loclist = true }
 end, {
   desc = 'Toggle loclist',
