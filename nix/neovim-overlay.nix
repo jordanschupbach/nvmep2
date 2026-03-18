@@ -212,7 +212,7 @@ let
       markdown-preview-nvim # https://github.com/iamcco/markdown-preview.nvim
       melange-nvim # https://github.com/savq/melange-nvim
       nerdtree # https://github.com/preservim/nerdtree
-      nvim-bqf # https://github.com/kevinhwang91/nvim-bqf
+      # nvim-bqf # https://github.com/kevinhwang91/nvim-bqf
       nvim-dap # https://github.com/mfussenegger/nvim-dap
       nvim-dap-ui # https://github.com/rcarriga/nvim-dap-ui
       nvim-highlight-colors # https://github.com/brenoprata10/nvim-highlight-colors
