@@ -392,6 +392,8 @@ mymap('n', '<C-tab>', '<CMD>tabnext<CR>')
 mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
 
 mymap('n', '<Space>uo', '<CMD>lua vim.ui.open(vim.fn.expand("%"))<CR>')
+mymap('v', 'J', ":m '>+1<CR>gv=gv")
+mymap('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- }}} Base Key mappings
 

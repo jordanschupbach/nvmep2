@@ -252,11 +252,13 @@ let
       neogit # https://github.com/TimUntersberger/neogit/
       nvim-cmp # https://github.com/hrsh7th/nvim-cmp
       nvim-jdtls # https://github.com/mfussenegger/nvim-jdtls
+      nvim-dap-view # https://github.com/igorlfs/nvim-dap-view/
       nvim-navic # https://github.com/SmiteshP/nvim-navic
       nvim-colorizer-lua # https://github.com/norcalli/nvim-colorizer.lua
       nvim-surround # https://github.com/kylechui/nvim-surround/
       nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
       nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua
+      nvim-dap-virtual-text # https://github.com/theHamsta/nvim-dap-virtual-text/
       nvim-treesitter-context # nvim-treesitter-context
       nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
       nvim-treesitter.withAllGrammars
@@ -265,6 +267,7 @@ let
       nvim-unception # nvim-unception
       nvim-web-devicons # https://github.com/nvim-tree/nvim-web-devicons
       plenary-nvim # https://github.com/nvim-lua/plenary.nvim
+      quicker-nvim # https://github.com/stevearc/quicker.nvim/
       smart-splits-nvim # https://github.com/mrjones2014/smart-splits.nvim
       sqlite-lua # https://github.com/kkharji/sqlite.lua
       statuscol-nvim # https://github.com/luukvbaal/statuscol.nvim/
