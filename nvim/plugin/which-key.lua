@@ -3,7 +3,10 @@ require('which-key').setup {
   -- preset = 'helix'
 }
 local wk = require('which-key')
--- 󱪳󰟝󱕘 󱡶󱜚󱜙󱘎󱓞󱓟󱒉󱎯󱍊󱇪󱇫󱁾󱁕󱁊󱁉󰻈󰺛󰸘󰸗󰴻󰴺󰴭󰳆󰱐󰭎󰨡󰨆󰨊󰨈󰧲󰧱󰧰󰧊󰧑󰥨󰥩󰤑󰣙󰣘󰡴󰟁󰜏󰙨󰑣󰒪󰐅󰐁󰌢󰋸󰊢󰅎󰅏󰃤󰂒󰂓󰂖󰂚󰂞⭘
+-- 󱪳󰟝󱕘 󱡶󱜚󱜙󱘎󱓞󱓟󱒉󱎯󱍊󱇪󱇫󱁾󱁕󱁊󱁉󰻈󰺛󰸘󰸗󰴻󰴺󰴭󰳆󰱐󰭎
+-- 󰨡󰨆󰨊󰨈󰧲󰧱󰧰󰧊󰧑󰥨󰥩󰤑󰣙󰣘󰡴󰟁󰜏󰙨󰑣󰒪󰐅󰐁󰌢󰋸󰊢󰅎󰅏󰃤󰂒󰂓󰂖󰂚󰂞
+-- 
+-- ⭘
 wk.add {
   { '<Space>a', group = 'Aerial', icon = '' },
   { '<Space>b', group = 'Buffers' },
@@ -21,5 +24,5 @@ wk.add {
   { '<Space>u', group = 'Ui' },
   { '<Space>w', group = 'Window/Workspace', icon = '󱪳' },
   { '<Space>y', group = 'Snippet' },
-  { '<Space>z', icon = '', command = '<CMD>ZenMode<CR>' },
+  { '<Space>z', '<CMD>ZenMode<CR>', mode = 'n', icon = '' },
 }
