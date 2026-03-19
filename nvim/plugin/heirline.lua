@@ -2672,6 +2672,7 @@ local TabLine = {
   { Separator },
   { TabPages },
   { Separator },
+  { ViMode },
   -- { BufferLine },
 
   { Align },
