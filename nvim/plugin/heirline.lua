@@ -1413,8 +1413,8 @@ local ViMode = {
       t = 'T',
     },
     mode_colors = {
-      n = 'green',
-      i = 'green',
+      n = 'gray',
+      i = 'gray',
       v = 'cyan',
       V = 'cyan',
       ['\22'] = 'cyan',
