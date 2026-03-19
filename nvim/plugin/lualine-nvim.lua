@@ -44,13 +44,15 @@ require('lualine').setup {
       },
     },
   },
+  --  { '%=', color = { fg = '#FF33FF' } }
+  -- '#FF33FF'
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { { '%=', color = { fg = '#FF33FF' } } },
-    lualine_c = { { '%=', color = { fg = '#FF33FF' } } },
-    lualine_x = { { '%=', color = { fg = '#FF33FF' } } },
-    lualine_y = { { '%=', color = { fg = '#FF33FF' } } },
-    lualine_z = { { '%=', color = { fg = '#FF33FF' } } },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
