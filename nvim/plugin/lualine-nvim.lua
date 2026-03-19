@@ -46,42 +46,11 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = {
-      windows_color = {
-        -- Same values as the general color option can be used here.
-        active = 'pink', -- Color for active window.
-        inactive = 'grey', -- Color for inactive window.
-      },
-    },
-    lualine_c = {
-      windows_color = {
-        -- Same values as the general color option can be used here.
-        active = 'pink', -- Color for active window.
-        inactive = 'grey', -- Color for inactive window.
-      },
-    },
-    lualine_x = {
-      windows_color = {
-        -- Same values as the general color option can be used here.
-        active = 'pink', -- Color for active window.
-        inactive = 'grey', -- Color for inactive window.
-      },
-    },
-    lualine_y = {
-
-      windows_color = {
-        -- Same values as the general color option can be used here.
-        active = 'pink', -- Color for active window.
-        inactive = 'grey', -- Color for inactive window.
-      },
-    },
-    lualine_z = {
-      windows_color = {
-        -- Same values as the general color option can be used here.
-        active = 'pink', -- Color for active window.
-        inactive = 'grey', -- Color for inactive window.
-      },
-    },
+    lualine_b = { { '%=', color = { fg = colors.blue, bg = colors.yellow } } },
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
