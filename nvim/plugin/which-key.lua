@@ -16,7 +16,7 @@ wk.add {
   { '<Space>c', group = 'Code', icon = '' },
   { '<Space>d', group = 'Debug', icon = '' },
   { '<Space>e', group = 'Errors', icon = '' },
-  { '<Space>e', group = 'File', icon = '' },
+  { '<Space>f', group = 'File', icon = '' },
   { '<Space>g', group = 'Git/go', icon = '' },
   { '<Space>h', group = 'Help', icon = '' },
   { '<Space>m', group = 'Make', icon = '' },
