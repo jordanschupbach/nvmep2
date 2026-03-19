@@ -2669,10 +2669,10 @@ local TabLine = {
 
   -- { Align },
 
+  { ViMode },
   { Separator },
   { TabPages },
   { Separator },
-  { ViMode },
   -- { BufferLine },
 
   { Align },
