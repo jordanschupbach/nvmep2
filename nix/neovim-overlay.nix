@@ -190,6 +190,7 @@ let
       # orgmode
       # jupytext-nvim
 
+      lualine-nvim # https://github.com/nvim-lualine/lualine.nvim
       nvim-coverage
       neotest # https://github.com/nvim-neotest/neotest
       neotest-testthat
