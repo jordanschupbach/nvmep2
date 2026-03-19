@@ -1,3 +1,16 @@
+local colors = {
+  black = '#282828',
+  white = '#ebdbb2',
+  red = '#fb4934',
+  green = '#b8bb26',
+  blue = '#83a598',
+  yellow = '#fe8019',
+  gray = '#a89984',
+  darkgray = '#3c3836',
+  lightgray = '#504945',
+  inactivegray = '#7c6f64',
+}
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -33,11 +46,42 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
+    lualine_b = {
+      windows_color = {
+        -- Same values as the general color option can be used here.
+        active = 'pink', -- Color for active window.
+        inactive = 'grey', -- Color for inactive window.
+      },
+    },
+    lualine_c = {
+      windows_color = {
+        -- Same values as the general color option can be used here.
+        active = 'pink', -- Color for active window.
+        inactive = 'grey', -- Color for inactive window.
+      },
+    },
+    lualine_x = {
+      windows_color = {
+        -- Same values as the general color option can be used here.
+        active = 'pink', -- Color for active window.
+        inactive = 'grey', -- Color for inactive window.
+      },
+    },
+    lualine_y = {
+
+      windows_color = {
+        -- Same values as the general color option can be used here.
+        active = 'pink', -- Color for active window.
+        inactive = 'grey', -- Color for inactive window.
+      },
+    },
+    lualine_z = {
+      windows_color = {
+        -- Same values as the general color option can be used here.
+        active = 'pink', -- Color for active window.
+        inactive = 'grey', -- Color for inactive window.
+      },
+    },
   },
   inactive_sections = {
     lualine_a = {},
