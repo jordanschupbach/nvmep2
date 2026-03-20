@@ -215,6 +215,7 @@ let
       nerdtree # https://github.com/preservim/nerdtree
       # nvim-bqf # https://github.com/kevinhwang91/nvim-bqf
       nvim-dap # https://github.com/mfussenegger/nvim-dap
+      nvim-dap-python # https://github.com/mfussenegger/nvim-dap-python
       nvim-dap-ui # https://github.com/rcarriga/nvim-dap-ui
       nvim-highlight-colors # https://github.com/brenoprata10/nvim-highlight-colors
       oil-nvim # https://github.com/stevearc/oil.nvim
