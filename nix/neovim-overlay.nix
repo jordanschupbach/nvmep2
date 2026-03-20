@@ -205,6 +205,8 @@ let
       friendly-snippets # https://github.com/rafamadriz/friendly-snippets
       asyncrun-vim # https://github.com/skywind3000/asyncrun.vim
       blink-cmp # https://github.com/Saghen/blink.cmp
+      nvim-dap-vscode-js 
+
       # refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
       nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
       flash-nvim # https://github.com/folke/flash.nvim
