@@ -472,6 +472,21 @@ mymap('v', '<A-return>', '<CMD>lua wrapped_slime()<CR><CR>')
 mymap('n', '<Space>oo', '<CMD>Other<CR>')
 -- }}} Other.nvim
 
+-- {{{ DAP
+
+mymap('n', '<Space>du', '<CMD>lua require"dapui".toggle()<CR>')
+mymap('n', '<Space>db', '<CMD>DapToggleBreakpoint<CR>')
+mymap('n', '<Space>dd', '<CMD>DapContinue<CR>')
+mymap('n', '<Space>dc', '<CMD>DapContinue<CR>')
+mymap('n', '<Space>dO', '<CMD>DapStepOut<CR>')
+mymap('n', '<Space>di', '<CMD>DapStepInto<CR>')
+mymap('n', '<Space>do', '<CMD>DapStepOver<CR>')
+mymap('n', '<Space>dC', '<CMD>DapClearBreakpoints<CR>')
+mymap('n', '<Space>dR', '<CMD>DapRestartFrame<CR>')
+mymap('n', '<Space>dP', '<CMD>DapPause<CR>')
+
+-- }}} DAP
+
 -- }}} Plugin mappings
 
 -- {{{ Statusline active/not_active behavior
