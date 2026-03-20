@@ -8,8 +8,8 @@ vim.lsp.start {
 }
 require('dap-vscode-js').setup {
   -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
-  debugger_path = '/nix/store/d2fsblp1jz3i5c0g902xs4mv1mkigrb4-vscode-js-debug-1.104.0/',
-  -- debugger_cmd = { 'js-debug' }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
+  -- debugger_path = '/nix/store/d2fsblp1jz3i5c0g902xs4mv1mkigrb4-vscode-js-debug-1.104.0/',
+  debugger_cmd = { 'js-debug' }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
   adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
   -- log_file_path = "(stdpath cache)/dap_vscode_js.log" -- Path for file logging
   -- log_file_level = false -- Logging level for output to file. Set to false to disable file logging.
