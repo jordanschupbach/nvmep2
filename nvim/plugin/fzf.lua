@@ -7,9 +7,9 @@ require('fzf-lua').setup {
     -- "aboveleft vnew   : split left
     -- Only valid when using a float window
     -- (i.e. when 'split' is not defined, default)
-    height = 0.60, -- window height
+    height = 1.00, -- window height
     width = 1.00, -- window width
-    row = 0.4, -- window row position (0=top, 1=bottom)
+    row = 0.0, -- window row position (0=top, 1=bottom)
     col = 0.0, -- window col position (0=left, 1=right)
     -- border argument passthrough to nvim_open_win()
     border = 'rounded',
