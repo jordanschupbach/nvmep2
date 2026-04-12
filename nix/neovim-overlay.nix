@@ -248,6 +248,7 @@ let
       copilot-vim # https://github.com/github/copilot.vim/
       diffview-nvim # https://github.com/sindrets/diffview.nvim/
       eyeliner-nvim # https://github.com/jinh0/eyeliner.nvim
+      fzf-lua # https://github.com/ibhagwan/fzf-lua
       gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
       heirline-nvim # https://github.com/rebelot/heirline.nvim/
       lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
