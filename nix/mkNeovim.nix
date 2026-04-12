@@ -26,7 +26,7 @@ with lib;
     # TODO: figure out the scope of these...
     ripgrep
     fzf
-    # luajitPackages.fzf-lua
+    luajitPackages.fzf-lua
 
     # # python
     # mypy
@@ -46,8 +46,7 @@ with lib;
   # Additional lua packages (not plugins), e.g. from luarocks.org.
   # e.g. p: [p.jsregexp]
   extraLuaPackages ? p: [
-
-    pkgs.luajitPackages.fzf-lua
+    # pkgs.luajitPackages.fzf-lua
   ],
   extraPython3Packages ? p: [ ], # Additional python 3 packages
   withPython3 ? true, # Build Neovim with Python 3 support?
