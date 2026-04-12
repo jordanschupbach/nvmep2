@@ -27,6 +27,7 @@ with lib;
     ripgrep
     fzf
     luajitPackages.fzf-lua
+    tree-sitter-grammars.tree-sitter-org-nvim
 
     # # python
     # mypy
