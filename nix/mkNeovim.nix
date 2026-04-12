@@ -26,6 +26,7 @@ with lib;
     # TODO: figure out the scope of these...
     ripgrep
     fzf
+    luajitPackages.fzf-lua
 
     # # python
     # mypy
