@@ -52,6 +52,16 @@ let
         };
       };
 
+      OrgRoam = pkgs.vimUtils.buildVimPlugin {
+        name = "org-roam";
+        src = pkgs.fetchFromGitHub {
+          owner = "jordanschupbach";
+          repo = "org-roam.nvim";
+          rev = "6c21c867b178a80fb4ad243c445545e5583d8232";
+          hash = "";
+        };
+      };
+
       TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
         name = "telescope-luasnip-nvim";
         src = pkgs.fetchFromGitHub {
@@ -188,7 +198,7 @@ let
       # nvim-luadev
       # telescope-ultisnips-nvim
       orgmode
-      org-roam-nvim
+      # org-roam-nvim
       # jupytext-nvim
 
       lualine-nvim # https://github.com/nvim-lualine/lualine.nvim
