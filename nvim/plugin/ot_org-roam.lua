@@ -1,5 +1,5 @@
 require('org-roam').setup {
-  directory = '~/org-roam',
+  directory = '/home/jordan/org-roam',
   -- optional
   org_files = {
     -- '~/org-roam',
