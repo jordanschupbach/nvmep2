@@ -58,7 +58,7 @@ let
           owner = "jordanschupbach";
           repo = "org-roam.nvim";
           rev = "6c21c867b178a80fb4ad243c445545e5583d8232";
-          hash = "";
+          hash = "sha256-K0OnM7PdTT4ypL0IAVWb9R83SDIhgko8j4KBzIkJJNM=";
         };
       };
 
