@@ -199,6 +199,7 @@ let
       # telescope-ultisnips-nvim
       orgmode
       # org-roam-nvim
+      OrgRoam
       # jupytext-nvim
 
       lualine-nvim # https://github.com/nvim-lualine/lualine.nvim
