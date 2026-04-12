@@ -37,7 +37,7 @@ require('fzf-lua').setup {
       wrap = false, -- preview line wrap (fzf's 'wrap|nowrap')
       hidden = false, -- start preview hidden
       vertical = 'down:45%', -- up|down:size
-      horizontal = 'right:60%', -- right|left:size
+      horizontal = 'right:40%', -- right|left:size
       layout = 'flex', -- horizontal|vertical|flex
       flip_columns = 100, -- #cols to switch to horizontal on flex
       -- Only used with the builtin previewer:
