@@ -1,1 +1,1 @@
-require('ibhagwan/fzf-lua').setup {}
+require('fzf-lua').setup {}
