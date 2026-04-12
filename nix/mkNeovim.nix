@@ -47,7 +47,7 @@ with lib;
   # e.g. p: [p.jsregexp]
   extraLuaPackages ? p: [
 
-    luajitPackages.fzf-lua
+    pkgs.luajitPackages.fzf-lua
   ],
   extraPython3Packages ? p: [ ], # Additional python 3 packages
   withPython3 ? true, # Build Neovim with Python 3 support?
