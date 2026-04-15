@@ -1,1 +1,1 @@
-require('hmdfrds/focal.nvim').setup {}
+require('focal').setup {}
