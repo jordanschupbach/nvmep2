@@ -147,7 +147,7 @@ require('nvim-tree').setup {
     end
 
     api.config.mappings.default_on_attach(bufnr)
-    vim.keymap.set('n', 'ctrl-o', open_with_xdg, { buffer = bufnr, desc = 'Open with xdg-open' })
+    vim.keymap.set('n', '<C-o>', open_with_xdg, { buffer = bufnr, desc = 'Open with xdg-open' })
 
     -- local preview = require('nvim-tree-preview')
 
