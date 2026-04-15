@@ -52,6 +52,18 @@ let
         };
       };
 
+      # https://github.com/hmdfrds/focal.nvim
+
+      Focal = pkgs.vimUtils.buildVimPlugin {
+        name = "nuake";
+        src = pkgs.fetchFromGitHub {
+          owner = "hmdfrds";
+          repo = "focal.nvim";
+          rev = "25c946b9ba57c394fbb8644f084a4cd6d0004e54";
+          hash = "sha256-tlTN4RTsKnj2TiSEM+OfMs02zS92P/jy7qK0LvmsFfI=";
+        };
+      };
+
       # OrgRoam = pkgs.vimUtils.buildVimPlugin {
       #   name = "org-roam";
       #   src = pkgs.fetchFromGitHub {
@@ -194,6 +206,7 @@ let
       # JsFunc
       # JustNvim
       EasyGrep
+      Focal
       # nvim-tree-preview
       # nvim-luadev
       # telescope-ultisnips-nvim
