@@ -1,4 +1,4 @@
-require('image').setup {}
+-- require('image').setup {}
 
 -- require("image").setup({
 --   backend = "kitty", -- or "ueberzug" or "sixel"
