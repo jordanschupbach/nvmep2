@@ -1,31 +1,17 @@
-
 local function get_jdtls_path()
-  -- local handle
-  -- -- Detect if the system is running Nix
-  -- if os.execute("command -v nix") then
-  --   handle = io.popen("nix eval --raw nixpkgs.jdt-language-server")
-  -- else
-  --   handle = io.popen("which jdtls")
-  -- end
-  -- local path = handle:read("*a")
-  -- handle:close()
-  -- return path:gsub("\n", "") -- Remove trailing newline
-  return "/nix/store/vdqlz8dqd3n8iq24j4vbypi8fbjrggcc-jdt-language-server-1.47.0/bin/jdtls"
+  local path = os.getenv('JDTLS_PATH')
+  if not path or path == '' then
+    error('JDTLS_PATH is not set')
+  end
+  return path
 end
 
 local function get_java_path()
-  -- vim.print("Getting Java path...")
-  -- local handle
-  -- if os.execute("command -v nix") then
-  --   handle = io.popen("find /nix/store/ -maxdepth 1 -type d -name '*openjdk*' -print -quit")
-  -- else
-  --   handle = io.popen("which java")
-  -- end
-  -- local path = handle:read("*a")
-  -- handle:close()
-  -- vim.print("Obtained path: " .. path:gsub("\n", ""))
-  -- return path:gsub("\n", "") -- Remove trailing newline
-  return "/nix/store/bgskkrbv4gi5fz3w7sh031xxmi39ipc2-openjdk-21.0.7+6/bin/java"
+  local path = os.getenv('JAVA_PATH')
+  if not path or path == '' then
+    error('JAVA_PATH is not set')
+  end
+  return path
 end
 
 local jdtls_path = get_jdtls_path()
@@ -36,24 +22,18 @@ local java_path = get_java_path()
 -- end
 
 -- local capabilities = require("plugins.configs.lspconfig").capabilities
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
 -- Get the jdtls path and calculate the install path
 -- local jdtls_path = get_jdtls_path()
 -- local java_path = get_java_path()
-local install_path = vim.fn.fnamemodify(jdtls_path, ":h:h") -- Two directories back
+local install_path = vim.fn.fnamemodify(jdtls_path, ':h:h') -- Two directories back
 
 -- local jar_path = "/home/jordan/Downloads/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar"
-local jar_path = "/nix/store/l05jjpqa7wam5xyi93fxw0l1rwn3ix5n-jdt-language-server-1.40.0/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
--- local jar_path = install_path .. "/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
--- local configuration_path = "/home/jordan/Downloads/config_linux/"
-local configuration_path = "/nix/store/l05jjpqa7wam5xyi93fxw0l1rwn3ix5n-jdt-language-server-1.40.0/share/java/jdtls/config_linux/"
--- local configuration_path = install_path .. "/share/java/jdtls/config_linux"
--- Calculate workspace dir
---                  home/jordan/.local/share/nvim
-local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
+local jar_path = jdtls_path .. '/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar'
+local configuration_path = jdtls_path .. '/share/java/jdtls/config_linux/'
+local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. project_name
 -- local workspace_dir = "/home/jordan/.local/share/nvim" .. "/site/java/workspace-root/" .. project_name
-
 
 -- Get the debug adapter install path (you can keep using mason for this if preferred)
 -- local debug_install_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
@@ -80,26 +60,29 @@ local config = {
     '-Dlog.level=ALL',
     '-Xmx1g',
     '--add-modules=ALL-SYSTEM',
-    '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-    '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+    '--add-opens',
+    'java.base/java.util=ALL-UNNAMED',
+    '--add-opens',
+    'java.base/java.lang=ALL-UNNAMED',
 
     -- 💀
-    '-jar', jar_path,
+    '-jar',
+    jar_path,
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
     -- Must point to the                                                     Change this to
     -- eclipse.jdt.ls installation                                           the actual version
 
-
     -- 💀
-    '-configuration', configuration_path,
+    '-configuration',
+    configuration_path,
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
     -- Must point to the                      Change to one of `linux`, `win` or `mac`
     -- eclipse.jdt.ls installation            Depending on your system.
 
-
     -- 💀
     -- See `data directory configuration` section in the README
-    '-data', workspace_dir
+    '-data',
+    workspace_dir,
   },
 
   -- 💀
@@ -108,14 +91,13 @@ local config = {
   --
   -- vim.fs.root requires Neovim 0.10.
   -- If you're using an earlier version, use: require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
-  root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
+  root_dir = vim.fs.root(0, { '.git', 'mvnw', 'gradlew' }),
 
   -- Here you can configure eclipse.jdt.ls specific settings
   -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
   -- for a list of options
   settings = {
-    java = {
-    }
+    java = {},
   },
 
   -- Language server `initializationOptions`
@@ -126,7 +108,7 @@ local config = {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {}
+    bundles = {},
   },
 }
 -- This starts a new client & server,
