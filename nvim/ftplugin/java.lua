@@ -123,6 +123,7 @@ vim.lsp.start {
   name = 'jdtls',
   -- filetypes = { 'java' },
   cmd = { 'jdtls' },
+  root_dir = vim.fs.root(0, { '.git', 'mvnw', 'gradlew' }),
   root_markers = { '.git', 'mvnw', 'gradlew' },
 }
 
