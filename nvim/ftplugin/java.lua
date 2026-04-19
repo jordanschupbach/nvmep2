@@ -122,6 +122,7 @@ local config = {
 vim.lsp.start {
   name = 'jdtls',
   cmd = { 'jdtls' },
+  root_dir = vim.fs.root(0, { '.git', 'mvnw', 'gradlew' }),
 }
 
 -- This starts a new client & server,
