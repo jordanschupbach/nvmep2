@@ -40,6 +40,7 @@ handle:close()
 
 local configuration_path = jdtls_path .. '/share/java/jdtls/config_linux/'
 local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. project_name
+
 -- local workspace_dir = "/home/jordan/.local/share/nvim" .. "/site/java/workspace-root/" .. project_name
 
 -- Get the debug adapter install path (you can keep using mason for this if preferred)
@@ -127,16 +128,15 @@ local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. 
 --   root_markers = { '.git', 'mvnw', 'gradlew' },
 -- }
 
-local config = {
-  cmd = 'jdtls',
-  root_dir = vim.fs.dirname(
-    vim.fs.find({ '.gradlew', '.git', 'mvnw', 'pom.xml', 'build.gradle' }, { upward = true })[1]
-  ),
-}
-
--- This starts a new client & server,
--- or attaches to an existing client & server depending on the `root_dir`.
-require('jdtls').start_or_attach(config)
+-- local config = {
+--   cmd = 'jdtls',
+--   root_dir = vim.fs.dirname(
+--     vim.fs.find({ '.gradlew', '.git', 'mvnw', 'pom.xml', 'build.gradle' }, { upward = true })[1]
+--   ),
+-- }
+-- -- This starts a new client & server,
+-- -- or attaches to an existing client & server depending on the `root_dir`.
+-- require('jdtls').start_or_attach(config)
 
 -- {{{ old config
 
