@@ -210,6 +210,7 @@ let
       # nvim-tree-preview
       # nvim-luadev
       # telescope-ultisnips-nvim
+      nvim-java
       orgmode
       org-roam-nvim
       # OrgRoam
