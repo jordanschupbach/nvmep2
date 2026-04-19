@@ -7,9 +7,9 @@ local function get_jdtls_path()
 end
 
 local function get_java_path()
-  local path = os.getenv('JAVA_PATH')
+  local path = os.getenv('JAVA_HOME')
   if not path or path == '' then
-    error('JAVA_PATH is not set')
+    error('JAVA_HOME is not set')
   end
   return path
 end
