@@ -1,2 +1,2 @@
-require('java').setup()
-vim.lsp.enable('jdtls')
+-- require('java').setup()
+-- vim.lsp.enable('jdtls')
