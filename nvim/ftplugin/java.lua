@@ -30,7 +30,14 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local install_path = vim.fn.fnamemodify(jdtls_path, ':h:h') -- Two directories back
 
 -- local jar_path = "/home/jordan/Downloads/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar"
-local jar_path = jdtls_path .. '/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar'
+-- local jar_path = jdtls_path .. '/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar'
+
+local plugins_dir = jdtls_path .. '/share/java/jdtls/plugins'
+local prefix = 'org.eclipse.equinox.launcher_'
+local handle = io.popen('find "' .. plugins_dir .. '" -maxdepth 1 -type f -name "' .. prefix .. '*.jar" | head -n 1')
+local jar_path = handle:read('*l')
+handle:close()
+
 local configuration_path = jdtls_path .. '/share/java/jdtls/config_linux/'
 local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. project_name
 -- local workspace_dir = "/home/jordan/.local/share/nvim" .. "/site/java/workspace-root/" .. project_name
