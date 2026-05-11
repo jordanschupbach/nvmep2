@@ -1,5 +1,3 @@
-require('opencode').setup {}
-
 vim.g.opencode_opts = {
   -- Your configuration, if any; goto definition on the type or field for details
 }
