@@ -226,8 +226,9 @@ let
       blink-cmp # https://github.com/Saghen/blink.cmp
       nvim-dap-vscode-js
 
-      # refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
-      nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
+      artio-nvim
+      refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
+      # nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
       flash-nvim # https://github.com/folke/flash.nvim
       focus-nvim # https://github.com/nvim-focus/focus.nvim
       kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
