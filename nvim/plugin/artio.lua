@@ -1,3 +1,7 @@
+require('vim._core.ui2').enable { enable = true, msg = {
+  target = 'msg',
+} }
+
 require('artio').setup {
   opts = {
     preselect = true, -- whether to preselect the first match
