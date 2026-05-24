@@ -183,7 +183,7 @@ let
         };
       };
 
-      ArtioNvim = pkgs-unstable-plugins.vimPlugins.artio-nvim;
+      # ArtioNvim = pkgs-unstable-plugins.vimPlugins.artio-nvim;
 
     in
     with pkgs.vimPlugins;
@@ -258,7 +258,7 @@ let
 
       leetcode-nvim # https://github.com/kawre/leetcode.nvim
 
-      ArtioNvim
+      # ArtioNvim # https://github.com/comfysage/artio.nvim/
 
       aerial-nvim # https://github.com/stevearc/aerial.nvim
       cmp-buffer # https://github.com/hrsh7th/cmp-buffer/
