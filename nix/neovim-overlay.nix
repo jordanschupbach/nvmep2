@@ -17,6 +17,9 @@ let
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
 
+  # A separate nixpkgs pin for a small set of bleeding-edge plugins.
+  pkgs-unstable-plugins = inputs.nixpkgs-unstable-plugins.legacyPackages.${pkgs.system};
+
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
     inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
@@ -180,6 +183,8 @@ let
         };
       };
 
+      ArtioNvim = pkgs-unstable-plugins.vimPlugins.artio-nvim;
+
     in
     with pkgs.vimPlugins;
     [
@@ -226,7 +231,6 @@ let
       blink-cmp # https://github.com/Saghen/blink.cmp
       nvim-dap-vscode-js
 
-      artio-nvim
       refactoring-nvim # https://github.com/ThePrimeagen/refactoring.nvim
       # nvim-treesitter-refactor # https://github.com/nvim-treesitter/nvim-treesitter-refactor
       flash-nvim # https://github.com/folke/flash.nvim
@@ -253,6 +257,8 @@ let
       zen-mode-nvim # https://github.com/folke/zen-mode.nvim
 
       leetcode-nvim # https://github.com/kawre/leetcode.nvim
+
+      ArtioNvim
 
       aerial-nvim # https://github.com/stevearc/aerial.nvim
       cmp-buffer # https://github.com/hrsh7th/cmp-buffer/
