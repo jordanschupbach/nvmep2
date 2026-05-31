@@ -24,7 +24,7 @@
       ...
     }:
     let
-      systems = builtins.attrNames nixpkgs.legacyPackages;
+      systems = flake-utils.lib.defaultSystems;
 
       # This is where the Neovim derivation is built.
       neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
@@ -93,6 +93,7 @@
           nvim = pkgs.nvim-pkg;
         };
         checks = {
+<<<<<<< HEAD
           stylua =
             pkgs.runCommand "stylua-check" { nativeBuildInputs = [ pkgs.stylua ]; src = ./.; }
               ''
@@ -123,6 +124,26 @@
                 ${pkgs.nvim-pkg}/bin/nvim --headless "+quitall"
                 touch "$out"
               '';
+=======
+          nvim-unit-tests = pkgs.runCommand "nvim-unit-tests" {
+            nativeBuildInputs = [
+              pkgs.neovim-unwrapped
+            ];
+            NVIM_TEST_PLENARY = "${pkgs.vimPlugins.plenary-nvim}";
+            NVIM_TEST_RTP = "${self}/nvim";
+            NVIM_TEST_DIR = "${self}/tests";
+            NVIM_TEST_MINIMAL_INIT = "${self}/tests/minimal_init.lua";
+          } ''
+            export HOME="$TMPDIR/home"
+            mkdir -p "$HOME"
+
+            nvim --headless -u "$NVIM_TEST_MINIMAL_INIT" \
+              -c "lua require('plenary.test_harness').test_directory(vim.env.NVIM_TEST_DIR, { minimal_init = vim.env.NVIM_TEST_MINIMAL_INIT, sequential = true })" \
+              -c "qa"
+
+            touch "$out"
+          '';
+>>>>>>> 3e9289c (audit linting)
         };
         devShells = {
           default = shell;
