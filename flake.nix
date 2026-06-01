@@ -93,7 +93,6 @@
           nvim = pkgs.nvim-pkg;
         };
         checks = {
-<<<<<<< HEAD
           stylua =
             pkgs.runCommand "stylua-check" { nativeBuildInputs = [ pkgs.stylua ]; src = ./.; }
               ''
@@ -124,7 +123,6 @@
                 ${pkgs.nvim-pkg}/bin/nvim --headless "+quitall"
                 touch "$out"
               '';
-=======
           nvim-unit-tests = pkgs.runCommand "nvim-unit-tests" {
             nativeBuildInputs = [
               pkgs.neovim-unwrapped
@@ -143,7 +141,6 @@
 
             touch "$out"
           '';
->>>>>>> 3e9289c (audit linting)
         };
         devShells = {
           default = shell;

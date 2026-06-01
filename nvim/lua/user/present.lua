@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-local present = {}
-=======
 local M = {}
->>>>>>> 3e9289c (audit linting)
 
 local function create_floating_window(opts)
   opts = opts or {}
@@ -27,32 +23,18 @@ local function create_floating_window(opts)
     row = row,
     style = 'minimal',
     border = 'rounded',
-<<<<<<< HEAD
-  }
-end
-
-present.setup = function()
-  print('Hellozzz from present.lua!')
-end
-
-=======
   })
 
   return { buf = buf, win = win }
 end
 
->>>>>>> 3e9289c (audit linting)
 ---@class present.Slides
 ---@fields slides string[]
 
 --- Takes some lines and parses them
 ---@param lines string[]: The lines in the buffer
 ---@return present.Slides
-<<<<<<< HEAD
-local parse_slides = function(lines)
-=======
 M.parse_slides = function(lines)
->>>>>>> 3e9289c (audit linting)
   local slides = { slides = {} }
   local current_slide = {}
   local separator = '^#'
@@ -69,11 +51,7 @@ M.parse_slides = function(lines)
   return slides
 end
 
-<<<<<<< HEAD
-present.start_presentation = function()
-=======
 M.start_presentation = function()
->>>>>>> 3e9289c (audit linting)
   local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local parsed = M.parse_slides(lines)
   local float = create_floating_window()
@@ -81,17 +59,4 @@ M.start_presentation = function()
   vim.api.nvim_buf_set_lines(float.buf, 0, -1, false, parsed.slides[1])
 end
 
-<<<<<<< HEAD
-vim.print(parse_slides {
-  '# Hello',
-  'this is something else',
-  '# World',
-  'this is another thing',
-})
-
--- present.setup()
-
--- return present
-=======
 return M
->>>>>>> 3e9289c (audit linting)

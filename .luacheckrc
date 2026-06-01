@@ -1,28 +1,3 @@
-<<<<<<< HEAD
--- Luacheck configuration for Neovim configs.
--- Keep this minimal: prefer catching real issues over silencing everything.
-
-std = "luajit"
-
--- Neovim runtime globals.
-read_globals = { "vim" }
-globals = { "vim" }
-
--- Neovim config style tends to intentionally:
--- - set globals (W111/W113)
--- - assign to vim.* option tables (W122)
--- - define helper functions that are referenced via commands/autocmds (W211)
-ignore = { "111", "113", "122", "211" }
-
--- Don't lint vendored/generated files (none currently), but keep playground permissive.
-exclude_files = {
-  ".direnv/**",
-  "build/**",
-}
-
--- Allow long lines in plugin configs (often tables/keys).
-max_line_length = false
-=======
 std = "luajit"
 
 globals = {
@@ -35,6 +10,16 @@ max_line_length = 200
 -- These are intentionally used throughout config (Neovim provides them).
 read_globals = {
   "jit",
+  "vim",
+}
+
+ignore = {
+  "122", -- assigning to read-only fields (common in Neovim config)
+}
+
+exclude_files = {
+  ".direnv/**",
+  "build/**",
 }
 
 files["nvim/plugin/heirline.lua"] = {
@@ -65,4 +50,3 @@ files["nvim/plugin/luasnip.lua"] = {
     "631", -- line is too long
   },
 }
->>>>>>> 3e9289c (audit linting)
