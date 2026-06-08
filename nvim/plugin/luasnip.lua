@@ -177,15 +177,9 @@ end
 -- returns a snippet_node wrapped around an insertnode whose initial
 -- text value is set to the current date in the desired format.
 ---@diagnostic disable-next-line: unused-local, redefined-local
-<<<<<<< HEAD
-local date_input = function(args, snip, old_state, fmt_)
-  local date_format = fmt_ or '%y-%m-%d'
-  return sn(nil, i(1, os.date(date_format)))
-=======
 local date_input = function(args, snip, old_state, format_string)
   local resolved_format = format_string or '%y-%m-%d'
   return sn(nil, i(1, os.date(resolved_format)))
->>>>>>> 6b13e7f (Attempt slime fix and fix merge conflicts)
 end
 
 -- }}} Helper methods
