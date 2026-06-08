@@ -409,18 +409,10 @@ mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
 -- {{{ Slime
 
 vim.g.slime_target = 'neovim'
+vim.g.slime_bracketed_paste = 1
 
-local function wrapped_slime()
-  vim.cmd('sleep 10m')
-  vim.cmd('normal! gv')
-  vim.cmd('sleep 10m')
-  vim.cmd("'<,'>SlimeSend") -- Send to Slime
-  vim.cmd('sleep 10m')
-end
-
-mymap('n', '<A-return>', '<CMD>SlimeSend<CR><CR>')
--- mymap('v', '<A-return>', "<CMD>'<,'>SlimeSend<CR><CR>")
-mymap('v', '<A-return>', wrapped_slime)
+vim.keymap.set('n', '<A-return>', '<Plug>SlimeLineSend', { silent = true, remap = true })
+vim.keymap.set('x', '<A-return>', '<Plug>SlimeRegionSend', { silent = true, remap = true })
 
 -- }}} Slime
 

@@ -123,6 +123,10 @@
                 ${pkgs.nvim-pkg}/bin/nvim --headless "+quitall"
                 touch "$out"
               '';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b13e7f (Attempt slime fix and fix merge conflicts)
           nvim-unit-tests = pkgs.runCommand "nvim-unit-tests" {
             nativeBuildInputs = [
               pkgs.neovim-unwrapped
