@@ -145,8 +145,12 @@ vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
 
 -- {{{ Plugin Free Key mappings
 
+local mac_option = require('user.mac_option')
+
 local function mymap(mode, key, value)
-  vim.keymap.set(mode, key, value, { silent = true, remap = false })
+  local opts = { silent = true, remap = false }
+  vim.keymap.set(mode, key, value, opts)
+  mac_option.set(mode, key, value, opts)
 end
 
 ---@diagnostic disable-next-line: unused-function, unused-local
